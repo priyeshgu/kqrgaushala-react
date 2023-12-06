@@ -1,0 +1,30 @@
+.donation-type {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .donation-image {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover; /* Ensure the image covers the circular container */
+  }
+  
+  .donation-title {
+    margin-top: 10px;
+    font-size: 1.5rem;
+  }
+  
+  .donation-description {
+    margin-top: 10px;
+    color: #666;
+  }
+  
+  .btn-donate {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  

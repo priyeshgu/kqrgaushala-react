@@ -1,0 +1,41 @@
+.hero-text {
+  margin-top: 4rem;
+}
+.hero-heading {
+  color: #3a405a;
+  font-family: Roboto;
+  font-size: 3.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 5.1875rem;
+  text-transform: uppercase;
+}
+.hero-subheading {
+  color: #3a405a;
+  font-family: Roboto;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem;
+  text-transform: capitalize;
+}
+.btn-donate-hero{
+  font-size: 2rem;
+  padding: 0.4rem 2rem;
+  border-radius: 1rem;
+}
+
+@media screen and (max-width: 480px) {
+  .hero-heading {
+    font-size: 3rem;
+    line-height: 4rem;
+  }
+  .hero-text {
+    text-align: center;
+    margin-top: 0;
+  }
+  .btn-donate-hero {
+    font-size: 2rem;
+    padding: 0rem 1.2rem;
+  }
+}

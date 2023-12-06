@@ -1,0 +1,22 @@
+/* src/components/GenerositySection/GenerositySection.css */
+/* Add your styles for the GenerositySection component */
+
+.generosity-section {
+    padding: 30px 0;
+  }
+  
+  .generosity-icons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .generosity-icon {
+    margin-bottom: 20px;
+  }
+  
+  .generosity-icon img {
+    width: 100px; /* Adjust the size of the icons */
+    height: 100px;
+  }
+  
