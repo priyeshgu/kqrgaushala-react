@@ -29,3 +29,26 @@
     }
   }
   
+  /* Custom styles for larger buttons in mobile navbar */
+@media (max-width: 768px) {
+  .navbar {
+    min-width: 340px; /* Adjust the minimum width as needed */
+  }
+
+  .navbar-toggler-icon {
+    font-size: 1rem; /* Adjust the font size as needed */
+  }
+
+  .navbar-toggler.collapsed {
+    font-size: 24px; /* Adjust the font size as needed */
+  }
+
+  .navbar-toggler-icon:focus,
+  .navbar-toggler-icon:active {
+    outline: none; /* Remove the outline on focus or click if needed */
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 18px; 
+  }
+}

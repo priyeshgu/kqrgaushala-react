@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.css';
+import 'bootstrap/dist/js/bootstrap.min';
 
 export default function Header() {
   return (
@@ -18,18 +19,18 @@ export default function Header() {
 
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav mx-auto">
-              <li className="nav-item">
+              <li className="nav-item ml-auto">
                 <a className="nav-link header-item" href="/">Home</a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item ml-auto">
                 <a className="nav-link header-item" href="/about">About Us</a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item ml-auto">
                 <a className="nav-link header-item" href="google.com">Contact Us</a>
               </li>
             </ul>
             <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
+              <li className="nav-item ml-auto">
                 <button className="btn btn-success btn-donate">Donate</button>
               </li>
             </ul>
