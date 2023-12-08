@@ -1,34 +1,47 @@
-// src/components/GenerositySection/GenerositySection.js
-import React from 'react';
-import './GenerositySection.css'; // Add your styles here
+import React from "react";
+import "./GenerositySection.css";
+import "./GenerositySection.css";
+import occasion1 from "../../../assets/occasions/occasion1.svg";
+import occasion2 from "../../../assets/occasions/occasion2.svg";
+import occasion3 from "../../../assets/occasions/occasion3.svg";
 
 const GenerositySection = () => {
   return (
     <div className="generosity-section container text-center">
-      <h2>Occasions of Generosity</h2>
-      <p>A made-up subtitle</p>
+      <h2 className="occasions-heading">Occasions of Generosity</h2>
+      <p className="occasions-subheading">
+        Choose your monthly pledge and sow the seeds of sustained care for our
+        cherished cows.
+      </p>
 
       <div className="generosity-icons">
-        {/* Placeholder Icons (Replace with actual icon components or images) */}
-        <div className="generosity-icon">
-          <img src="placeholder_icon1.png" alt="Celebration" />
+        <div className="generosity-icon ">
+          <div className="occasion-icon-circle">
+            <img src={occasion1} alt="Celebration" className="occasion-icon" />
+          </div>
           <p>Celebration</p>
         </div>
 
-        <div className="generosity-icon">
-          <img src="placeholder_icon2.png" alt="In Memory Of" />
+        <div className="generosity-icon ">
+          <div className="occasion-icon-circle">
+            <img src={occasion2} alt="In Memory Of" className="occasion-icon" />
+          </div>
           <p>In Memory Of</p>
         </div>
 
-        <div className="generosity-icon">
-          <img src="placeholder_icon3.png" alt="In Honor Of" />
+        <div className="generosity-icon ">
+          <div className="occasion-icon-circle">
+            <img src={occasion3} alt="In Honor Of" className="occasion-icon" />
+          </div>
           <p>In Honor Of</p>
         </div>
       </div>
 
       {/* Donate Button */}
-      <div className="text-center mt-3">
-        <button className="btn btn-success btn-donate">Donate</button>
+      <div className="text-center">
+        <button className="btn btn-success occasion-donate-btn">
+          DONATE NOW
+        </button>
       </div>
     </div>
   );

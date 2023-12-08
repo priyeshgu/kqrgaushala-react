@@ -1,22 +1,60 @@
-/* src/components/GenerositySection/GenerositySection.css */
-/* Add your styles for the GenerositySection component */
-
 .generosity-section {
-    padding: 30px 0;
+  padding: 30px 0;
+}
+
+.generosity-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.generosity-icon {
+  margin-bottom: 20px;
+}
+
+.generosity-icon img {
+  width: 100px; /* Adjust the size of the icons */
+  height: 100px;
+}
+.occasions-heading {
+  color: #3a405a;
+
+  font-size: 2.1875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.occasions-subheading {
+  font-family: Roboto;
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.875rem; /* 184% */
+  text-transform: capitalize;
+}
+.occasion-donate-btn {
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+.occasion-icon{
+  padding: 0.5rem;
+}
+.occasion-icon-circle {
+  margin: 0rem 3rem;
+  border: 1px solid;
+  border-radius: 50%;
+}
+
+@media screen and (max-width:480px) {
+  .occasion-icon-circle {
+    margin: 0rem 1rem;
+  
   }
   
-  .generosity-icons {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
-  
-  .generosity-icon {
-    margin-bottom: 20px;
-  }
-  
-  .generosity-icon img {
-    width: 100px; /* Adjust the size of the icons */
-    height: 100px;
-  }
-  
+}
+
+

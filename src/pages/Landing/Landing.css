@@ -3,10 +3,19 @@
   color: #3a405a;
   text-align: center;
   font-family: Roboto;
-  font-size: 250%;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   text-transform: uppercase;
+}
+.glance-heading{
+  color: #3A405A;
+font-family: Roboto;
+font-size: 2.1875rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+text-transform: uppercase;
 }
 

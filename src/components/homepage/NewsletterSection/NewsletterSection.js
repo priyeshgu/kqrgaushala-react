@@ -1,30 +1,23 @@
-// src/components/NewsletterSection/NewsletterSection.js
 import React from 'react';
-import './NewsletterSection.css'; // Add your styles here
+import './NewsletterSection.css'
+import newsletterImg from '../../../assets/newsletter.png';
 
 const NewsletterSection = () => {
-  // Placeholder image URLs
-//   const leftImageSrc = 'https://via.placeholder.com/150'; // Replace with actual URL
-  const rightImageSrc = 'https://via.placeholder.com/300x400'; // Replace with actual URL
-
   return (
-    <div className="newsletter-section container">
-      <div className="row justify-content-center align-items-center">
-        {/* Left Part with Text and Input */}
-        <div className="col-md-6 mb-4 mb-md-0">
-          <h2>Stay Connected: Subscribe to Our Newsletter</h2>
-          <p>A made-up subheading</p>
+    <div className="newsletter-section container mb-5">
+      <div className="row justify-content-center">
+        <div className="newsletter-input-sec col-md-6 col-12 mb-4 mb-md-0 d">
+          <h2 className='newsletter-heading'>Stay Connected: Subscribe to Our Newsletter</h2>
+          <p className='newsletter-subheading'>Receive updates, stories, and ways to make a difference in your inbox.</p>
 
-          {/* Input Box and Subscribe Button */}
           <div className="input-group">
-            <input type="email" className="form-control" placeholder="Enter your email" aria-label="Email" />
-            <button className="btn btn-success" type="button">Subscribe</button>
+            <input  type="newsletter-input" className=" mb-3 col-12 form-control" placeholder="ENTER YOUR EMAIL" aria-label="Email" />
+            <button className="newsletter-sub-btn btn btn-success col-12" type="button">SUBSCRIBE</button>
           </div>
         </div>
 
-        {/* Right Part with Image */}
-        <div className="col-md-6">
-          <img src={rightImageSrc} alt="Newsletter" className="img-fluid rounded" />
+        <div className="newsletter-right-sec col-12 col-md-6 ">
+          <img  src={newsletterImg} alt="Newsletter" className="img-fluid newsletter-img" />
         </div>
       </div>
     </div>

@@ -1,0 +1,34 @@
+.monthly-mission{
+
+    text-align: center;
+}
+.monthly-mission-heading{
+color: #3A405A;
+font-size: 2.1875rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+text-transform: uppercase;
+}
+.monthly-mission-subheading{
+
+font-size: 1.3rem;
+font-style: normal;
+font-weight: 400;
+line-height: 2.875rem; 
+text-transform: capitalize;
+}
+.monthly-mission-btn{
+    background-color: magenta;
+    border-radius: 10px;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+
+}
+.monthly-mission-sub-btn{
+    border-radius: 10px;
+    padding: 0.5rem 1rem; 
+    font-size: 1.2rem;
+
+}

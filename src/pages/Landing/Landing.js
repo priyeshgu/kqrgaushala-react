@@ -1,8 +1,12 @@
 import React from "react";
+import './Landing.css'
 import Hero from "../../components/homepage/Hero/Hero";
 import Donation from "../../components/homepage/Donation/Donation";
-import Glance from "../../components/homepage/Glance";
+import Glance from "../../components/homepage/Glance/Glance";
 import AboutSection from "../../components/homepage/About/About";
+import MonthlyMission from "../../components/homepage/MonthlyMission/MonthlyMission";
+import GenerositySection from "../../components/homepage/GenerositySection/GenerositySection";
+import NewsletterSection from "../../components/homepage/NewsletterSection/NewsletterSection";
 
 import donation1 from "../../assets/donation/donation1.svg";
 import donation2 from "../../assets/donation/donation2.svg";
@@ -54,23 +58,23 @@ export default function Landing() {
     { svgPath: glance1, title: "200+ desi cows" },
     {
       svgPath: glance2,
-      title: "Sustainable Practices",
+      title: "12+ acers of cow shed",
     },
     {
       svgPath: glance3,
-      title: "Organic Grazing Initiatives",
+      title: "150+ Volunteers",
     },
     {
       svgPath: glance4,
-      title: "Emergency Medical Care",
+      title: "15+ Medical Team",
     },
     {
       svgPath: glance5,
-      title: "Community Outreach Programs",
+      title: "5+ Trucks & Tractors",
     },
     {
       svgPath: glance6,
-      title: "Educational Initiatives",
+      title: "100+ Surgeries Done",
     },
   ];
 
@@ -92,7 +96,7 @@ export default function Landing() {
 
       {/* Glance Section  */}
       <div className="container mt-5">
-  <p className="glance-heading text-center">Koderma Gaushala at a Glance</p>
+  <p className="glance-heading text-center mb-4">Koderma Gaushala at a Glance</p>
   <div className="row glance-row">
     {glanceTiles.map((tile, index) => (
       <div key={index} className="col-md-2 col-4">
@@ -104,6 +108,9 @@ export default function Landing() {
 
 {/* About Section */}
 <AboutSection/>
+<MonthlyMission/>
+<GenerositySection/>
+<NewsletterSection/>
     </>
   );
 }

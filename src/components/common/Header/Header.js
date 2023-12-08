@@ -31,7 +31,7 @@ export default function Header() {
             </ul>
             <ul className="navbar-nav ms-auto">
               <li className="nav-item ml-auto">
-                <button className="btn btn-success btn-donate">Donate</button>
+                <button className="btn btn-success header-btn-donate">Donate</button>
               </li>
             </ul>
           </div>

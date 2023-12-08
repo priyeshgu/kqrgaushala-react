@@ -15,7 +15,7 @@ const Hero = () => {
           <div className="hero-text">
             <h1 className="hero-heading display-sm-6">Transform compassion into action</h1>
             <p className="hero-subheading">Support Koderma Gaushala and make a lasting difference in the lives of our cherished cows.</p>
-            <a href="exa" className="btn btn-success btn-donate-hero">Donate Now</a>
+            <a href="exa" className="btn btn-success btn-donate-hero">DONATE NOW</a>
           </div>
         </div>
         <div className="col-md-6 order-md-1 d-md-none d-sm-block">

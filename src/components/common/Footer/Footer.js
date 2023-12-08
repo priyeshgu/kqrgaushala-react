@@ -4,7 +4,7 @@ import './Footer.css'; // Add your styles here
 
 const Footer = () => {
   return (
-    <footer className="footer-section container rounded ">
+    <footer className="footer-section container ">
       <div className="container">
         <div className="row">
           {/* Email Column */}

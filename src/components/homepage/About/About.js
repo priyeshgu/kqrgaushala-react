@@ -35,9 +35,20 @@ const AboutSection = () => {
           </p>
           {/* Add more text or details about the gaushala */}
 
-          {/* Donate Button */}
+          
+        </div>
+        <div>
+          <p className="about-text container col-12">
+            Join us in preserving this legacy and supporting our mission to
+            safeguard the divine creatures who have graced our sanctuary for
+            generations. Your generous contribution empowers us to continue this
+            noble legacy. Stand with us in our commitment to the welfare of
+            these sacred beings. Donate now and become a cherished part of our
+            journey, ensuring a brighter and compassionate future for our
+            beloved cows. Read More
+          </p>
           <div className="text-center">
-            <button className="btn btn-success btn-donate">Donate</button>
+            <button className="btn btn-success about-donate-btn ">DONATE NOW</button>
           </div>
         </div>
       </div>
