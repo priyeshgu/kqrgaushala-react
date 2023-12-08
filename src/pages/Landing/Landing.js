@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "../../components/homepage/Hero/Hero";
 import Donation from "../../components/homepage/Donation/Donation";
 import Glance from "../../components/homepage/Glance";
+import AboutSection from "../../components/homepage/About/About";
 
 import donation1 from "../../assets/donation/donation1.svg";
 import donation2 from "../../assets/donation/donation2.svg";
@@ -82,7 +83,7 @@ export default function Landing() {
         <p className="donation-heading">Choose Your Path of Compassion</p>
         <div className="row">
           {donationData.map((donationType) => (
-            <div key={donationType.id} className="col-md-6 col-lg-3">
+            <div key={donationType.id} className="col-md-6 col-lg-3 col-6">
               <Donation {...donationType} />
             </div>
           ))}
@@ -100,6 +101,9 @@ export default function Landing() {
     ))}
   </div>
 </div>
+
+{/* About Section */}
+<AboutSection/>
     </>
   );
 }
