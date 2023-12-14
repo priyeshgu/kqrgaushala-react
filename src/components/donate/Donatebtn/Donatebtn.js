@@ -2,19 +2,26 @@ import React from 'react'
 
 const Donatebtn = () => {
     const handleDonateClick = () => {
+
+      const currentDateTime = new Date().toISOString();
+
+      // Format the date and time for PostgreSQL (remove the 'T' and 'Z')
+      const formattedDateTime = currentDateTime.replace('T', ' ').replace('Z', '');
         // Hardcoded JSON payload
         const donationData = {
           name: 'John Doe',
-          phoneNumber: '1234567890',
-          address: '123 Main St, City',
+          phone_num: '1234567890',
+          email: 'abc@xyz.com',
+          address: '123 Main St City',
           product: 'Green Fodder',
           type: 'One-Time',
-          dateTime: '2023-12-31T12:00:00', // Date and time in ISO format
+          dateTime:formattedDateTime, // Date and time in ISO format
           amount: 50.00,
+          pan_number:'abc123456789'
         };
     
         // Backend API URL
-        const apiUrl = 'https://your-backend-api-url/donate';
+        const apiUrl = 'http://localhost:3001/api/donate';
     
         // Sending POST request
         fetch(apiUrl, {
