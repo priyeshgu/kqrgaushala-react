@@ -17,7 +17,8 @@ const Donatebtn = () => {
           type: 'One-Time',
           dateTime:formattedDateTime, // Date and time in ISO format
           amount: 50.00,
-          pan_number:'abc123456789'
+          pan_number:'abc123456789',
+          units:1
         };
     
         // Backend API URL
