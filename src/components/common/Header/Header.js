@@ -26,12 +26,12 @@ export default function Header() {
                 <a className="nav-link header-item" href="/about">About Us</a>
               </li>
               <li className="nav-item ml-auto">
-                <a className="nav-link header-item" href="google.com">Contact Us</a>
+                <a className="nav-link header-item" href="/contact">Contact Us</a>
               </li>
             </ul>
             <ul className="navbar-nav ms-auto">
               <li className="nav-item ml-auto">
-                <button className="btn btn-success header-btn-donate">Donate</button>
+                <a href='/donate'><button className="btn btn-success header-btn-donate">Donate</button></a>
               </li>
             </ul>
           </div>
