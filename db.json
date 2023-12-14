@@ -1,0 +1,80 @@
+{
+    "donationCategories": [
+      {
+        "categoryName": "Education",
+        "donations": [
+          {
+            "nameEnglish": "School Books",
+            "nameHindi": "विद्यालय की किताबें",
+            "costPerUnit": 20
+          },
+          {
+            "nameEnglish": "Uniform",
+            "nameHindi": "वर्दी",
+            "costPerUnit": 30
+          },
+          {
+            "nameEnglish": "Stationery",
+            "nameHindi": "स्टेशनरी",
+            "costPerUnit": 10
+          },
+          {
+            "nameEnglish": "Tuition Fee",
+            "nameHindi": "पढ़ाई की फीस",
+            "costPerUnit": 50
+          }
+        ]
+      },
+      {
+        "categoryName": "Healthcare",
+        "donations": [
+          {
+            "nameEnglish": "Medicines",
+            "nameHindi": "दवाएँ",
+            "costPerUnit": 15
+          },
+          {
+            "nameEnglish": "Medical Checkup",
+            "nameHindi": "मेडिकल जाँच",
+            "costPerUnit": 25
+          },
+          {
+            "nameEnglish": "Vaccination",
+            "nameHindi": "टीकाकरण",
+            "costPerUnit": 18
+          },
+          {
+            "nameEnglish": "Hospital Stay",
+            "nameHindi": "हॉस्पिटल में रुकावट",
+            "costPerUnit": 100
+          }
+        ]
+      },
+      {
+        "categoryName": "Environment",
+        "donations": [
+          {
+            "nameEnglish": "Tree Plantation",
+            "nameHindi": "पेड़ लगाना",
+            "costPerUnit": 5
+          },
+          {
+            "nameEnglish": "Clean Energy",
+            "nameHindi": "स्वच्छ ऊर्जा",
+            "costPerUnit": 50
+          },
+          {
+            "nameEnglish": "Waste Management",
+            "nameHindi": "कचरा प्रबंधन",
+            "costPerUnit": 15
+          },
+          {
+            "nameEnglish": "Wildlife Conservation",
+            "nameHindi": "वन्यजन्तु संरक्षण",
+            "costPerUnit": 80
+          }
+        ]
+      }
+    ]
+  }
+  
