@@ -22,7 +22,7 @@ const Donatebtn = () => {
         };
     
         // Backend API URL
-        const apiUrl = 'http://localhost:3001/api/donate';
+        const apiUrl = 'http://localhost:3001/donate';
     
         // Sending POST request
         fetch(apiUrl, {
