@@ -8,7 +8,9 @@ const ProductList = () => {
       try {
         const response = await fetch('http://localhost:3001/donationCategories');
         const data = await response.json();
-        setProducts(data);
+        console.log(data.donationCategories)
+        console.log(typeof(data))
+        setProducts(data.donationCategories);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
