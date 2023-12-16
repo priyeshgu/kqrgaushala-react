@@ -1,13 +1,11 @@
-import React from 'react'
-import Donatebtn from '../../components/donate/Donatebtn/Donatebtn'
-import Donatetype from '../../components/donate/Donatetypes/Donationtype'
+import React from "react";
+import Donationmain from "../../components/donate/donationMain/Donationmain";
+
 
 export default function Donate() {
   return (
     <div>
-   <Donatebtn/>
-   <Donatetype/>
+      <Donationmain/>
     </div>
-
-  )
+  );
 }

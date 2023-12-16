@@ -1,0 +1,8 @@
+.donation-product{
+    background: rgb(28,159,7);
+background: linear-gradient(90deg, rgba(28,159,7,0.3897934173669467) 33%, rgba(51,235,8,0.29175420168067223) 100%);
+    /* border: 2px solid; */
+    border-radius: 15px;
+    padding: 1rem;
+    text-align: center;
+}
