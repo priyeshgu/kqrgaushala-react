@@ -10,6 +10,7 @@ const DonationCategory = ({ category }) => {
         {category.donations.map((product) => (
           <DonationProduct key={product.nameEnglish} product={product} />
         ))}
+        <div>for custom amount</div>
       </div>
     </div>
   );
