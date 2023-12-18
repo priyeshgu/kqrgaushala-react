@@ -6,7 +6,7 @@ const DonationCategory = ({ category }) => {
   return (
     <div className="donation-category mb-5 container text-center">
       <h2 className="category-heading">{category.categoryName}</h2>
-      <div className="products-container d-flex flex-row">
+      <div className="products-container d-flex flex-row flex-wrap justify-content-center row ">
         {category.donations.map((product) => (
           <DonationProduct key={product.nameEnglish} product={product} />
         ))}
