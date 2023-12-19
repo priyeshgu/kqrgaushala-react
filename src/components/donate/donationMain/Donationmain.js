@@ -8,7 +8,7 @@ const Donationmain = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://192.168.1.5:3001/donationCategories');
+        const response = await fetch('http://192.168.1.4:3001/donationCategories');
         const data = await response.json();
         setDonationCategories(data.donationCategories);
       } catch (error) {
