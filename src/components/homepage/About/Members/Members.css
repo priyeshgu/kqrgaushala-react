@@ -1,0 +1,17 @@
+.member-pic{
+    border-radius: 20px;
+    width: 13rem;
+    height: auto;
+    margin-top: 1rem;
+}
+.member-name{
+font-size: 150%;
+}
+.member-position{
+font-size: 100%;
+}
+@media screen and (max-width: 480px) {
+    .member-pic{
+        width: 7rem;
+    }
+}

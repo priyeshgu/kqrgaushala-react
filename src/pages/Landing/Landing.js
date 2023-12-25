@@ -7,6 +7,7 @@ import AboutSection from "../../components/homepage/About/About";
 import MonthlyMission from "../../components/homepage/MonthlyMission/MonthlyMission";
 import GenerositySection from "../../components/homepage/GenerositySection/GenerositySection";
 import NewsletterSection from "../../components/homepage/NewsletterSection/NewsletterSection";
+import Membership from "../../components/homepage/Membership/Membership";
 
 import donation1 from "../../assets/donation/donation1.svg";
 import donation2 from "../../assets/donation/donation2.svg";
@@ -106,10 +107,11 @@ export default function Landing() {
   </div>
 </div>
 
-{/* About Section */}
+
 <AboutSection/>
 <MonthlyMission/>
 <GenerositySection/>
+<Membership/>
 <NewsletterSection/>
     </>
   );

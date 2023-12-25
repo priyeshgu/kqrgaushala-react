@@ -47,9 +47,7 @@ const AboutSection = () => {
             journey, ensuring a brighter and compassionate future for our
             beloved cows. Read More
           </p>
-          <div className="text-center">
-            <button className="btn btn-success about-donate-btn ">DONATE NOW</button>
-          </div>
+          
         </div>
       </div>
     </div>
