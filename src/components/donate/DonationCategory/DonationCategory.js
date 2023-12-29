@@ -27,7 +27,7 @@ const DonationCategory = ({ category }) => {
           <DonationProduct key={product.nameEnglish} product={product} />
         ))}
         {/* <div>for custom amount</div> */}
-        <div className="donation-product col-10 d-none d-md-block">
+        <div className="donation-product ">
         <div className="d-flex flex-row justify-content-center">
         <div className="product-names col-4">
         <h3 className="product-name">Donate any Custom Amount</h3>

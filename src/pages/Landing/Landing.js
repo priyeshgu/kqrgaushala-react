@@ -8,6 +8,7 @@ import MonthlyMission from "../../components/homepage/MonthlyMission/MonthlyMiss
 import GenerositySection from "../../components/homepage/GenerositySection/GenerositySection";
 import NewsletterSection from "../../components/homepage/NewsletterSection/NewsletterSection";
 import Membership from "../../components/homepage/Membership/Membership";
+import Lifetime from "../../components/homepage/Lifetime/Lifetime";
 
 import donation1 from "../../assets/donation/donation1.svg";
 import donation2 from "../../assets/donation/donation2.svg";
@@ -112,6 +113,7 @@ export default function Landing() {
 <MonthlyMission/>
 <GenerositySection/>
 <Membership/>
+<Lifetime/>
 <NewsletterSection/>
     </>
   );
