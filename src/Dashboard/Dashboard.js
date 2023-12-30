@@ -10,13 +10,13 @@ const DonationContent = () => {
   useEffect(() => {
     // Fetch products data from the API
     // Replace the API URL with your actual endpoint
-    fetch('http://192.168.1.7:3001/donationCategories?type=products')
+    fetch('http://192.168.1.5:3001/donationCategories?type=products')
       .then((response) => response.json())
       .then((data) => setProducts(data.return_result));
 
     // Fetch donators data from the API when the component mounts
     // This can be triggered based on the user's action, like clicking a button
-    fetch('http://192.168.1.7:3001/donators')
+    fetch('http://192.168.1.5:3001/donators')
       .then((response) => response.json())
       .then((data) => setDonators(data.data));
   }, []);
@@ -26,14 +26,14 @@ const DonationContent = () => {
 
     // Fetch products data when the "Donation Products" tab is selected
     if (tab === 'donationProducts') {
-      fetch('http://192.168.1.7:3001/donationCategories?type=products')
+      fetch('http://192.168.1.5:3001/donationCategories?type=products')
         .then((response) => response.json())
         .then((data) => setProducts(data.return_result));
     }
 
     // Fetch donators data when the "Donators List" tab is selected
     if (tab === 'donatorsList') {
-      fetch('http://192.168.1.7:3001/donators')
+      fetch('http://192.168.1.5:3001/donators')
         .then((response) => response.json())
         .then((data) => setDonators(data.data));
     }
@@ -45,7 +45,7 @@ const DonationContent = () => {
 
   const handleSaveClick = async (updatedProduct) => {
     try {
-      const response = await fetch('http://192.168.1.7:3001/updateProduct', {
+      const response = await fetch('http://192.168.1.5:3001/updateProduct', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ const DonationContent = () => {
     if (confirmDelete) {
       // Implement the logic to delete the product from the backend
       try {
-        fetch('http://192.168.1.7:3001/deleteProduct', {
+        fetch('http://192.168.1.5:3001/deleteProduct', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -107,13 +107,14 @@ const DonationContent = () => {
   };
 
   return (
-    <div className="d-flex">
+    <div>
+    <div className="mt-5 d-flex justify-content-center rounded">
       {/* Sidebar */}
       <Navbar bg="light" expand="lg" className="flex-shrink-0">
         <Container>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="flex-column">
+            <Nav className="flex-row">
               <Nav.Link
                 href="#donationProducts"
                 active={activeTab === 'donationProducts'}
@@ -132,17 +133,20 @@ const DonationContent = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      </div>
 
+      <div>
       {/* Content */}
-      <Container className="mt-5 ml-3">
+      <Container className="mt-5 d-flex justify-content-center">
         {/* Conditionally render content based on the active tab */}
         {activeTab === 'donationProducts' && (
-          <div>
+          <div className='text-center'>
             <h3>Donation Products</h3>
             <Table striped bordered hover>
               <thead>
                 <tr>
-                  <th>ID</th>
+                <th>Serial Number</th>
+                  {/* <th>ID</th> */}
                   <th>Name (English)</th>
                   <th>Name (Hindi)</th>
                   <th>Type</th>
@@ -151,9 +155,10 @@ const DonationContent = () => {
                 </tr>
               </thead>
               <tbody>
-                {products.map((product) => (
+                {products.map((product,index) => (
                   <tr key={product.id}>
-                    <td>{product.id}</td>
+                    <td>{index + 1}</td>
+                    {/* <td>{product.id}</td> */}
                     <td>
                       {editProduct && editProduct.id === product.id ? (
                         <input
@@ -250,13 +255,14 @@ const DonationContent = () => {
         )}
 
         {activeTab === 'donatorsList' && (
-          <div>
+          <div className='text-center'>
             <h3>Donators List</h3>
             {/* Render Donators List */}
             <Table striped bordered hover>
               <thead>
                 <tr>
-                  <th>ID</th>
+                <th>Serial Number</th>
+                  {/* <th>ID</th> */}
                   <th>Name</th>
                   <th>Phone Number</th>
                   <th>Email</th>
@@ -268,9 +274,10 @@ const DonationContent = () => {
                 </tr>
               </thead>
               <tbody>
-                {donators.map((donator) => (
+                {donators.map((donator,index) => (
                   <tr key={donator.id}>
-                    <td>{donator.id}</td>
+                    <td>{index + 1}</td>
+                    {/* <td>{donator.id}</td> */}
                     <td>{donator.name}</td>
                     <td>{donator.phone_num}</td>
                     <td>{donator.email}</td>
@@ -286,6 +293,7 @@ const DonationContent = () => {
           </div>
         )}
       </Container>
+    </div>
     </div>
   );
 };
