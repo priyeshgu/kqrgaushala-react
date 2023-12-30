@@ -39,9 +39,7 @@ const GenerositySection = () => {
 
       {/* Donate Button */}
       <div className="text-center">
-        <button className="btn btn-success occasion-donate-btn">
-          DONATE NOW
-        </button>
+        <a href="/donate"><button className="btn btn-success occasion-donate-btn">DONATE NOW</button></a>
       </div>
     </div>
   );

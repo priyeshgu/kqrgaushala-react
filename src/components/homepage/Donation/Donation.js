@@ -16,7 +16,7 @@ const Donation = ({ image, title, description }) => {
         <div className="card-body">
           <h3 className="card-title donation-title">{title}</h3>
           <p className="card-text donation-description">{description}</p>
-          <button className="btn btn-success btn-donate">DONATE NOW</button>
+          <a href="/donate"><button className="btn btn-success btn-donate">DONATE NOW</button></a>
         </div>
       </div>
     </>
