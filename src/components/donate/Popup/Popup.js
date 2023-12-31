@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Modal, Button } from 'react-bootstrap';
 import './Popup.css';
 
 const Popup = ({ onClose }) => {
@@ -28,67 +29,74 @@ const Popup = ({ onClose }) => {
   };
 
   return (
-    <div className="popup-container">
-      <div className="popup-content">
-        <span className="popup-close" onClick={onClose}>
-          &times;
-        </span>
-        <h2>Donation Details</h2>
-        <div className="popup-form-group">
-          <label htmlFor="fullName">Full Name:</label>
-          <input
-            type="text"
-            id="fullName"
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="popup-form-group">
-          <label htmlFor="address">Address:</label>
-          <textarea
-            id="address"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-          ></textarea>
-        </div>
-        <div className="popup-form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="popup-form-group">
-          <label htmlFor="phoneNumber">Phone Number:</label>
-          <input
-            type="tel"
-            id="phoneNumber"
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="popup-form-group">
-          <label htmlFor="panCard">PAN Card:</label>
-          <input
-            type="text"
-            id="panCard"
-            name="panCard"
-            value={formData.panCard}
-            onChange={handleChange}
-          />
-        </div>
-        <button className="popup-btn donate-button" onClick={handleDonateNow}>
-          Donate Now
-        </button>
+    <Modal show={true} onHide={onClose}>
+    <Modal.Header closeButton>
+      <Modal.Title>Donation Details</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+      <div className="popup-form-group">
+        <label htmlFor="fullName">Full Name:</label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          value={formData.fullName}
+          onChange={handleChange}
+        />
       </div>
-    </div>
+      <div className="popup-form-group">
+              <label htmlFor="address">Address:</label>
+              <textarea
+                id="address"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+              ></textarea>
+            </div>
+            <div className="popup-form-group">
+              <label htmlFor="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="popup-form-group">
+              <label htmlFor="phoneNumber">Phone Number:</label>
+              <input
+                type="tel"
+                id="phoneNumber"
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="popup-form-group">
+              <label htmlFor="panCard">PAN Card:</label>
+              <input
+                type="text"
+                id="panCard"
+                name="panCard"
+                value={formData.panCard}
+                onChange={handleChange}
+              />
+            </div>
+          
+      {/* Add other form fields as needed */}
+    </Modal.Body>
+    <Modal.Footer>
+      <Button variant="secondary" onClick={onClose}>
+        Close
+      </Button>
+      <Button variant="primary" onClick={handleDonateNow}>
+        Donate Now
+      </Button>
+    </Modal.Footer>
+  </Modal>
   );
 };
 
 export default Popup;
+
