@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./DonationProduct.css";
+import Popup from '../Popup/Popup'; // Adjust the import path based on your project structure
 
 const DonationProduct = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleQuantityChange = (value) => {
     const newQuantity = quantity + value;
@@ -11,48 +13,52 @@ const DonationProduct = ({ product }) => {
     }
   };
 
+  const handleDonateNow = () => {
+    setShowPopup(true);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
+
   return (
     <>
       <div className="donation-product col-10 d-none d-md-block">
         <div className="d-flex flex-row justify-content-center">
-        <div className="product-names col-4">
-        <h3 className="product-name">{product.nameEnglish}</h3>
-        <p className="product-description">({product.nameHindi})</p>
-        </div>
-        
+          <div className="product-names col-4">
+            <h3 className="product-name">{product.nameEnglish}</h3>
+            <p className="product-description">({product.nameHindi})</p>
+          </div>
 
-        <div className="quantity-section row col-4">
-        <div className="quantity-container mr-1">
-          <button
-            className="quantity-btn btn mr-2"
-            onClick={() => handleQuantityChange(-1)}
-            disabled={quantity <= 1}
-          >
-            -
-          </button>
-          <span className="product-quantity">{quantity}</span>
-          <button
-            className="quantity-btn btn ml-2 mr-2"
-            onClick={() => handleQuantityChange(1)}
-          >
-            +
-          </button>
-        </div>
-        <p className="product-amount">
-        ₹ {product.costPerUnit * quantity}
-        </p>
-        </div>
+          <div className="quantity-section row col-4">
+            <div className="quantity-container mr-1">
+              <button
+                className="quantity-btn btn mr-2"
+                onClick={() => handleQuantityChange(-1)}
+                disabled={quantity <= 1}
+              >
+                -
+              </button>
+              <span className="product-quantity">{quantity}</span>
+              <button
+                className="quantity-btn btn ml-2 mr-2"
+                onClick={() => handleQuantityChange(1)}
+              >
+                +
+              </button>
+            </div>
+            <p className="product-amount">₹ {product.costPerUnit * quantity}</p>
+          </div>
 
-        <div className="donate-btn-sec col-4 ">
-        <button className="btn donate-button ">Donate Now</button>
+          <div className="donate-btn-sec col-4 ">
+            <button className="btn donate-button" onClick={handleDonateNow}>
+              Donate Now
+            </button>
+          </div>
         </div>
-        
       </div>
-        </div>
-        
 
-      {/* Donations page For phone  */}
-
+      {/* Donations page For phone */}
       <div className="donation-product row col-md-2 d-sm-block d-md-none py-3">
         <div className="product-names col-6">
           <h3 className="product-name mb-0">{product.nameEnglish}</h3>
@@ -79,9 +85,13 @@ const DonationProduct = ({ product }) => {
               </button>
             </div>
           </div>
-          <button className="btn donate-button">Donate</button>
+          <button className="btn donate-button" onClick={handleDonateNow}>
+            Donate
+          </button>
         </div>
       </div>
+
+      {showPopup && <Popup onClose={closePopup} />}
     </>
   );
 };
