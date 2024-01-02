@@ -90,7 +90,7 @@
   }
   .donate-button{
     width: 8rem;
-    border-radius: 0.5rem;
+    border-radius: 15px !important;
   }
   .product-mob-right{
     display: flex;

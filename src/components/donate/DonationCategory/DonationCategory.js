@@ -46,7 +46,7 @@ const DonationCategory = ({ category }) => {
           <DonationProduct key={product.nameEnglish} product={product} category={category} />
         ))}
         {/* <div>for custom amount</div> */}
-        <div className="donation-product ">
+        <div className="donation-product col-10 d-none d-md-block">
         <div className="d-flex flex-row justify-content-center">
         <div className="product-names col-4">
         <h3 className="product-name">Donate any Custom Amount</h3>
@@ -63,6 +63,27 @@ const DonationCategory = ({ category }) => {
             </div>
         <div className="donate-btn-sec col-4 ">
         <button className="btn donate-button " onClick={handleDonateNowClick}>Donate Now</button>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        </div>
+        </div>
+        </div>
+        <div className="donation-product col-md-2 d-sm-block d-md-none py-3">
+        <div className="d-flex flex-column align-items-center">
+        <div className="product-names col-12">
+        <h3 className="product-name">Donate any Amount</h3>
+        <p className="product-description">कोई भी राशि दान करें</p>
+        </div>
+        <div className="quantity-section col-7 mt-3">
+              <input
+                type="text"
+                className="custom-amount-input form-control"
+                placeholder="Enter Amount"
+                value={customAmount}
+                onChange={handleCustomAmountChange}
+              />
+            </div>
+        <div className="donate-btn-sec col-12 mt-3 ">
+        <button className="btn donate-button " onClick={handleDonateNowClick}>Donate</button>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
         </div>
