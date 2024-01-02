@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import DonationProduct from '../DonationProduct/DonationProduct';
+import Popup from '../Popup/Popup';
 
 
 const DonationCategory = ({ category }) => {
   const [customAmount, setCustomAmount] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
   const handleCustomAmountChange = (event) => {
     const inputAmount = event.target.value.replace(/[^0-9]/g, ''); 
     setCustomAmount(inputAmount);
@@ -16,6 +22,7 @@ const DonationCategory = ({ category }) => {
       // Perform your donation logic here
       // For now, you can clear the error message
       setErrorMessage('');
+      setShowPopup(true);
     }
   };
 
@@ -50,7 +57,10 @@ const DonationCategory = ({ category }) => {
         </div>
 
       </div>
+      {showPopup && <Popup onClose={closePopup} />}
+    
     </div>
+    
   );
 };
 
