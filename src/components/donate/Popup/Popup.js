@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import './Popup.css';
 
-const Popup = ({ onClose }) => {
+const Popup = ({ onClose,donationInfo }) => {
   const [formData, setFormData] = useState({
-    fullName: '',
+    name: '',
     address: '',
     email: '',
-    phoneNumber: '',
-    panCard: '',
+    phone_num: '',
+    pan_number: '',
   });
+
+  useEffect(() => {
+    if (donationInfo) {
+      setFormData((prevData) => ({
+        ...prevData,
+        amount: donationInfo.amount,
+        type: donationInfo.type,
+        product: donationInfo.productName,
+        units: donationInfo.units,
+      }));
+    }
+  }, [donationInfo]);
 
   const [formValid, setFormValid] = useState(true);
 
@@ -17,7 +29,7 @@ const Popup = ({ onClose }) => {
     const { name, value } = e.target;
 
     // Validate phone number
-    if (name === 'phoneNumber') {
+    if (name === 'phone_num') {
       // Allow only numeric characters
       if (!/^\d*$/.test(value)) {
         return;
@@ -40,13 +52,35 @@ const Popup = ({ onClose }) => {
     });
   };
 
-  const handleDonateNow = () => {
+  const handleDonateNow = async() => {
     // Perform additional validation if needed
     const isValid = validateForm();
 
     if (isValid) {
       // Donation logic here
       console.log('Donation Details:', formData);
+      try {
+        // Call your API here
+        const response = await fetch('http://192.168.1.8:3001/donate', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        // Check if the request was successful
+        if (response.ok) {
+          // Handle successful API response
+          console.log('Donation successful!');
+        } else {
+          // Handle API error
+          console.error('API error:', response.statusText);
+        }
+      } catch (error) {
+        // Handle network error
+        console.error('Network error:', error.message);
+      }
       onClose();
     } else {
       // Display error message
@@ -57,10 +91,10 @@ const Popup = ({ onClose }) => {
   const validateForm = () => {
     // Check if all mandatory fields are filled
     return (
-      formData.fullName !== '' &&
+      formData.name !== '' &&
       formData.address !== '' &&
       formData.email !== '' &&
-      formData.phoneNumber !== ''
+      formData.phone_num !== ''
     );
   };
 
@@ -88,9 +122,9 @@ const Popup = ({ onClose }) => {
           </label>
           <input
             type="text"
-            id="fullName"
-            name="fullName"
-            value={formData.fullName}
+            id="name"
+            name="name"
+            value={formData.name}
             onChange={handleChange}
             required
           />
@@ -126,9 +160,9 @@ const Popup = ({ onClose }) => {
           </label>
           <input
             type="tel"
-            id="phoneNumber"
-            name="phoneNumber"
-            value={formData.phoneNumber}
+            id="phone_num"
+            name="phone_num"
+            value={formData.phone_num}
             onChange={handleChange}
             required
           />
@@ -139,9 +173,9 @@ const Popup = ({ onClose }) => {
   </label>
   <input
     type="text"
-    id="panCard"
-    name="panCard"
-    value={formData.panCard}
+    id="pan_number"
+    name="pan_number"
+    value={formData.pan_number}
     onChange={handleChange}
   />
 </div>

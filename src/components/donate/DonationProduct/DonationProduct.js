@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import "./DonationProduct.css";
 import Popup from '../Popup/Popup'; // Adjust the import path based on your project structure
 
-const DonationProduct = ({ product }) => {
+const DonationProduct = ({ product,category }) => {
   const [quantity, setQuantity] = useState(1);
   const [showPopup, setShowPopup] = useState(false);
+  const [donationInfo, setDonationInfo] = useState(null);
 
   const handleQuantityChange = (value) => {
     const newQuantity = quantity + value;
@@ -14,6 +15,15 @@ const DonationProduct = ({ product }) => {
   };
 
   const handleDonateNow = () => {
+    const donationData = {
+      amount: product.costPerUnit * quantity,
+      type: `${category.categoryName}`,
+      productName: product.nameEnglish,
+      units: quantity,
+    };
+
+    // Set donation information in state
+    setDonationInfo(donationData);
     setShowPopup(true);
   };
 
@@ -91,7 +101,7 @@ const DonationProduct = ({ product }) => {
         </div>
       </div>
 
-      {showPopup && <Popup onClose={closePopup} />}
+      {showPopup && <Popup donationInfo={donationInfo} onClose={closePopup} />}
     </>
   );
 };

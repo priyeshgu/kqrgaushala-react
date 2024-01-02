@@ -7,6 +7,7 @@ const DonationCategory = ({ category }) => {
   const [customAmount, setCustomAmount] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [showPopup, setShowPopup] = useState(false);
+  const [donationInfo, setDonationInfo] = useState(null);
 
   const closePopup = () => {
     setShowPopup(false);
@@ -21,7 +22,18 @@ const DonationCategory = ({ category }) => {
     } else {
       // Perform your donation logic here
       // For now, you can clear the error message
+        // Pass the category information to the DonationProduct component
+        // const categoryInfo = {
+        //   categoryName: 'Custom Donation',
+        // };
+        const donationInfo = {
+          amount: customAmount,
+          type: 'Custom', // You can use 'Custom' or any identifier for custom donations
+          productName: 'Custom Donation', // Customize as needed
+          units: 1 // You can adjust this based on your requirements
+        };
       setErrorMessage('');
+      setDonationInfo(donationInfo);
       setShowPopup(true);
     }
   };
@@ -31,7 +43,7 @@ const DonationCategory = ({ category }) => {
       <h2 className="category-heading">{category.categoryName}</h2>
       <div className="products-container d-flex flex-row flex-wrap justify-content-center row ">
         {category.donations.map((product) => (
-          <DonationProduct key={product.nameEnglish} product={product} />
+          <DonationProduct key={product.nameEnglish} product={product} category={category} />
         ))}
         {/* <div>for custom amount</div> */}
         <div className="donation-product ">
@@ -57,7 +69,7 @@ const DonationCategory = ({ category }) => {
         </div>
 
       </div>
-      {showPopup && <Popup onClose={closePopup} />}
+      {showPopup && <Popup donationInfo={donationInfo} onClose={closePopup} />}
     
     </div>
     
