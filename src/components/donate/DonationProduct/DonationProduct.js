@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./DonationProduct.css";
-import Popup from '../Popup/Popup'; 
+import Popup from "../Popup/Popup";
+import ThankYou from "../Popup-thankyou/ThankYou";
 
-const DonationProduct = ({ product,category }) => {
+const DonationProduct = ({ product, category }) => {
   const [quantity, setQuantity] = useState(1);
   const [showPopup, setShowPopup] = useState(false);
   const [donationInfo, setDonationInfo] = useState(null);
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const handleQuantityChange = (value) => {
     const newQuantity = quantity + value;
@@ -29,6 +31,8 @@ const DonationProduct = ({ product,category }) => {
 
   const closePopup = () => {
     setShowPopup(false);
+    setShowThankYou(true);
+    
   };
 
   return (
@@ -102,6 +106,7 @@ const DonationProduct = ({ product,category }) => {
       </div>
 
       {showPopup && <Popup donationInfo={donationInfo} onClose={closePopup} />}
+      {showThankYou && <ThankYou onClose={() => setShowThankYou(false)} />}
     </>
   );
 };

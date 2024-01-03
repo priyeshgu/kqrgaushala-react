@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import "./Popup.css";
 
+
+
 const Popup = ({ onClose, donationInfo }) => {
+ 
+
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -73,6 +77,9 @@ const Popup = ({ onClose, donationInfo }) => {
         if (response.ok) {
           // Handle successful API response
           console.log("Donation successful!");
+          onClose();
+          
+
         } else {
           // Handle API error
           console.error("API error:", response.statusText);
@@ -81,8 +88,9 @@ const Popup = ({ onClose, donationInfo }) => {
         // Handle network error
         console.error("Network error:", error.message);
       }
-      onClose();
-    } else {
+      
+    } 
+    else {
       // Display error message
       setFormValid(false);
     }
@@ -91,10 +99,11 @@ const Popup = ({ onClose, donationInfo }) => {
   const validateForm = () => {
     // Check if all mandatory fields are filled
     return (
-      formData.name !== "" &&
-      formData.address !== "" &&
-      formData.email !== "" &&
-      formData.phone_num !== ""
+      true
+      // formData.name !== "" &&
+      // formData.address !== "" &&
+      // formData.email !== "" &&
+      // formData.phone_num !== ""
     );
   };
 
@@ -190,7 +199,9 @@ const Popup = ({ onClose, donationInfo }) => {
           Donate Now
         </Button>
       </Modal.Footer>
+      
     </Modal>
+   
   );
 };
 
