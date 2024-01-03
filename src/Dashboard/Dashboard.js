@@ -1,11 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { Nav, Navbar, Container, Table, Button } from 'react-bootstrap';
+import { Nav, Navbar, Container, Table, Button,Modal, Form } from 'react-bootstrap';
 
 const DonationContent = () => {
   const [activeTab, setActiveTab] = useState('donationProducts');
   const [products, setProducts] = useState([]);
   const [donators, setDonators] = useState([]);
   const [editProduct, setEditProduct] = useState(null);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [newProduct, setNewProduct] = useState({
+  name_in_english: '',
+  name_in_hindi: '',
+  type: '',
+  cost: '',
+  });
+
+
+  const handleShowAddModal = () => {
+    setShowAddModal(true);
+  };
+  
+  const handleCloseAddModal = () => {
+    setShowAddModal(false);
+  };
+  
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewProduct((prevProduct) => ({ ...prevProduct, [name]: value }));
+  };
+  
 
   useEffect(() => {
     // Fetch products data from the API
@@ -71,7 +93,7 @@ const DonationContent = () => {
     }
   };
 
-  const handleDeleteClick = (productId,englis,hindi,type,cost) => {
+  const handleDeleteClick = (productId,name_in_english,name_in_hindi,type,cost) => {
     // Display a confirmation alert before deleting the product
     const confirmDelete = window.confirm('Are you sure you want to delete this product?');
 
@@ -83,7 +105,7 @@ const DonationContent = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify( {id:productId,name_in_english:englis, name_in_hindi:hindi,type:type,cost:cost})
+          body: JSON.stringify( {id:productId,name_in_english:name_in_english, name_in_hindi:name_in_hindi,type:type,cost:cost})
         })
           .then((response) => response.json())
           .then((data) => {
@@ -104,6 +126,45 @@ const DonationContent = () => {
         console.error('Error deleting product:', error);
       }
     }
+  };
+
+  const handleAddProduct = async () => {
+    try {
+      const response = await fetch('http://192.168.1.8:3001/addProduct', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newProduct),
+      });
+  
+      const data = await response.json();
+  
+      if (data.success) {
+        // Update the local state with the new product
+        setProducts((prevProducts) => [...prevProducts, newProduct]);
+        handleCloseAddModal(); // Close the modal after successful addition
+        setNewProduct({
+          name_in_english: '',
+          name_in_hindi: '',
+          type: '',
+          cost: '',
+        });
+      } else {
+        console.error('Error adding product:', data.error);
+      }
+    } catch (error) {
+      console.error('Error adding product:', error);
+    }
+  };
+  const isFormValid = () => {
+    // Check if all required fields have values
+    return (
+      newProduct.name_in_english.trim() !== '' &&
+      newProduct.name_in_hindi.trim() !== '' &&
+      newProduct.type.trim() !== '' &&
+      newProduct.cost.trim() !== ''
+    );
   };
 
   return (
@@ -129,6 +190,7 @@ const DonationContent = () => {
               >
                 Donators List
               </Nav.Link>
+              
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -142,6 +204,72 @@ const DonationContent = () => {
         {activeTab === 'donationProducts' && (
           <div className='text-center'>
             <h3>Donation Products</h3>
+            <Button variant="primary" onClick={handleShowAddModal}>
+  Add Donation Product
+</Button>
+
+<Modal show={showAddModal} onHide={handleCloseAddModal}>
+  <Modal.Header closeButton>
+    <Modal.Title>Add Donation Product</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    <Form>
+      <Form.Group controlId="name_in_english">
+        <Form.Label>Name in English</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter Name in English"
+          value={newProduct.name_in_english}
+          onChange={handleInputChange}
+          name="name_in_english"
+          required
+        />
+      </Form.Group>
+      <Form.Group controlId="name_in_hindi">
+        <Form.Label>Name in Hindi</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter Name in Hindi"
+          value={newProduct.name_in_hindi}
+          onChange={handleInputChange}
+          name="name_in_hindi"
+          required
+        />
+      </Form.Group>
+      <Form.Group controlId="type">
+        <Form.Label>Type</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter Type"
+          value={newProduct.type}
+          onChange={handleInputChange}
+          name="type"
+          required
+        />
+      </Form.Group>
+      <Form.Group controlId="cost">
+        <Form.Label>Cost</Form.Label>
+        <Form.Control
+          type="Number"
+          placeholder="Enter Cost"
+          value={newProduct.cost}
+          onChange={handleInputChange}
+          name="cost"
+          required
+        />
+      </Form.Group>
+    </Form>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button variant="secondary" onClick={handleCloseAddModal} >
+      Close
+    </Button>
+    <Button variant="primary" onClick={handleAddProduct} disabled={!isFormValid()}>
+      Add Product
+    </Button>
+  </Modal.Footer>
+</Modal>
+
             <Table striped bordered hover>
               <thead>
                 <tr>
