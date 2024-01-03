@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./DonationProduct.css";
-import Popup from '../Popup/Popup'; // Adjust the import path based on your project structure
+import Popup from '../Popup/Popup'; 
 
 const DonationProduct = ({ product,category }) => {
   const [quantity, setQuantity] = useState(1);

@@ -1,14 +1,14 @@
-import React, { useState,useEffect } from 'react';
-import { Modal, Button } from 'react-bootstrap';
-import './Popup.css';
+import React, { useState, useEffect } from "react";
+import { Modal, Button } from "react-bootstrap";
+import "./Popup.css";
 
-const Popup = ({ onClose,donationInfo }) => {
+const Popup = ({ onClose, donationInfo }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    address: '',
-    email: '',
-    phone_num: '',
-    pan_number: '',
+    name: "",
+    address: "",
+    email: "",
+    phone_num: "",
+    pan_number: "",
   });
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Popup = ({ onClose,donationInfo }) => {
     const { name, value } = e.target;
 
     // Validate phone number
-    if (name === 'phone_num') {
+    if (name === "phone_num") {
       // Allow only numeric characters
       if (!/^\d*$/.test(value)) {
         return;
@@ -37,7 +37,7 @@ const Popup = ({ onClose,donationInfo }) => {
     }
 
     // Validate email
-    if (name === 'email') {
+    if (name === "email") {
       // Allow any characters in the email field
       setFormData({
         ...formData,
@@ -52,19 +52,19 @@ const Popup = ({ onClose,donationInfo }) => {
     });
   };
 
-  const handleDonateNow = async() => {
+  const handleDonateNow = async () => {
     // Perform additional validation if needed
     const isValid = validateForm();
 
     if (isValid) {
       // Donation logic here
-      console.log('Donation Details:', formData);
+      console.log("Donation Details:", formData);
       try {
         // Call your API here
-        const response = await fetch('http://192.168.1.8:3001/donate', {
-          method: 'POST',
+        const response = await fetch("http://192.168.1.8:3001/donate", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
         });
@@ -72,14 +72,14 @@ const Popup = ({ onClose,donationInfo }) => {
         // Check if the request was successful
         if (response.ok) {
           // Handle successful API response
-          console.log('Donation successful!');
+          console.log("Donation successful!");
         } else {
           // Handle API error
-          console.error('API error:', response.statusText);
+          console.error("API error:", response.statusText);
         }
       } catch (error) {
         // Handle network error
-        console.error('Network error:', error.message);
+        console.error("Network error:", error.message);
       }
       onClose();
     } else {
@@ -91,10 +91,10 @@ const Popup = ({ onClose,donationInfo }) => {
   const validateForm = () => {
     // Check if all mandatory fields are filled
     return (
-      formData.name !== '' &&
-      formData.address !== '' &&
-      formData.email !== '' &&
-      formData.phone_num !== ''
+      formData.name !== "" &&
+      formData.address !== "" &&
+      formData.email !== "" &&
+      formData.phone_num !== ""
     );
   };
 
@@ -105,7 +105,7 @@ const Popup = ({ onClose,donationInfo }) => {
   };
 
   return (
-    <Modal show={true} onHide={handleClose} className='modal'>
+    <Modal show={true} onHide={handleClose} className="modal">
       <Modal.Header>
         <Modal.Title>Donation Details</Modal.Title>
         <Button variant="secondary" onClick={handleClose}>
@@ -114,7 +114,9 @@ const Popup = ({ onClose,donationInfo }) => {
       </Modal.Header>
       <Modal.Body>
         {formValid ? null : (
-          <div className="error-message">Please fill in all mandatory fields.</div>
+          <div className="error-message">
+            Please fill in all mandatory fields.
+          </div>
         )}
         <div className="popup-form-group">
           <label htmlFor="fullName">
@@ -168,18 +170,17 @@ const Popup = ({ onClose,donationInfo }) => {
           />
         </div>
         <div className="popup-form-group">
-  <label htmlFor="panCard">
-    PAN Card<span>*</span>: (Mandatory for 80G Exemption)
-  </label>
-  <input
-    type="text"
-    id="pan_number"
-    name="pan_number"
-    value={formData.pan_number}
-    onChange={handleChange}
-  />
-</div>
-
+          <label htmlFor="panCard">
+            PAN Card<span>*</span>: (Mandatory for 80G Exemption)
+          </label>
+          <input
+            type="text"
+            id="pan_number"
+            name="pan_number"
+            value={formData.pan_number}
+            onChange={handleChange}
+          />
+        </div>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>

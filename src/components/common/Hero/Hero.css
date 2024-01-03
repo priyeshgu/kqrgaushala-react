@@ -29,8 +29,8 @@
     z-index: 1; /* Place text above the overlay */
   }
   
-  .hero-text h1 {
-    font-size: 2.5em;
+  .heroimg-text h1 {
+    font-size: 5rem;
     margin: 0;
   }
   
