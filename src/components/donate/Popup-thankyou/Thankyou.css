@@ -31,6 +31,15 @@
     color: #337ab7; /* Primary blue color */
     text-decoration: none;
   }
+
+  .certificate-link {
+    margin-bottom: 0;
+  }
+  
+  .certificate-link-button {
+    color: #337ab7; /* Primary blue color */
+    text-decoration: none;
+  }
   
   .popup-close {
     position: absolute;

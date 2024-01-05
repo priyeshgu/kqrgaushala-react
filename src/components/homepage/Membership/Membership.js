@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./Membership.css";
 import Popup from '../../donate/Popup/Popup';
+import ThankYou from "../../donate/Popup-thankyou/ThankYou";
 
 export default function Membership() {
   const [showPopup, setShowPopup] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
   const handleBecomeMember = () => {
     const additionalData = {
       amount: 1100, // Hardcoded amount
@@ -12,6 +14,13 @@ export default function Membership() {
       units: 1, // Hardcoded units
     };
     setShowPopup({...additionalData,show:true});
+  };
+
+  const handleShowThankYou = () => {
+    setShowThankYou(true);
+  };
+  const closePopup = () => {
+    setShowPopup(false);
   };
   
   return (
@@ -25,7 +34,9 @@ export default function Membership() {
       <button className="btn btn-success membership-btn" onClick={handleBecomeMember}>
         Become a Member
       </button>
-      {showPopup.show && <Popup onClose={() => setShowPopup({ ...showPopup, show: false })} donationInfo={showPopup} />}
+      {/* {showPopup.show && <Popup onClose={() => setShowPopup({ ...showPopup, show: false })} donationInfo={showPopup} />} */}
+      {showPopup && <Popup onShowThankYou={handleShowThankYou}  donationInfo={showPopup} onClose={closePopup} />}
+      {  showThankYou && <ThankYou showDownloadCertificateButton={true} onClose={() => setShowThankYou(false)} />}
     </div>
   );
 }

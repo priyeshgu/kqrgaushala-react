@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import './MonthlyMission.css';
 import Popup from '../../donate/Popup/Popup';
+import ThankYou from "../../donate/Popup-thankyou/ThankYou";
+
 
 const MonthlyMission = () => {
   const subscriptionAmounts = [500, 1000, 2000, 3000, 5000,];
   const [selectedAmount, setSelectedAmount] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
+  // const [donationInfo, setDonationInfo] = useState(null);
 
   const handleAmountSelect = (amount) => {
     setSelectedAmount(amount);
@@ -24,6 +28,12 @@ const MonthlyMission = () => {
       // Set the popup state with the additional data
       setShowPopup({ ...additionalData, show: true });
     }
+  };
+  const handleShowThankYou = () => {
+    setShowThankYou(true);
+  };
+  const closePopup = () => {
+    setShowPopup(false);
   };
 
   return (
@@ -50,7 +60,9 @@ const MonthlyMission = () => {
         <button className="monthly-mission-sub-btn btn btn-success btn-subscribe " onClick={handleSubscribe}
           disabled={selectedAmount === null}>SUBSCRIBE</button>
       </div>
-      {showPopup.show && <Popup onClose={() => setShowPopup({ ...showPopup, show: false })} donationInfo={showPopup} />}
+      {/* {showPopup.show && <Popup onClose={() => setShowPopup({ ...showPopup, show: false })} donationInfo={showPopup} />} */}
+      {showPopup && <Popup onShowThankYou={handleShowThankYou}  donationInfo={showPopup} onClose={closePopup} />}
+      {  showThankYou && <ThankYou onClose={() => setShowThankYou(false)} />}
     </div>
   );
 };

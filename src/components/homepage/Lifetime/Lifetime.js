@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./Lifetime.css";
-import Popup from '../../donate/Popup/Popup';
+import Popup from '../../donate/Popup/Popup'
+import ThankYou from "../../donate/Popup-thankyou/ThankYou";
 
-export default function Lifetime() {
+const Lifetime=()=> {
   const [showPopup, setShowPopup] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
   const handleBecomeMember = () => {
     const additionalData = {
       amount: 21000, // Hardcoded amount
@@ -12,6 +14,12 @@ export default function Lifetime() {
       units: 1, // Hardcoded units
     };
     setShowPopup({...additionalData,show:true});
+  };
+  const handleShowThankYou = () => {
+    setShowThankYou(true);
+  };
+  const closePopup = () => {
+    setShowPopup(false);
   };
   return (
     <div className="mb-5 mt-4 container text-center">
@@ -24,7 +32,11 @@ export default function Lifetime() {
       <button className="btn btn-success lifetime-btn" onClick={handleBecomeMember}>
         Become a Member
       </button>
-      {showPopup.show && <Popup onClose={() => setShowPopup({ ...showPopup, show: false })} donationInfo={showPopup} />}
+      {/* {showPopup.show && <Popup onClose={() => setShowPopup({ ...showPopup, show: false })} donationInfo={showPopup} />} */}
+      {showPopup && <Popup onShowThankYou={handleShowThankYou}  donationInfo={showPopup} onClose={closePopup} />}
+      {  showThankYou && <ThankYou showDownloadCertificateButton={true} onClose={() => setShowThankYou(false)} />}
     </div>
   );
 }
+
+export default Lifetime;

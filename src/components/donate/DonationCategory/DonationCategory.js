@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DonationProduct from '../DonationProduct/DonationProduct';
 import Popup from '../Popup/Popup';
+import ThankYou from "../Popup-thankyou/ThankYou";
 
 
 const DonationCategory = ({ category }) => {
@@ -8,6 +9,7 @@ const DonationCategory = ({ category }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [donationInfo, setDonationInfo] = useState(null);
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const closePopup = () => {
     setShowPopup(false);
@@ -15,6 +17,9 @@ const DonationCategory = ({ category }) => {
   const handleCustomAmountChange = (event) => {
     const inputAmount = event.target.value.replace(/[^0-9]/g, ''); 
     setCustomAmount(inputAmount);
+  };
+  const handleShowThankYou = () => {
+    setShowThankYou(true);
   };
   const handleDonateNowClick = () => {
     if (customAmount === '' || parseInt(customAmount) === 0) {
@@ -90,7 +95,8 @@ const DonationCategory = ({ category }) => {
         </div>
 
       </div>
-      {showPopup && <Popup donationInfo={donationInfo} onClose={closePopup} />}
+      {showPopup && <Popup onShowThankYou={handleShowThankYou}  donationInfo={donationInfo} onClose={closePopup} />}
+      {  showThankYou && <ThankYou onClose={() => setShowThankYou(false)} />}
     
     </div>
     
