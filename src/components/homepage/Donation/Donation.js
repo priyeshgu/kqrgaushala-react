@@ -1,6 +1,7 @@
 import React from "react";
 import "../Donation/Donation.css";
 
+
 const Donation = ({ image, title, description }) => {
   return (
     <>

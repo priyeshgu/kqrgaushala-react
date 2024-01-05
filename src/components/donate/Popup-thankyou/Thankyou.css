@@ -1,11 +1,51 @@
-.thank-you-modal{
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-}
+.thank-you-popup {
+    /* Overall styling */
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    font-family: sans-serif;
+  }
+  
+  .thank-you-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .thank-you-body {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .thank-you-message {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+  
+  .receipt-link {
+    margin-bottom: 0;
+  }
+  
+  .receipt-link-button {
+    color: #337ab7; /* Primary blue color */
+    text-decoration: none;
+  }
+  
+  .popup-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #333;
+    font-size: 20px;
+    background: transparent;
+    border: none;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    .thank-you-body {
+      padding: 15px;
+    }
+  }
+  

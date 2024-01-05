@@ -8,16 +8,17 @@ import DashboardRoutes from './Dashboard/DashboardRoutes'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
+
 export default function Routes() {
   return (
     <Router>
         <Switch>
-            <Route path="/" exact component={Homepage}/>
+            <Route exact path="/"  component={Homepage}/>
             <Route path="/about" component={Aboutpage}/>
             <Route path="/contact" component={Contactpage}/>
             <Route path="/donate" component={Donatepage}/>
             <DashboardRoutes/>
-            </Switch>
+          </Switch>
     </Router>
   )
 }

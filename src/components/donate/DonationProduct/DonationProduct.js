@@ -9,6 +9,10 @@ const DonationProduct = ({ product, category }) => {
   const [donationInfo, setDonationInfo] = useState(null);
   const [showThankYou, setShowThankYou] = useState(false);
 
+  const handleShowThankYou = () => {
+    setShowThankYou(true);
+  };
+
   const handleQuantityChange = (value) => {
     const newQuantity = quantity + value;
     if (newQuantity >= 1) {
@@ -28,12 +32,13 @@ const DonationProduct = ({ product, category }) => {
     setDonationInfo(donationData);
     setShowPopup(true);
   };
+  
 
   const closePopup = () => {
     setShowPopup(false);
-    setShowThankYou(true);
     
   };
+
 
   return (
     <>
@@ -99,14 +104,14 @@ const DonationProduct = ({ product, category }) => {
               </button>
             </div>
           </div>
-          <button className="btn donate-button" onClick={handleDonateNow}>
+          <button className="btn donate-button"  onClick={handleDonateNow}>
             Donate
           </button>
         </div>
       </div>
 
-      {showPopup && <Popup donationInfo={donationInfo} onClose={closePopup} />}
-      {showThankYou && <ThankYou onClose={() => setShowThankYou(false)} />}
+      {showPopup && <Popup onShowThankYou={handleShowThankYou}  donationInfo={donationInfo} onClose={closePopup} />}
+      {  showThankYou && <ThankYou onClose={() => setShowThankYou(false)} />}
     </>
   );
 };

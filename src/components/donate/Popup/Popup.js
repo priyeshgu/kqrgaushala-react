@@ -2,11 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import "./Popup.css";
 
-
-
-const Popup = ({ onClose, donationInfo }) => {
- 
-
+const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -63,6 +59,7 @@ const Popup = ({ onClose, donationInfo }) => {
     if (isValid) {
       // Donation logic here
       console.log("Donation Details:", formData);
+
       try {
         // Call your API here
         const response = await fetch("http://192.168.1.8:3001/donate", {
@@ -77,9 +74,9 @@ const Popup = ({ onClose, donationInfo }) => {
         if (response.ok) {
           // Handle successful API response
           console.log("Donation successful!");
-          onClose();
-          
 
+          onClose();
+          onShowThankYou(true);
         } else {
           // Handle API error
           console.error("API error:", response.statusText);
@@ -88,9 +85,7 @@ const Popup = ({ onClose, donationInfo }) => {
         // Handle network error
         console.error("Network error:", error.message);
       }
-      
-    } 
-    else {
+    } else {
       // Display error message
       setFormValid(false);
     }
@@ -98,13 +93,13 @@ const Popup = ({ onClose, donationInfo }) => {
 
   const validateForm = () => {
     // Check if all mandatory fields are filled
-    return (
-      true
-      // formData.name !== "" &&
-      // formData.address !== "" &&
-      // formData.email !== "" &&
-      // formData.phone_num !== ""
-    );
+    
+  //  let x = (    
+  //    formData.name !== "" &&
+  //    formData.address !== "" &&
+  //    formData.email !== "" &&
+  //    formData.phone_num !== "")
+     return true;
   };
 
   const handleClose = () => {
@@ -129,7 +124,7 @@ const Popup = ({ onClose, donationInfo }) => {
         )}
         <div className="popup-form-group">
           <label htmlFor="fullName">
-            Full Name<span>*</span>:
+            Full Name<span>*</span>
           </label>
           <input
             type="text"
@@ -142,7 +137,7 @@ const Popup = ({ onClose, donationInfo }) => {
         </div>
         <div className="popup-form-group">
           <label htmlFor="address">
-            Address<span>*</span>:
+            Address<span>*</span>
           </label>
           <textarea
             id="address"
@@ -154,7 +149,7 @@ const Popup = ({ onClose, donationInfo }) => {
         </div>
         <div className="popup-form-group">
           <label htmlFor="email">
-            Email<span>*</span>:
+            Email<span>*</span>
           </label>
           <input
             type="text"
@@ -167,7 +162,7 @@ const Popup = ({ onClose, donationInfo }) => {
         </div>
         <div className="popup-form-group">
           <label htmlFor="phoneNumber">
-            Phone Number<span>*</span>:
+            Phone Number<span>*</span>
           </label>
           <input
             type="tel"
@@ -180,7 +175,7 @@ const Popup = ({ onClose, donationInfo }) => {
         </div>
         <div className="popup-form-group">
           <label htmlFor="panCard">
-            PAN Card<span>*</span>: (Mandatory for 80G Exemption)
+            PAN Card<span>*</span> (Mandatory for 80G Exemption)
           </label>
           <input
             type="text"
@@ -192,16 +187,14 @@ const Popup = ({ onClose, donationInfo }) => {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
+        <Button variant="secondry" onClick={handleClose}>
           Close
         </Button>
         <Button variant="primary" onClick={handleDonateNow}>
           Donate Now
         </Button>
       </Modal.Footer>
-      
     </Modal>
-   
   );
 };
 
