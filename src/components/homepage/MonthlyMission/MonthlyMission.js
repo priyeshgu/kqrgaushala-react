@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './MonthlyMission.css';
 import Popup from '../../donate/Popup/Popup';
 import ThankYou from "../../donate/Popup-thankyou/ThankYou";
@@ -14,6 +14,7 @@ const MonthlyMission = () => {
   const handleAmountSelect = (amount) => {
     setSelectedAmount(amount);
   };
+  console.log(selectedAmount,17)
   const handleSubscribe = () => {
     // Check if an amount is selected
     if (selectedAmount !== null) {
@@ -28,6 +29,9 @@ const MonthlyMission = () => {
       // Set the popup state with the additional data
       setShowPopup({ ...additionalData, show: true });
     }
+    else{
+      setSelectedAmount(null);
+    }
   };
   const handleShowThankYou = (show,formData) => {
     setShowThankYou(show);
@@ -35,10 +39,29 @@ const MonthlyMission = () => {
   };
   const closePopup = () => {
     setShowPopup(false);
+    setSelectedAmount(null);
   };
+  const componentRef = useRef(null);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Check if the clicked element is outside the component
+      if (componentRef.current && !componentRef.current.contains(event.target)) {
+        // Reset the selected amount to null or update the state as needed
+        setSelectedAmount(null);
+      }
+    };
+
+    // Attach the event listener to the document
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Cleanup the event listener when the component is unmounted
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
-    <div className="monthly-mission container mt-5">
+    <div ref={componentRef} className="monthly-mission container mt-5">
       <h2 className='monthly-mission-heading'>Join Monthly Mission</h2>
       <p className='monthly-mission-subheading'>Support our cause with a monthly contribution</p>
 
