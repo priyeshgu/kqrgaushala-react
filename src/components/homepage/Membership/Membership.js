@@ -6,6 +6,7 @@ import ThankYou from "../../donate/Popup-thankyou/ThankYou";
 export default function Membership() {
   const [showPopup, setShowPopup] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
+  const [thankYouData, setThankYouData] = useState(null);
   const handleBecomeMember = () => {
     const additionalData = {
       amount: 1100, // Hardcoded amount
@@ -16,8 +17,9 @@ export default function Membership() {
     setShowPopup({...additionalData,show:true});
   };
 
-  const handleShowThankYou = () => {
-    setShowThankYou(true);
+  const handleShowThankYou = (show,formData) => {
+    setShowThankYou(show);
+    setThankYouData(formData);
   };
   const closePopup = () => {
     setShowPopup(false);
@@ -36,7 +38,7 @@ export default function Membership() {
       </button>
       {/* {showPopup.show && <Popup onClose={() => setShowPopup({ ...showPopup, show: false })} donationInfo={showPopup} />} */}
       {showPopup && <Popup onShowThankYou={handleShowThankYou}  donationInfo={showPopup} onClose={closePopup} />}
-      {  showThankYou && <ThankYou showDownloadCertificateButton={true} onClose={() => setShowThankYou(false)} />}
+      {  showThankYou && <ThankYou showDownloadCertificateButton={true} onClose={() => setShowThankYou(false)} formData={thankYouData} />}
     </div>
   );
 }

@@ -3,17 +3,27 @@ import { Modal, Button } from 'react-bootstrap';
 import './ThankYou.css';
 import jsPDF from 'jspdf';
 
-const ThankYou = ({ onClose, showDownloadCertificateButton }) => {
+const ThankYou = ({ onClose, formData,showDownloadCertificateButton }) => {
   const [downloadingReceipt, setDownloadingReceipt] = useState(false);
   const [downloadingCertificate, setDownloadingCertificate] = useState(false);
 
   const generatePDFReceipt = () => {
     const doc = new jsPDF();
+    console.log(formData,12)
 
     // Add content to the PDF:
-    doc.text('Donation Receipt', 10, 10);
-    doc.text('Donor Name: John Doe', 10, 20);
-    doc.text('Donation Amount: $50', 10, 30);
+    doc.text('Shree Koderma Gaushala', 10, 10);
+    doc.text('Donation Receipt', 10, 20);
+    doc.text(`Donor Name: ${formData.name}`, 10, 30);
+    doc.text(`Donation Amount: ${formData.amount}`, 10, 40);
+    doc.text(`Donor Number: ${formData.phone_num}`, 10, 50);
+    doc.text(`Donor email: ${formData.email}`, 10, 60);
+    doc.text(`Donor Address: ${formData.address}`, 10, 70);
+    doc.text(`Donation Product: ${formData.product}`, 10, 80);
+    doc.text(`Donation Type: ${formData.type}`, 10, 90);
+    doc.text(`Donation units: ${formData.units}`, 10, 100);
+    doc.text(`Donation Pan Number: ${formData.pan_number}`, 10, 110);
+
     // ... Add more content as needed
 
     return doc.output('blob'); // Output as a blob for download

@@ -76,7 +76,7 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
           console.log("Donation successful!");
 
           onClose();
-          onShowThankYou(true);
+          onShowThankYou(true,formData);
         } else {
           // Handle API error
           console.error("API error:", response.statusText);

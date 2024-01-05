@@ -10,6 +10,7 @@ const DonationCategory = ({ category }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [donationInfo, setDonationInfo] = useState(null);
   const [showThankYou, setShowThankYou] = useState(false);
+  const [thankYouData, setThankYouData] = useState(null);
 
   const closePopup = () => {
     setShowPopup(false);
@@ -18,8 +19,9 @@ const DonationCategory = ({ category }) => {
     const inputAmount = event.target.value.replace(/[^0-9]/g, ''); 
     setCustomAmount(inputAmount);
   };
-  const handleShowThankYou = () => {
-    setShowThankYou(true);
+  const handleShowThankYou = (show,formData) => {
+    setShowThankYou(show);
+    setThankYouData(formData);
   };
   const handleDonateNowClick = () => {
     if (customAmount === '' || parseInt(customAmount) === 0) {
@@ -96,7 +98,7 @@ const DonationCategory = ({ category }) => {
 
       </div>
       {showPopup && <Popup onShowThankYou={handleShowThankYou}  donationInfo={donationInfo} onClose={closePopup} />}
-      {  showThankYou && <ThankYou onClose={() => setShowThankYou(false)} />}
+      {  showThankYou && <ThankYou onClose={() => setShowThankYou(false)} formData={thankYouData}/>}
     
     </div>
     

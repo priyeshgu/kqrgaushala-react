@@ -9,7 +9,7 @@ const MonthlyMission = () => {
   const [selectedAmount, setSelectedAmount] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
-  // const [donationInfo, setDonationInfo] = useState(null);
+  const [thankYouData, setThankYouData] = useState(null);
 
   const handleAmountSelect = (amount) => {
     setSelectedAmount(amount);
@@ -29,8 +29,9 @@ const MonthlyMission = () => {
       setShowPopup({ ...additionalData, show: true });
     }
   };
-  const handleShowThankYou = () => {
-    setShowThankYou(true);
+  const handleShowThankYou = (show,formData) => {
+    setShowThankYou(show);
+    setThankYouData(formData);
   };
   const closePopup = () => {
     setShowPopup(false);
@@ -62,7 +63,7 @@ const MonthlyMission = () => {
       </div>
       {/* {showPopup.show && <Popup onClose={() => setShowPopup({ ...showPopup, show: false })} donationInfo={showPopup} />} */}
       {showPopup && <Popup onShowThankYou={handleShowThankYou}  donationInfo={showPopup} onClose={closePopup} />}
-      {  showThankYou && <ThankYou onClose={() => setShowThankYou(false)} />}
+      {  showThankYou && <ThankYou onClose={() => setShowThankYou(false)} formData={thankYouData} />}
     </div>
   );
 };

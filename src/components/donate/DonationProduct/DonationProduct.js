@@ -8,9 +8,11 @@ const DonationProduct = ({ product, category }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [donationInfo, setDonationInfo] = useState(null);
   const [showThankYou, setShowThankYou] = useState(false);
+  const [thankYouData, setThankYouData] = useState(null);
 
-  const handleShowThankYou = () => {
-    setShowThankYou(true);
+  const handleShowThankYou = (show,formData) => {
+    setShowThankYou(show);
+    setThankYouData(formData);
   };
 
   const handleQuantityChange = (value) => {
@@ -111,7 +113,7 @@ const DonationProduct = ({ product, category }) => {
       </div>
 
       {showPopup && <Popup onShowThankYou={handleShowThankYou}  donationInfo={donationInfo} onClose={closePopup} />}
-      {  showThankYou && <ThankYou onClose={() => setShowThankYou(false)} />}
+      {  showThankYou && <ThankYou onClose={() => setShowThankYou(false)} formData={thankYouData}/>}
     </>
   );
 };
