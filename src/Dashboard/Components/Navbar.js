@@ -5,9 +5,9 @@ import './Navbar.css'; // Import the CSS file
 
 const Navbar = ({ activeTab, setActiveTab }) => {
   return (
-    <BootstrapNavbar bg="primary" expand="lg" className="flex-shrink-0">
+    <BootstrapNavbar bg="secondry"  className="custom-navbar">
       <Container>
-        <Nav className="flex-column">
+        <Nav className="">
           <Nav.Link
             href="#donationProducts"
             active={activeTab === 'donationProducts'}

@@ -19,29 +19,13 @@ const DashboardContent = () => {
   }, [activeTab]);
 
   const handleDeleteDonator = (donatorId) => {
-    // Handle delete logic here
-    // You can make a DELETE request to the backend
-    // and then update the donators state
-    // Example:
-    // fetch(`http://your-api-endpoint/donators/${donatorId}`, {
-    //   method: 'DELETE',
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     // Update donators state after successful deletion
-    //     setDonators((prevDonators) =>
-    //       prevDonators.filter((donator) => donator.id !== donatorId)
-    //     );
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error deleting donator:', error);
-    //   });
+    
   };
 
   return (
     <div className="d-flex">
       {/* Sidebar */}
-      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Navbar  activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Content */}
       <Container className="mt-5 ml-3">

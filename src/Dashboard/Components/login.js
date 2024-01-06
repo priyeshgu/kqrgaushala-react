@@ -1,38 +1,3 @@
-// import React, { useState } from 'react';
-
-// const Login = ({ onLogin }) => {
-//   const [username, setUsername] = useState('');
-//   const [password, setPassword] = useState('');
-
-//   const handleLogin = () => {
-//     // Hardcoded credentials for demonstration
-//     const hardcodedUsername = 'user';
-//     const hardcodedPassword = 'password';
-
-//     if (username === hardcodedUsername && password === hardcodedPassword) {
-//       onLogin(); // Call the parent component's login function
-//     } else {
-//       alert('Invalid credentials. Please try again.');
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <h2>Login</h2>
-//       <div>
-//         <label>Username:</label>
-//         <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-//       </div>
-//       <div>
-//         <label>Password:</label>
-//         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-//       </div>
-//       <button onClick={handleLogin}>Login</button>
-//     </div>
-//   );
-// };
-
-// export default Login;
 
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
@@ -80,10 +45,11 @@ const Login = ({ onLogin }) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
-
-            <Button variant="primary" type="submit" block>
+            <div className='text-center'>
+            <Button  className='mt-3 mb-3 col-12 ' variant="primary" type="submit" block>
               Login
             </Button>
+            </div>
           </Form>
         </Col>
       </Row>

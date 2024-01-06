@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Nav, Navbar, Container, Table, Button,Modal, Form } from 'react-bootstrap';
+import {  Container, Table, Button,Modal, Form } from 'react-bootstrap';
 
 const DonationContent = () => {
   const [activeTab, setActiveTab] = useState('donationProducts');
@@ -170,31 +170,23 @@ const DonationContent = () => {
   return (
     <div>
     <div className="mt-5 d-flex justify-content-center rounded">
-      {/* Sidebar */}
-      <Navbar bg="light" expand="lg" className="flex-shrink-0">
-        <Container>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="flex-row">
-              <Nav.Link
-                href="#donationProducts"
-                active={activeTab === 'donationProducts'}
-                onClick={() => handleTabClick('donationProducts')}
-              >
-                Donation Products
-              </Nav.Link>
-              <Nav.Link
-                href="#donatorsList"
-                active={activeTab === 'donatorsList'}
-                onClick={() => handleTabClick('donatorsList')}
-              >
-                Donators List
-              </Nav.Link>
-              
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      
+    <div className="mt-5 d-flex justify-content-center rounded">
+        {/* Buttons for switching between tabs */}
+        <Button
+          variant={activeTab === 'donationProducts' ? 'primary' : 'secondary'}
+          className="mr-2"
+          onClick={() => handleTabClick('donationProducts')}
+        >
+          Donation Products
+        </Button>
+        <Button
+          variant={activeTab === 'donatorsList' ? 'primary' : 'secondary'}
+          onClick={() => handleTabClick('donatorsList')}
+        >
+          Donators List
+        </Button>
+      </div>
       </div>
 
       <div>
@@ -204,12 +196,14 @@ const DonationContent = () => {
         {activeTab === 'donationProducts' && (
           <div className='text-center'>
             <h3>Donation Products</h3>
-            <Button variant="primary" onClick={handleShowAddModal}>
+            <div className='d-flex flex-row justify-content-center'>
+            <Button variant="primary" className="mb-2" onClick={handleShowAddModal}>
   Add Donation Product
 </Button>
+</div>
 
 <Modal show={showAddModal} onHide={handleCloseAddModal}>
-  <Modal.Header closeButton>
+  <Modal.Header closeButton >
     <Modal.Title>Add Donation Product</Modal.Title>
   </Modal.Header>
   <Modal.Body>
