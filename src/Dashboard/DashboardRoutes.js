@@ -5,12 +5,17 @@ import Dashboard from './Dashboard';
 import Login from './Components/login'; // Import the Login component
 import { Button } from 'react-bootstrap';
 
-const PrivateRoute = ({ component: Component, isLoggedIn, ...rest }) => {
+
+const PrivateRoute = ({ component: Component, isLoggedIn, handleLogout, ...rest }) => {
   return (
     <Route
       {...rest}
       render={(props) =>
-        isLoggedIn ? <Component {...props} /> : <Redirect to="/dashboard" />
+        isLoggedIn ? (
+          <Component {...props} handleLogout={handleLogout} />
+        ) : (
+          <Redirect to="/dashboard" />
+        )
       }
     />
   );
@@ -33,14 +38,11 @@ const DashboardRoutes = () => {
 
   return (
     <div>
-      <div className='d-flex flex-row justify-content-center'>
-        {isLoggedIn && (
-          <Button variant="secondary" onClick={handleLogout}>Logout</Button>)}
-          </div>
       <PrivateRoute
         path="/dashboard"
         component={Dashboard}
         isLoggedIn={isLoggedIn}
+        handleLogout={handleLogout} // Pass handleLogout as a prop
       />
       {!isLoggedIn && <Route exact path="/dashboard" render={() => <Login onLogin={handleLogin} />} />}
     </div>

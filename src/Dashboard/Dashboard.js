@@ -1,33 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import {  Container, Table, Button,Modal, Form } from 'react-bootstrap';
+import { Container, Table, Button, Modal, Form } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import './Dashboard.css';
 
-const DonationContent = () => {
+const DonationContent = ({ handleLogout }) => {
   const [activeTab, setActiveTab] = useState('donationProducts');
   const [products, setProducts] = useState([]);
   const [donators, setDonators] = useState([]);
   const [editProduct, setEditProduct] = useState(null);
   const [showAddModal, setShowAddModal] = useState(false);
   const [newProduct, setNewProduct] = useState({
-  name_in_english: '',
-  name_in_hindi: '',
-  type: '',
-  cost: '',
+    name_in_english: '',
+    name_in_hindi: '',
+    type: '',
+    cost: '',
   });
 
 
   const handleShowAddModal = () => {
     setShowAddModal(true);
   };
-  
+
   const handleCloseAddModal = () => {
     setShowAddModal(false);
   };
-  
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewProduct((prevProduct) => ({ ...prevProduct, [name]: value }));
   };
-  
+
 
   useEffect(() => {
     // Fetch products data from the API
@@ -93,7 +96,7 @@ const DonationContent = () => {
     }
   };
 
-  const handleDeleteClick = (productId,name_in_english,name_in_hindi,type,cost) => {
+  const handleDeleteClick = (productId, name_in_english, name_in_hindi, type, cost) => {
     // Display a confirmation alert before deleting the product
     const confirmDelete = window.confirm('Are you sure you want to delete this product?');
 
@@ -105,7 +108,7 @@ const DonationContent = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify( {id:productId,name_in_english:name_in_english, name_in_hindi:name_in_hindi,type:type,cost:cost})
+          body: JSON.stringify({ id: productId, name_in_english: name_in_english, name_in_hindi: name_in_hindi, type: type, cost: cost })
         })
           .then((response) => response.json())
           .then((data) => {
@@ -137,9 +140,9 @@ const DonationContent = () => {
         },
         body: JSON.stringify(newProduct),
       });
-  
+
       const data = await response.json();
-  
+
       if (data.success) {
         // Update the local state with the new product
         setProducts((prevProducts) => [...prevProducts, newProduct]);
@@ -168,256 +171,275 @@ const DonationContent = () => {
   };
 
   return (
-    <div>
-    <div className="mt-5 d-flex justify-content-center rounded">
-      
-    <div className="mt-5 d-flex justify-content-center rounded">
-        {/* Buttons for switching between tabs */}
-        <Button
-          variant={activeTab === 'donationProducts' ? 'primary' : 'secondary'}
-          className="mr-2"
-          onClick={() => handleTabClick('donationProducts')}
-        >
-          Donation Products
-        </Button>
-        <Button
-          variant={activeTab === 'donatorsList' ? 'primary' : 'secondary'}
-          onClick={() => handleTabClick('donatorsList')}
-        >
-          Donators List
-        </Button>
-      </div>
+    <div className='container'>
+
+      <div className='d-flex flex-row mt-4 flex-row justify-content-center'>
+        <div className='dash-top-btns'>
+        <div className='col-md-12 '>
+          {/* Buttons for switching between tabs */}
+          <Button
+            variant={activeTab === 'donationProducts' ? 'primary' : 'secondary'}
+            className="mr-2"
+            onClick={() => handleTabClick('donationProducts')}
+          >
+            Donation Products
+          </Button>
+          <Button
+            variant={activeTab === 'donatorsList' ? 'primary' : 'secondary'}
+            onClick={() => handleTabClick('donatorsList')}
+          >
+            Donators List
+          </Button>
+        </div>
+        {/* Render the "Logout" button */}
+        <div className='logout-btn'>
+          <Button variant="danger" onClick={handleLogout} className='ml-2'>
+            Logout
+          </Button>
+        </div>
+        </div>
       </div>
 
       <div>
-      {/* Content */}
-      <Container className="mt-5 d-flex justify-content-center">
-        {/* Conditionally render content based on the active tab */}
-        {activeTab === 'donationProducts' && (
-          <div className='text-center'>
-            <h3>Donation Products</h3>
-            <div className='d-flex flex-row justify-content-center'>
-            <Button variant="primary" className="mb-2" onClick={handleShowAddModal}>
-  Add Donation Product
-</Button>
-</div>
+        {/* Content */}
+        <Container className="mt-5 d-flex justify-content-center">
+          {/* Conditionally render content based on the active tab */}
+          {activeTab === 'donationProducts' && (
+            <div className='text-center'>
+              <div className='d-md-flex felx-row justify-content-center '>
+                <h3>Donation Products</h3>
+                <div className='d-flex flex-row justify-content-center add-prod-btn'>
+                  <Button variant="primary" className="mb-2 ml-2" onClick={handleShowAddModal}>
+                    +
+                  </Button>
+                </div>
+              </div>
 
-<Modal show={showAddModal} onHide={handleCloseAddModal}>
-  <Modal.Header closeButton >
-    <Modal.Title>Add Donation Product</Modal.Title>
-  </Modal.Header>
-  <Modal.Body>
-    <Form>
-      <Form.Group controlId="name_in_english">
-        <Form.Label>Name in English</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter Name in English"
-          value={newProduct.name_in_english}
-          onChange={handleInputChange}
-          name="name_in_english"
-          required
-        />
-      </Form.Group>
-      <Form.Group controlId="name_in_hindi">
-        <Form.Label>Name in Hindi</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter Name in Hindi"
-          value={newProduct.name_in_hindi}
-          onChange={handleInputChange}
-          name="name_in_hindi"
-          required
-        />
-      </Form.Group>
-      <Form.Group controlId="type">
-        <Form.Label>Type</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter Type"
-          value={newProduct.type}
-          onChange={handleInputChange}
-          name="type"
-          required
-        />
-      </Form.Group>
-      <Form.Group controlId="cost">
-        <Form.Label>Cost</Form.Label>
-        <Form.Control
-          type="Number"
-          placeholder="Enter Cost"
-          value={newProduct.cost}
-          onChange={handleInputChange}
-          name="cost"
-          required
-        />
-      </Form.Group>
-    </Form>
-  </Modal.Body>
-  <Modal.Footer>
-    <Button variant="secondary" onClick={handleCloseAddModal} >
-      Close
-    </Button>
-    <Button variant="primary" onClick={handleAddProduct} disabled={!isFormValid()}>
-      Add Product
-    </Button>
-  </Modal.Footer>
-</Modal>
+              <Modal show={showAddModal} onHide={handleCloseAddModal}>
+                <Modal.Header closeButton >
 
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                <th>Serial Number</th>
-                  {/* <th>ID</th> */}
-                  <th>Name (English)</th>
-                  <th>Name (Hindi)</th>
-                  <th>Type</th>
-                  <th>Cost</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {products.map((product,index) => (
-                  <tr key={product.id}>
-                    <td>{index + 1}</td>
-                    {/* <td>{product.id}</td> */}
-                    <td>
-                      {editProduct && editProduct.id === product.id ? (
-                        <input
-                          type="text"
-                          value={editProduct.name_in_english}
-                          onChange={(e) =>
-                            setEditProduct({ ...editProduct, name_in_english: e.target.value })
-                          }
-                        />
-                      ) : (
-                        product.name_in_english
-                      )}
-                    </td>
-                    <td>
-                      {editProduct && editProduct.id === product.id ? (
-                        <input
-                          type="text"
-                          value={editProduct.name_in_hindi}
-                          onChange={(e) =>
-                            setEditProduct({ ...editProduct, name_in_hindi: e.target.value })
-                          }
-                        />
-                      ) : (
-                        product.name_in_hindi
-                      )}
-                    </td>
-                    <td>
-                      {editProduct && editProduct.id === product.id ? (
-                        <input
-                          type="text"
-                          value={editProduct.type}
-                          onChange={(e) =>
-                            setEditProduct({ ...editProduct, type: e.target.value })
-                          }
-                        />
-                      ) : (
-                        product.type
-                      )}
-                    </td>
-                    <td>
-                      {editProduct && editProduct.id === product.id ? (
-                        <input
-                          type="text"
-                          value={editProduct.cost}
-                          onChange={(e) =>
-                            setEditProduct({ ...editProduct, cost: e.target.value })
-                          }
-                        />
-                      ) : (
-                        product.cost
-                      )}
-                    </td>
-                    <td>
-                      {editProduct && editProduct.id === product.id ? (
-                        <>
-                          <Button
-                            variant="success"
-                            onClick={() => handleSaveClick(editProduct)}
-                          >
-                            Save
-                          </Button>
-                          <Button
-                            variant="secondary"
-                            className="ml-2"
-                            onClick={() => setEditProduct(null)}
-                          >
-                            Cancel
-                          </Button>
-                        </>
-                      ) : (
-                        <>
-                          <Button
-                            variant="primary"
-                            onClick={() => handleEditClick(product)}
-                            disabled={editProduct !== null}
-                          >
-                            Edit
-                          </Button>
-                          <Button
-                            variant="danger"
-                            className="ml-2"
-                            onClick={() => handleDeleteClick(product.id,product.name_in_english,product.name_in_hindi,product.type,product.cost)}
-                          >
-                            Delete
-                          </Button>
-                        </>
-                      )}
-                    </td>
+                  <Modal.Title>Add Donation Product</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <Form>
+                    <Form.Group controlId="name_in_english">
+                      <Form.Label>Name in English</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Enter Name in English"
+                        value={newProduct.name_in_english}
+                        onChange={handleInputChange}
+                        name="name_in_english"
+                        required
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="name_in_hindi">
+                      <Form.Label>Name in Hindi</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Enter Name in Hindi"
+                        value={newProduct.name_in_hindi}
+                        onChange={handleInputChange}
+                        name="name_in_hindi"
+                        required
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="type">
+                      <Form.Label>Type</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Enter Type"
+                        value={newProduct.type}
+                        onChange={handleInputChange}
+                        name="type"
+                        required
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="cost">
+                      <Form.Label>Cost</Form.Label>
+                      <Form.Control
+                        type="Number"
+                        placeholder="Enter Cost"
+                        value={newProduct.cost}
+                        onChange={handleInputChange}
+                        name="cost"
+                        required
+                      />
+                    </Form.Group>
+                  </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleCloseAddModal} >
+                    Close
+                  </Button>
+                  <Button variant="primary" onClick={handleAddProduct} disabled={!isFormValid()}>
+                    Add Product
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+
+              <Table striped bordered hover className='prod-table'>
+                <thead>
+                  <tr>
+                    <th>Serial Number</th>
+                    {/* <th>ID</th> */}
+                    <th>Name (English)</th>
+                    <th>Name (Hindi)</th>
+                    <th>Type</th>
+                    <th>Cost</th>
+                    <th>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </Table>
-          </div>
-        )}
+                </thead>
+                <tbody>
+                  {products.map((product, index) => (
+                    <tr key={product.id}>
+                      <td>{index + 1}</td>
+                      {/* <td>{product.id}</td> */}
+                      <td>
+                        {editProduct && editProduct.id === product.id ? (
+                          <input
+                            type="text"
+                            value={editProduct.name_in_english}
+                            onChange={(e) =>
+                              setEditProduct({ ...editProduct, name_in_english: e.target.value })
+                            }
+                          />
+                        ) : (
+                          product.name_in_english
+                        )}
+                      </td>
+                      <td>
+                        {editProduct && editProduct.id === product.id ? (
+                          <input
+                            type="text"
+                            value={editProduct.name_in_hindi}
+                            onChange={(e) =>
+                              setEditProduct({ ...editProduct, name_in_hindi: e.target.value })
+                            }
+                          />
+                        ) : (
+                          product.name_in_hindi
+                        )}
+                      </td>
+                      <td>
+                        {editProduct && editProduct.id === product.id ? (
+                          <input
+                            type="text"
+                            value={editProduct.type}
+                            onChange={(e) =>
+                              setEditProduct({ ...editProduct, type: e.target.value })
+                            }
+                          />
+                        ) : (
+                          product.type
+                        )}
+                      </td>
+                      <td>
+                        {editProduct && editProduct.id === product.id ? (
+                          <input
+                            type="text"
+                            value={editProduct.cost}
+                            onChange={(e) =>
+                              setEditProduct({ ...editProduct, cost: e.target.value })
+                            }
+                          />
+                        ) : (
+                          product.cost
+                        )}
+                      </td>
+                      <td>
+                        {editProduct && editProduct.id === product.id ? (
+                          <>
+                            <Button
+                              variant="success"
+                              onClick={() => handleSaveClick(editProduct)}
+                            >
+                              Save
+                            </Button>
+                            <Button
+                              variant="secondary"
+                              className="ml-2"
+                              onClick={() => setEditProduct(null)}
+                            >
+                              Cancel
+                            </Button>
+                          </>
+                        ) : (
+                          <>
+                            <Button
+                              variant="primary"
+                              onClick={() => handleEditClick(product)}
+                              disabled={editProduct !== null}
+                              className='table-edit-btn'
+                            >
+                              Edit
+                            </Button>
+                            <Button
+                              variant="danger"
+                              className="ml-2 table-del-btn"
+                              onClick={() => handleDeleteClick(product.id, product.name_in_english, product.name_in_hindi, product.type, product.cost)}
+                              
+                            >
+                              Delete
+                            </Button>
+                          </>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </div>
+          )}
 
-        {activeTab === 'donatorsList' && (
-          <div className='text-center'>
-            <h3>Donators List</h3>
-            {/* Render Donators List */}
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                <th>Serial Number</th>
-                  {/* <th>ID</th> */}
-                  <th>Name</th>
-                  <th>Phone Number</th>
-                  <th>Email</th>
-                  <th>Address</th>
-                  <th>Product</th>
-                  <th>Type</th>
-                  <th>Amount</th>
-                  <th>Units</th>
-                  <th>Pan Number</th>
-                </tr>
-              </thead>
-              <tbody>
-                {donators.map((donator,index) => (
-                  <tr key={donator.id}>
-                    <td>{index + 1}</td>
-                    {/* <td>{donator.id}</td> */}
-                    <td>{donator.name}</td>
-                    <td>{donator.phone_num}</td>
-                    <td>{donator.email}</td>
-                    <td>{donator.address}</td>
-                    <td>{donator.product}</td>
-                    <td>{donator.type}</td>
-                    <td>{donator.amount}</td>
-                    <td>{donator.units}</td>
-                    <td>{donator.pan_number}</td>
+          {activeTab === 'donatorsList' && (
+            <div className='text-center'>
+              <div className='d-flex flex-row justify-content-center don-list-th'>
+                <h3>Donators List</h3>
+                <Button variant="primary" className="mb-2 ml-2 download-btn" onClick={handleShowAddModal}>
+                  <FontAwesomeIcon className="dowload-btn" icon={faDownload} />
+                </Button>
+              </div>
+              {/* Render Donators List */}
+              <Table striped bordered hover className='donator-lst-table'>
+                <thead>
+                  <tr>
+                    <th>Serial Number</th>
+                    {/* <th>ID</th> */}
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Product</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Units</th>
+                    <th>Pan Number</th>
                   </tr>
-                ))}
-              </tbody>
-            </Table>
-          </div>
-        )}
-      </Container>
-    </div>
+                </thead>
+                <tbody>
+                  {donators.map((donator, index) => (
+                    <tr key={donator.id}>
+                      <td>{index + 1}</td>
+                      {/* <td>{donator.id}</td> */}
+                      <td>{donator.name}</td>
+                      <td>{donator.phone_num}</td>
+                      <td>{donator.email}</td>
+                      <td>{donator.address}</td>
+                      <td>{donator.product}</td>
+                      <td>{donator.type}</td>
+                      <td>{donator.amount}</td>
+                      <td>{donator.units}</td>
+                      <td>{donator.pan_number}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </div>
+          )}
+        </Container>
+      </div>
+
     </div>
   );
 };
