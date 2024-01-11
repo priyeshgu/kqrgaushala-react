@@ -27,31 +27,36 @@ export default function Landing() {
   const donationData = [
     {
       id: 1,
-      title: "Gau Raksha Sevak",
+      title: "Maintaince Expenses",
       description:
-        "Support the daily care, feeding, and medical needs of our sacred cows",
+        "Embrace Serenity, join hands in supporting the maintenance of our Gaushala ",
       image: donation1,
+      categoryId:"Maintenance"
+
     },
     {
       id: 2,
-      title: "Kalyan Sponsorship",
+      title: "Adopting a Cow or a Calf",
       description:
-        "Sponsor the well-being of a cow with personalized attention and care",
+        "Explore Diverse Adoption Choices to Care for our Sacred Cows at the Gaushala",
       image: donation2,
+      categoryId:"Adoption"
     },
     {
       id: 3,
-      title: "Green Grazing Fund",
+      title: "Food Donation",
       description:
-        "Support eco-friendly efforts, including organic grazing and habitat preservation.",
+        "Join Hands in Providing Gaushala's Nourishment, Nurturing the Lives of our Divine Cows",
       image: donation3,
+      categoryId:"Food"
     },
     {
       id: 4,
-      title: "Emergency Care Fund",
+      title: "Seva",
       description:
-        "Address medical emergencies, offering prompt veterinary care for our cows.",
+        "Contribute to Gaushala Seva, Supporting Gopastmi Mela and Medical Expenses for our Beloved Cows",
       image: donation4,
+      categoryId:"Seva"
     },
     // Add more donation types as needed
   ];

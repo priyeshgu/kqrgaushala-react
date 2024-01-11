@@ -41,4 +41,7 @@ margin-top: 8%;
   .donation-type{
     margin: -0.5rem;
   }
+  .donation-type{
+    height: 30rem;
+  }
 }

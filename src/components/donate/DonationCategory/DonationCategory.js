@@ -41,12 +41,13 @@ const DonationCategory = ({ category }) => {
         };
       setErrorMessage('');
       setDonationInfo(donationInfo);
+      
       setShowPopup(true);
     }
   };
 
   return (
-    <div className="donation-category mb-5 container text-center">
+    <div className="donation-category mb-5  mt-5 container text-center" id={category.categoryName}>
       <h2 className="category-heading">{category.categoryName}</h2>
       <div className="products-container d-flex flex-row flex-wrap justify-content-center row ">
         {category.donations.map((product) => (

@@ -2,11 +2,11 @@ import React from "react";
 import "../Donation/Donation.css";
 
 
-const Donation = ({ image, title, description }) => {
+const Donation = ({ image, title, description, categoryId }) => {
+  const categoryLink = `/donate#${categoryId}`;
   return (
     <>
       <div className="donation-type card mb-3">
-        
        <div className="donation-img-container img-fluid">
        <img
           src={image}
@@ -17,7 +17,7 @@ const Donation = ({ image, title, description }) => {
         <div className="card-body">
           <h3 className="card-title donation-title">{title}</h3>
           <p className="card-text donation-description">{description}</p>
-          <a href="/donate"><button className="btn btn-success btn-donate">DONATE NOW</button></a>
+          <a href={categoryLink}><button className="btn btn-success btn-donate">DONATE NOW</button></a>
         </div>
       </div>
     </>
