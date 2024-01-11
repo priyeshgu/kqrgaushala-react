@@ -1,5 +1,15 @@
 .generosity-section {
+  background-image: url(../../../assets/test-bg-3.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 120px 0px;
+  margin-top: 100px;
   padding: 30px 0;
+  background-size: cover;
+  background-attachment: fixed;
+  border-radius: 20px;
+  color: #D6EDFF;
 }
 
 .generosity-icons {
@@ -18,7 +28,7 @@
   height: 100px;
 }
 .occasions-heading {
-  color: #3a405a;
+  color: #D6EDFF;
 
   font-size: 2.1875rem;
   font-style: normal;
@@ -27,6 +37,7 @@
   text-transform: uppercase;
 }
 .occasions-subheading {
+  color:#D6EDFF; ;
   font-family: Roboto;
   font-size: 1.3rem;
   font-style: normal;
@@ -45,8 +56,11 @@
 }
 .occasion-icon-circle {
   margin: 0rem 3rem;
-  border: 1px solid;
+  border: 2.5px solid;
   border-radius: 50%;
+}
+.gen-name{
+  font-size: 20px;
 }
 
 @media screen and (max-width:480px) {

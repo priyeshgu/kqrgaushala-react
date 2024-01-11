@@ -1,9 +1,11 @@
 // src/components/AboutSection/AboutSection.js
 import React from "react";
 import "./About.css";
+import aboutImg from "./aboutImg.jpg";
+
 
 const AboutSection = () => {
-  const placeholderImageUrl = "https://picsum.photos/800/600";
+  const placeholderImageUrl = "./about-img.jpg"
 
   return (
     <div className="about-section container mt-5">
@@ -14,7 +16,7 @@ const AboutSection = () => {
         {/* Left Part with Image */}
         <div className="col-md-6">
           <img
-            src={placeholderImageUrl}
+            src={aboutImg}
             alt="Gaushala"
             className="img-fluid about-img"
           />
