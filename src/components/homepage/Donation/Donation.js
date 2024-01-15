@@ -2,8 +2,13 @@ import React from "react";
 import "../Donation/Donation.css";
 
 
-const Donation = ({ image, title, description, categoryId }) => {
+const Donation = ({ image, title, description, categoryId, color }) => {
   const categoryLink = `/donate#${categoryId}`;
+  
+  const cardStyle = {
+    backgroundColor:color,
+  };
+
   return (
     <>
       <div className="donation-type card mb-3">

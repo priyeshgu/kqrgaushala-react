@@ -6,9 +6,8 @@ import Footer from './components/common/Footer/Footer'
 export default function App() {
   return (
     <div>
-      <Header/>
+      
       <Routes/>
-      <Footer/>
       
     </div>
   )

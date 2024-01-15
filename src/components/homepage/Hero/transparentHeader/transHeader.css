@@ -1,0 +1,64 @@
+.transHeader{
+  z-index: 999999;
+}
+.logo {
+    color: #3A405A;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  
+  .header-item {
+    color: #3A405A;
+    font-family: Roboto;
+    font-size: 1.5rem; 
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .logo {
+      font-size: 1.4rem; 
+    }
+    
+    .header-item {
+      font-size: 0.9rem; 
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+  }
+  .header-btn-donate{
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    width: 150%;
+    font-size: 1.2rem;
+    
+      }
+  
+  /* Custom styles for larger buttons in mobile navbar */
+@media (max-width: 768px) {
+  .navbar {
+    min-width: 340px; /* Adjust the minimum width as needed */
+  }
+
+  .navbar-toggler-icon {
+    font-size: 1rem; /* Adjust the font size as needed */
+  }
+
+  .navbar-toggler.collapsed {
+    font-size: 24px; /* Adjust the font size as needed */
+  }
+
+  .navbar-toggler-icon:focus,
+  .navbar-toggler-icon:active {
+    outline: none; /* Remove the outline on focus or click if needed */
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 18px; 
+  }
+}

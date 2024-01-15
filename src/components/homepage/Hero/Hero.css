@@ -1,48 +1,171 @@
-.hero-section{
-  background-image: url(../../../assets/banner.jpg);
-  background-size: 100% 100%; 
+ .hero-section {
+   text-align: center;
+   display: flex !important;
+   flex-direction: column !important;
+   align-items: center !important;
+   justify-content: center !important;
 
-  
-  
-} 
-.hero-text {
-  margin-top: 4rem;
-}
-.hero-heading {
-  color: #3a405a;
-  font-family: Roboto;
-  font-size: 3.75rem !important;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 5.1875rem;
-  text-transform: uppercase;
-}
-.hero-subheading {
-  color: #3a405a;
-  font-family: Roboto;
-  font-size: 1.2rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 2rem;
-  text-transform: capitalize;
-}
-.btn-donate-hero{
-  font-size: 2rem;
-  padding: 0.4rem 2rem;
-  border-radius: 1rem;
-}
+ }
 
-@media screen and (max-width: 480px) {
-  .hero-heading {
-    font-size: 3rem;
-    line-height: 4rem;
-  }
-  .hero-text {
+ .hero-section-mobile {
+   display: none;
+ }
+
+ .hero-text {
+   position: relative;
+   z-index: 1;
+ }
+
+ .video-container {
+
+   width: 100%;
+   height: 100vh;
+   overflow: hidden;
+
+ }
+
+ video {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+ }
+
+ .hero-navbar {
+   position: absolute;
+   top: 0;
+   /* left: 50%; */
+   /* width: 100%; */
+
+   background-color: rgba(0, 0, 0, 0);
+   /* Set the desired transparency */
+   z-index: 1;
+ }
+
+ .navbar-logo {
+   width: 125px;
+ }
+
+ .navbar-nav.nav-links .nav-link {
+   color: white !important;
+   text-shadow: 2px 2px 4px #000000;
+   font-size: 1.9rem;
+ }
+
+ .navbar-nav.nav-links .nav-link:hover {
+   transition: 2ms;
+   background-color: #4CAF50;
+   /* Green color - Adjust as needed */
+   border-radius: 15px;
+   text-shadow: no;
+   color: white;
+   transition: background-color 1s ease;
+ }
+
+ .hero-header-btn {
+   border-radius: 20px;
+   padding: 10px 40px;
+   font-size: 1.5rem;
+   text-transform: uppercase;
+ }
+
+ .hero-text {
+
+   margin-top: 8rem;
+ }
+
+ .hero-heading {
+   color: #fff;
+   font-family: Roboto;
+   font-size: 3.75rem !important;
+   font-style: normal;
+   font-weight: 700;
+   line-height: 5.1875rem;
+   text-transform: uppercase;
+   text-shadow: 2px 2px 4px #000000;
+ }
+
+ .hero-subheading {
+   margin: 0;
+   color: #fff;
+   font-family: Roboto;
+   font-size: 1.2rem;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 2rem;
+   text-transform: capitalize;
+   text-shadow: 2px 2px 4px #000000;
+ }
+
+ .hero-subheading-lst {
+   color: #fff;
+   font-family: Roboto;
+   font-size: 1.2rem;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 2rem;
+   text-transform: capitalize;
+   text-shadow: 2px 2px 4px #000000;
+   margin-top: 1rem;
+ }
+
+ .btn-donate-hero {
+   font-size: 2rem;
+   padding: 0.4rem 2rem;
+   border-radius: 1rem;
+ }
+
+ @media screen and (max-width: 480px) {
+   .hero-section {
+     display: none !important;
+   }
+
+   .hero-section-mobile {
+     display: block;
+   }
+
+   .navbar-logo {
+     width: 75px;
+   }
+
+   .hero-text {
+     margin-top: 12rem;
+   }
+
+   .hero-heading {
+     text-align: center;
+     font-size: 1.25rem !important;
+   }
+   .btn-donate-hero-div-m{
     text-align: center;
-    margin-top: 0;
-  }
-  .btn-donate-hero {
-    font-size: 2rem;
-    padding: 0rem 1.2rem;
-  }
-}
+   }
+
+   .btn-donate-hero {
+     font-size: 1.5rem;
+     padding: 0.4rem 1rem;
+     border-radius: 1rem;
+   }
+
+
+   .heading-first {
+     margin-bottom: -2.5rem;
+   }
+
+   .hero-subheading {
+     text-align: center;
+     font-size: 1rem
+   }
+
+   .hero-subheading-lst {
+     text-align: center;
+     font-size: 1rem;
+   }
+
+
+   .mobile-nav-btn {
+     background-color: white;
+     box-shadow: 1px 1px 2px black;
+   }
+ }

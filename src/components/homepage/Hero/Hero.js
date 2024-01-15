@@ -1,34 +1,119 @@
 import React from 'react';
 import cowImage from '../../../assets/cow.png'
 import './Hero.css'
+import bannervid from '../../../assets/banner.mp4'
+import bannervidM from '../../../assets/bannerM.mp4'
+import logo from '../../../assets/logo.png'
+
 
 const Hero = () => {
   return (
-    <div className=" container hero-section">
-      
-      <div className="row hero-section">
-        <div className="col-md-6 order-md-2">
-          <div className="hero-image">
-            <img src={cowImage} alt="Cow" className="cow-image img-fluid" />
+    <>
+
+      <div className=" col-md-12 hero-section video-container">
+
+        <video autoPlay loop muted playsInline>
+          <source src={bannervid} type="video/mp4" />
+        </video>
+        <nav className="navbar navbar-expand-lg navbar-light hero-navbar col-11">
+
+          <a className="navbar-brand me-auto" href="/">
+            <img src={logo} alt='logo' className='navbar-logo' />
+          </a>
+
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav mx-auto nav-links">
+              <li className="nav-item ml-auto">
+                <a className="nav-link header-item" href="/">Home</a>
+              </li>
+              <li className="nav-item ml-auto">
+                <a className="nav-link header-item" href="/about">About Us</a>
+              </li>
+              <li className="nav-item ml-auto">
+                <a className="nav-link header-item" href="/contact">Contact Us</a>
+              </li>
+            </ul>
+            <ul className="navbar-nav ">
+              <li className="nav-item ml-auto">
+                <a href='/donate'><button className="btn btn-success hero-header-btn">Donate</button></a>
+              </li>
+            </ul>
           </div>
+        </nav>
+        <div>
+
+
+
         </div>
-        <div className="col-md-6 order-md-1 d-none d-md-block">
-          <div className="hero-text">
-            <h1 className="hero-heading display-sm-6">Transform compassion into action</h1>
-            <p className="hero-subheading">Support Koderma Gaushala and make a lasting difference in the lives of our cherished cows.</p>
-            <a href="/donate" className="btn btn-success btn-donate-hero">DONATE NOW</a>
+
+        <div className="hero-text">
+          <h1 className="hero-heading display-sm-6">त्वं माता सर्वदेवानां त्वं च यज्ञस्य कारणम्।</h1>
+          <h1 className="hero-heading display-sm-6">त्वं तीर्थं सर्वतीर्थानां नमस्तेऽस्तु सदानघे।।</h1>
+          <p className="hero-subheading">Hey! The destroyer of sins, you are the mother of all gods. You are the reason for yajna.</p>
+          <p className="hero-subheading">Among all the ‘pilgrimages’, you are the most holy. I bow down to you.</p>
+          <p className='hero-subheading-lst'> - SKANDPURAN</p>
+          <a href="/donate" className="btn btn-success btn-donate-hero">DONATE FOR GAU SEVA</a>
+        </div>
+      </div>
+      <div className=" col-md-12 hero-section-mobile video-container">
+
+        <video autoPlay loop muted playsInline>
+          <source src={bannervidM} type="video/mp4" />
+        </video>
+        <nav className="navbar navbar-expand-lg navbar-light hero-navbar col-11">
+
+          <a className="navbar-brand me-auto" href="/">
+            <img src={logo} alt='logo' className='navbar-logo' />
+          </a>
+
+          <button className="mobile-nav-btn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav mx-auto nav-links">
+              <li className="nav-item ml-auto">
+                <a className="nav-link header-item" href="/">Home</a>
+              </li>
+              <li className="nav-item ml-auto">
+                <a className="nav-link header-item" href="/about">About Us</a>
+              </li>
+              <li className="nav-item ml-auto">
+                <a className="nav-link header-item" href="/contact">Contact Us</a>
+              </li>
+            </ul>
+            <ul className="navbar-nav ">
+              <li className="nav-item ml-auto">
+                <a href='/donate'><button className="btn btn-success hero-header-btn">Donate</button></a>
+              </li>
+            </ul>
           </div>
+        </nav>
+        <div>
         </div>
-        <div className="col-md-6 order-md-1 d-md-none d-sm-block">
-          <div className="hero-text">
-            <h1 className="hero-heading display-sm-6">Transform compassion into action</h1>
-            <a href="exa" className="btn btn-success btn-donate-hero mt-4 mb-5">Donate Now</a>
-            <p className="hero-subheading">Support Koderma Gaushala and make a lasting difference in the lives of our cherished cows.</p>
-            
+
+        <div className="hero-text">
+          <h1 className="hero-heading heading-first display-sm-6" >त्वं माता सर्वदेवानां त्वं च यज्ञस्य कारणम्।</h1>
+          <h1 className="hero-heading display-sm-6 ">त्वं तीर्थं सर्वतीर्थानां नमस्तेऽस्तु सदानघे।।</h1>
+          <p className="hero-subheading">Hey! The destroyer of sins, you are the mother of all gods. You are the reason for yajna.</p>
+          <p className="hero-subheading">Among all the ‘pilgrimages’, you are the most holy. I bow down to you.</p>
+          <p className='hero-subheading-lst'> - SKANDPURAN</p>
+          <div className='btn-donate-hero-div-m'>
+          <a href="/donate" className="btn btn-success btn-donate-hero">DONATE FOR GAU SEVA</a>
           </div>
         </div>
       </div>
-    </div>
+
+
+
+
+    </>
   );
 };
 

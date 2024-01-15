@@ -22,6 +22,7 @@ import glance4 from '../../assets/glance/glance4.svg'
 import glance5 from '../../assets/glance/glance5.svg'
 import glance6 from '../../assets/glance/glance6.svg'
 
+const donationColors = ["#FFD700", "#32CD32", "#FF6347", "#4169E1"];
 
 export default function Landing() {
   const donationData = [
@@ -32,7 +33,6 @@ export default function Landing() {
         "Embrace Serenity, join hands in supporting the maintenance of our Gaushala ",
       image: donation1,
       categoryId:"Maintenance"
-
     },
     {
       id: 2,
@@ -65,7 +65,7 @@ export default function Landing() {
     { svgPath: glance1, title: "200+ desi cows" },
     {
       svgPath: glance2,
-      title: "12+ acers of cow shed",
+      title: "12+ acres of cow shed",
     },
     {
       svgPath: glance3,
@@ -93,9 +93,9 @@ export default function Landing() {
       <div className="container">
         <p className="donation-heading">Choose Your Path of Compassion</p>
         <div className="row">
-          {donationData.map((donationType) => (
+          {donationData.map((donationType, index) => (
             <div key={donationType.id} className="col-md-6 col-lg-3 col-6">
-              <Donation {...donationType} />
+              <Donation {...donationType} color={donationColors[index]} />
             </div>
           ))}
         </div>
@@ -103,23 +103,22 @@ export default function Landing() {
 
       {/* Glance Section  */}
       <div className="container mt-5">
-  <p className="glance-heading text-center mb-4">Koderma Gaushala at a Glance</p>
-  <div className="row glance-row">
-    {glanceTiles.map((tile, index) => (
-      <div key={index} className="col-md-2 col-4">
-        <Glance {...tile} />
+        <p className="glance-heading text-center mb-4">Koderma Gaushala at a Glance</p>
+        <div className="row glance-row">
+          {glanceTiles.map((tile, index) => (
+            <div key={index} className="col-md-2 col-4">
+              <Glance {...tile} />
+            </div>
+          ))}
+        </div>
       </div>
-    ))}
-  </div>
-</div>
 
-
-<AboutSection/>
-<MonthlyMission/>
-<GenerositySection/>
-<Membership/>
-<Lifetime/>
-<NewsletterSection/>
+      <AboutSection/>
+      <MonthlyMission/>
+      <GenerositySection/>
+      <Membership/>
+      <Lifetime/>
+      <NewsletterSection/>
     </>
   );
 }
