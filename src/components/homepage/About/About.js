@@ -1,14 +1,14 @@
 // src/components/AboutSection/AboutSection.js
 import React from "react";
 import "./About.css";
-import aboutImg from "./aboutImg.jpg";
+import aboutImg from "../../../assets/about-img.jpg";
 
 
 const AboutSection = () => {
   const placeholderImageUrl = "./about-img.jpg"
 
   return (
-    <div className="about-section container mt-5">
+    <div className="about-section mt-5">
       <div className="row">
         <div className="col-12 text-center mb-3 ">
           <h2 className="about-heading">ABOUT SHREE KODERMA GAUSHALA</h2>
@@ -34,13 +34,6 @@ const AboutSection = () => {
             well-being of our sacred residents. With a legacy rooted in love and
             respect for all bovine life, we strive to uphold the principles of
             Gau Seva, fostering a sustainable and harmonious environment.
-          </p>
-          {/* Add more text or details about the gaushala */}
-
-          
-        </div>
-        <div>
-          <p className="about-text container col-12">
             Join us in preserving this legacy and supporting our mission to
             safeguard the divine creatures who have graced our sanctuary for
             generations. Your generous contribution empowers us to continue this
@@ -49,8 +42,11 @@ const AboutSection = () => {
             journey, ensuring a brighter and compassionate future for our
             beloved cows. Read More
           </p>
-          
+
+
+
         </div>
+
       </div>
     </div>
   );

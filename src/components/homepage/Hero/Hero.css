@@ -119,39 +119,48 @@
 
  @media screen and (max-width: 480px) {
    .hero-section {
+
+
      display: none !important;
    }
 
    .hero-section-mobile {
+     overflow-x: hidden;
      display: block;
    }
 
    .navbar-logo {
-     width: 75px;
+     width: 85px;
    }
 
    .hero-text {
-     margin-top: 12rem;
+     margin-top: 20vh;
    }
 
    .hero-heading {
+    
+
      text-align: center;
-     font-size: 1.25rem !important;
+     line-height: 15vh;
+     font-size: 3.6rem !important;
    }
-   .btn-donate-hero-div-m{
-    text-align: center;
+
+   .btn-donate-hero-div-m {
+     text-align: center;
    }
 
    .btn-donate-hero {
+    margin-top: 5vh;
+
      font-size: 1.5rem;
      padding: 0.4rem 1rem;
      border-radius: 1rem;
    }
-
-
-   .heading-first {
-     margin-bottom: -2.5rem;
+   .btn-donate-hero{
+    box-shadow: 1px 1px 3px #fff;
    }
+
+ 
 
    .hero-subheading {
      text-align: center;

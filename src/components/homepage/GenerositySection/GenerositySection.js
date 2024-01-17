@@ -6,7 +6,7 @@ import occasion3 from "../../../assets/occasions/occasion3.svg";
 
 const GenerositySection = () => {
   return (
-    <div className="generosity-section container text-center">
+    <div className="generosity-section text-center">
       <h2 className="occasions-heading">Occasions of Generosity</h2>
       <p className="occasions-subheading">
         Choose your monthly pledge and sow the seeds of sustained care for our
@@ -15,21 +15,21 @@ const GenerositySection = () => {
 
       <div className="generosity-icons">
         <div className="generosity-icon ">
-          <div className="occasion-icon-circle">
+          <div className="occasion-icon-circle gen-icon-1">
             <img src={occasion1} alt="Celebration" className="occasion-icon" />
           </div>
           <p className="gen-name">Celebration</p>
         </div>
 
         <div className="generosity-icon ">
-          <div className="occasion-icon-circle">
+          <div className="occasion-icon-circle gen-icon-2">
             <img src={occasion2} alt="In Memory Of" className="occasion-icon" />
           </div>
           <p className="gen-name">In Memory Of</p>
         </div>
 
         <div className="generosity-icon ">
-          <div className="occasion-icon-circle">
+          <div className="occasion-icon-circle gen-icon-3">
             <img src={occasion3} alt="In Honor Of" className="occasion-icon" />
           </div>
           <p className="gen-name">In Honor Of</p>

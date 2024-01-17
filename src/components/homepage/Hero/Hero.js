@@ -60,7 +60,7 @@ const Hero = () => {
           <a href="/donate" className="btn btn-success btn-donate-hero">DONATE FOR GAU SEVA</a>
         </div>
       </div>
-      <div className=" col-md-12 hero-section-mobile video-container">
+      <div className="  hero-section-mobile video-container">
 
         <video autoPlay loop muted playsInline>
           <source src={bannervidM} type="video/mp4" />
@@ -99,11 +99,9 @@ const Hero = () => {
         </div>
 
         <div className="hero-text">
-          <h1 className="hero-heading heading-first display-sm-6" >त्वं माता सर्वदेवानां त्वं च यज्ञस्य कारणम्।</h1>
-          <h1 className="hero-heading display-sm-6 ">त्वं तीर्थं सर्वतीर्थानां नमस्तेऽस्तु सदानघे।।</h1>
-          <p className="hero-subheading">Hey! The destroyer of sins, you are the mother of all gods. You are the reason for yajna.</p>
-          <p className="hero-subheading">Among all the ‘pilgrimages’, you are the most holy. I bow down to you.</p>
-          <p className='hero-subheading-lst'> - SKANDPURAN</p>
+          <h1 className="hero-heading heading-first display-sm-6" >Transform Compassion into Action</h1>
+         
+          
           <div className='btn-donate-hero-div-m'>
           <a href="/donate" className="btn btn-success btn-donate-hero">DONATE FOR GAU SEVA</a>
           </div>

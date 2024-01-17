@@ -26,29 +26,15 @@ const donationColors = ["#FFD700", "#32CD32", "#FF6347", "#4169E1"];
 
 export default function Landing() {
   const donationData = [
-    {
-      id: 1,
-      title: "Maintaince Expenses",
-      description:
-        "Embrace Serenity, join hands in supporting the maintenance of our Gaushala ",
-      image: donation1,
-      categoryId:"Maintenance"
-    },
-    {
-      id: 2,
-      title: "Adopting a Cow or a Calf",
-      description:
-        "Explore Diverse Adoption Choices to Care for our Sacred Cows at the Gaushala",
-      image: donation2,
-      categoryId:"Adoption"
-    },
+
+
     {
       id: 3,
       title: "Food Donation",
       description:
         "Join Hands in Providing Gaushala's Nourishment, Nurturing the Lives of our Divine Cows",
       image: donation3,
-      categoryId:"Food"
+      categoryId: "Food"
     },
     {
       id: 4,
@@ -56,7 +42,7 @@ export default function Landing() {
       description:
         "Contribute to Gaushala Seva, Supporting Gopastmi Mela and Medical Expenses for our Beloved Cows",
       image: donation4,
-      categoryId:"Seva"
+      categoryId: "Seva"
     },
     // Add more donation types as needed
   ];
@@ -90,19 +76,67 @@ export default function Landing() {
       <Hero />
 
       {/* Donation Section  */}
-      <div className="container">
+      <div className="donation-section-div">
         <p className="donation-heading">Choose Your Path of Compassion</p>
-        <div className="row">
-          {donationData.map((donationType, index) => (
-            <div key={donationType.id} className="col-md-6 col-lg-3 col-6">
-              <Donation {...donationType} color={donationColors[index]} />
-            </div>
-          ))}
-        </div>
-      </div>
+        <div className="row donate-tile-row">
 
+          <div className="col-md-6 col-lg-3 col-6 donation1">
+
+            <Donation
+              backgroundColor="#554992"
+              className="donation-type-1"
+              image={donation1}
+              title="Maintaince Expenses"
+              description="Embrace Serenity, join hands in supporting the maintenance of our Gaushala"
+
+            />
+
+
+
+          </div>
+          <div className="col-md-6 col-lg-3 col-6 donation2">
+            <Donation
+              backgroundColor="#0da8a7"
+              image={donation2}
+              title="Adopting a Cow/Calf"
+              description="Explore Diverse Adoption Choices to Care for our Sacred Cows at Shree Koderma Gaushala"
+            />
+
+          </div>
+          <div className="col-md-6 col-lg-3 col-6 donation2-m">
+            <Donation
+              backgroundColor="#0da8a7"
+              image={donation2}
+              title="Adopting a Cow/Calf"
+              description="Explore Diverse Adoption Choices to Care for our Sacred Cows at our Gaushala"
+            />
+
+          </div>
+          <div className="col-md-6 col-lg-3 col-6 donation3">
+            <Donation
+              backgroundColor="#1b6d98"
+              image={donation3}
+              title="Food Donation"
+              description="Join Hands in Providing Gaushala's Nourishment, Nurturing the Lives of our Divine Cows"
+            />
+
+          </div>
+          <div className="col-md-6 col-lg-3 col-6 donation4">
+
+            <Donation
+              backgroundColor="#49b179"
+              image={donation4}
+              title="Gauvansh Seva"
+              description="Donate for Seva, Support Gopastmi Mela and Medical Expenses for our beloved cows"
+            />
+
+          </div>
+
+        </div>
+
+      </div>
       {/* Glance Section  */}
-      <div className="container mt-5">
+      <div className="mt-5 glance-sec">
         <p className="glance-heading text-center mb-4">Koderma Gaushala at a Glance</p>
         <div className="row glance-row">
           {glanceTiles.map((tile, index) => (
@@ -113,12 +147,12 @@ export default function Landing() {
         </div>
       </div>
 
-      <AboutSection/>
-      <MonthlyMission/>
-      <GenerositySection/>
-      <Membership/>
-      <Lifetime/>
-      <NewsletterSection/>
+      <AboutSection />
+      <MonthlyMission />
+      <GenerositySection />
+      <Membership />
+      <Lifetime />
+      <NewsletterSection />
     </>
   );
 }

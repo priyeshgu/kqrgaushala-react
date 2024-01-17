@@ -18,3 +18,15 @@
   .fab {
     margin: 0 10px;
   }
+  .footer-map{
+    
+    border-radius: 15px;
+  }
+
+  @media screen and (max-width:480px) {
+    .footer-map{
+      width: 90vw !important;
+      height: 25vh;
+      border: none;
+    }
+  }

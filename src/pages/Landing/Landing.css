@@ -19,3 +19,28 @@ line-height: normal;
 text-transform: uppercase;
 }
 
+.donate-tile-row {
+  padding: 0vh 2vw;
+}
+.donation-type-1{
+  background-color: black;
+}
+.donation2-m{
+  display: none;
+}
+@media screen and (max-width:480px){
+  .donation2{
+    display: none;
+  }
+  .donation2-m{
+    display: block;
+  }
+  .donation-section-div{
+    margin: 0rem 0.5rem;
+  }
+  .glance-sec{
+    margin: 0rem 1rem;
+  }
+}
+
+
