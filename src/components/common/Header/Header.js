@@ -30,8 +30,8 @@ export default function Header() {
                 <a className="nav-link header-item" href="/contact">Contact Us</a>
               </li>
             </ul>
-            <ul className="navbar-nav ml-auto ">
-              <li className="nav-item ml-auto">
+            <ul className="navbar-nav header-donate-button ">
+              <li className="nav-item ml-auto header-donate-button">
                 <a href='/donate'><button className="btn btn-success header-btn-donate">Donate</button></a>
               </li>
             </ul>

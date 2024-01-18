@@ -57,4 +57,7 @@
   .navbar-nav .nav-link {
     font-size: 18px; 
   }
+  .header-donate-button{
+    margin: 0;
+  }
 }
