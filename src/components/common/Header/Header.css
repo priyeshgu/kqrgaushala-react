@@ -1,10 +1,6 @@
-.logo {
-    color: #3A405A;
-    font-size: 1.8rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
+.comm-header-logo{
+  width: 7vw;
+}
   
   .header-item {
     color: #3A405A;
@@ -38,6 +34,9 @@
   
   /* Custom styles for larger buttons in mobile navbar */
 @media (max-width: 768px) {
+  .comm-header-logo{
+    width: 15vw;
+  }
   .navbar {
     min-width: 340px; /* Adjust the minimum width as needed */
   }

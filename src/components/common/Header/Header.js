@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.css';
 import 'bootstrap/dist/js/bootstrap.min';
+import logo from '../../../assets/logo.png'
 
 export default function Header() {
   return (
@@ -9,7 +10,7 @@ export default function Header() {
         <nav className="header-div navbar navbar-expand-lg navbar-light px-0">
 
           <a className="navbar-brand me-auto" href="/">
-            <h3 className='logo'>Shree Koderma Gaushala</h3>
+          <img src={logo} alt='logo' className='comm-header-logo' />
           </a>
 
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -29,7 +30,7 @@ export default function Header() {
                 <a className="nav-link header-item" href="/contact">Contact Us</a>
               </li>
             </ul>
-            <ul className="navbar-nav ml-auto px-5 ">
+            <ul className="navbar-nav ml-auto ">
               <li className="nav-item ml-auto">
                 <a href='/donate'><button className="btn btn-success header-btn-donate">Donate</button></a>
               </li>

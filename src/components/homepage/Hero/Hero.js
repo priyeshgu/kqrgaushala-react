@@ -45,11 +45,7 @@ const Hero = () => {
             </ul>
           </div>
         </nav>
-        <div>
-
-
-
-        </div>
+        
 
         <div className="hero-text">
           <h1 className="hero-heading display-sm-6">त्वं माता सर्वदेवानां त्वं च यज्ञस्य कारणम्।</h1>
