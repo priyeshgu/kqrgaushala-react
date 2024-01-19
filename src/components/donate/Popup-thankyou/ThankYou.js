@@ -2,31 +2,52 @@ import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import './Thankyou.css';
 import jsPDF from 'jspdf';
+import logo from '../../../assets/logo.png'
 
 const ThankYou = ({ onClose, formData,showDownloadCertificateButton }) => {
   const [downloadingReceipt, setDownloadingReceipt] = useState(false);
   const [downloadingCertificate, setDownloadingCertificate] = useState(false);
 
   const generatePDFReceipt = () => {
-    const doc = new jsPDF();
-    console.log(formData,12)
+    const doc = new jsPDF({
+      unit: 'mm',
+      format: 'a4',
+      orientation: 'portrait',
+      height:30,
+    });
+    // Add logo
+    const logoWidth = 25; // Adjust the width of the logo
+    const logoHeight = 25; // Adjust the height of the logo
+    doc.addImage(logo, 'PNG', 15, 12, logoWidth, logoHeight);
 
-    // Add content to the PDF:
-    doc.text('Shree Koderma Gaushala', 10, 10);
-    doc.text('Donation Receipt', 10, 20);
-    doc.text(`Donor Name: ${formData.name}`, 10, 30);
-    doc.text(`Donation Amount: ${formData.amount}`, 10, 40);
-    doc.text(`Donor Number: ${formData.phone_num}`, 10, 50);
-    doc.text(`Donor email: ${formData.email}`, 10, 60);
-    doc.text(`Donor Address: ${formData.address}`, 10, 70);
-    doc.text(`Donation Product: ${formData.product}`, 10, 80);
-    doc.text(`Donation Type: ${formData.type}`, 10, 90);
-    doc.text(`Donation units: ${formData.units}`, 10, 100);
-    doc.text(`Donation Pan Number: ${formData.pan_number}`, 10, 110);
+    doc.setFont('helvetica', 'bold');
 
-    // ... Add more content as needed
+  // Add gaushala name in bold
+  doc.text('SHREE KODERMA GAUSHALA SAMITY', 55, 20);
 
-    return doc.output('blob'); // Output as a blob for download
+  // Reset font to normal
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(9);
+  doc.text('Yadutand, PO Jhumri Telaiya, Koderma, Jharkhand 825409', 65, 25);
+  doc.setFontSize(16);
+  doc.text('Donation Receipt', 88, 35);
+  doc.setFontSize(12);
+
+  doc.text(`Donated By:                        ${formData.name}`, 20, 50);
+  doc.text(`Donation Amount:               Rs. ${formData.amount}`, 20, 60);
+  doc.text(`Donor Phone Number:        ${formData.phone_num}`, 20, 70);
+  doc.text(`Donor email:                        ${formData.email}`, 20, 80);
+  doc.text(`Donor Address:                   ${formData.address}`, 20, 90);
+  doc.text(`Donation Pan Number:       ${formData.pan_number.toUpperCase() }`, 20, 100);
+  doc.text(`Donation For:                      ${formData.product}`, 20, 110);
+  doc.text(`Units Donated:                    ${formData.units}`, 20, 120);
+  doc.text(`Donation Type:                   ${formData.type}`, 20, 130);
+  doc.setFontSize(8)
+  doc.text('Please note this is an electronically generated report, hence does not require a signature or stamp',45,160)
+  
+  // ... Add more content as needed
+
+  return doc.output('blob'); // Output as a blob for download
   };
 
   const handleDownloadReceipt = async () => {

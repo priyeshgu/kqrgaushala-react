@@ -62,7 +62,7 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
 
       try {
         // Call your API here
-        const response = await fetch("http://192.168.1.8:3001/donate", {
+        const response = await fetch("http://192.168.1.6:3001/donate", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

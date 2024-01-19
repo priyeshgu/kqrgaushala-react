@@ -12,7 +12,7 @@ const DashboardContent = () => {
   useEffect(() => {
     // Fetch donators data when the "Donators List" tab is selected
     if (activeTab === 'donatorsList') {
-      fetch('http://192.168.1.8:3001/donators')
+      fetch('http://192.168.1.6:3001/donators')
         .then((response) => response.json())
         .then((data) => setDonators(data.data));
     }

@@ -35,13 +35,13 @@ const DonationContent = ({ handleLogout }) => {
   useEffect(() => {
     // Fetch products data from the API
     // Replace the API URL with your actual endpoint
-    fetch('http://192.168.1.8:3001/donationCategories?type=products')
+    fetch('http://192.168.1.6:3001/donationCategories?type=products')
       .then((response) => response.json())
       .then((data) => setProducts(data.return_result));
 
     // Fetch donators data from the API when the component mounts
     // This can be triggered based on the user's action, like clicking a button
-    fetch('http://192.168.1.8:3001/donators')
+    fetch('http://192.168.1.6:3001/donators')
       .then((response) => response.json())
       .then((data) => setDonators(data.data));
   }, []);
@@ -51,14 +51,14 @@ const DonationContent = ({ handleLogout }) => {
 
     // Fetch products data when the "Donation Products" tab is selected
     if (tab === 'donationProducts') {
-      fetch('http://192.168.1.8:3001/donationCategories?type=products')
+      fetch('http://192.168.1.6:3001/donationCategories?type=products')
         .then((response) => response.json())
         .then((data) => setProducts(data.return_result));
     }
 
     // Fetch donators data when the "Donators List" tab is selected
     if (tab === 'donatorsList') {
-      fetch('http://192.168.1.8:3001/donators')
+      fetch('http://192.168.1.6:3001/donators')
         .then((response) => response.json())
         .then((data) => setDonators(data.data));
     }
@@ -70,7 +70,7 @@ const DonationContent = ({ handleLogout }) => {
 
   const handleSaveClick = async (updatedProduct) => {
     try {
-      const response = await fetch('http://192.168.1.8:3001/updateProduct', {
+      const response = await fetch('http://192.168.1.6:3001/updateProduct', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ const DonationContent = ({ handleLogout }) => {
     if (confirmDelete) {
       // Implement the logic to delete the product from the backend
       try {
-        fetch('http://192.168.1.8:3001/deleteProduct', {
+        fetch('http://192.168.1.6:3001/deleteProduct', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -133,7 +133,7 @@ const DonationContent = ({ handleLogout }) => {
 
   const handleAddProduct = async () => {
     try {
-      const response = await fetch('http://192.168.1.8:3001/addProduct', {
+      const response = await fetch('http://192.168.1.6:3001/addProduct', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
