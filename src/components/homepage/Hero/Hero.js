@@ -1,5 +1,4 @@
 import React from 'react';
-import cowImage from '../../../assets/cow.png'
 import './Hero.css'
 import bannervid from '../../../assets/banner.mp4'
 import bannervidM from '../../../assets/bannerM.mp4'

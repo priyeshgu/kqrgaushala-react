@@ -1,5 +1,5 @@
 .thank-you-popup {
-    /* Overall styling */
+    
     border-radius: 5px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     font-family: sans-serif;
@@ -37,7 +37,7 @@
   }
   
   .certificate-link-button {
-    color: #337ab7; /* Primary blue color */
+    color: green; 
     text-decoration: none;
   }
   
@@ -51,7 +51,7 @@
     border: none;
   }
   
-  /* Responsiveness */
+  
   @media (max-width: 768px) {
     .thank-you-body {
       padding: 15px;

@@ -1,18 +1,18 @@
-/* Navbar.css */
+
 .navbar {
-    background-color: blue !important; /* Set a blue background color */
+    background-color: blue !important; 
   }
  @media screen and (max-width:480px) {
   
  }
- @media (max-width: 991px) { /* Target medium and small screens */
+ @media (max-width: 991px) { 
   .navbar-toggler {
-    display: none; /* Hide the hamburger button */
+    display: none; 
   }
 
   .navbar-collapse {
-    display: flex; /* Keep the navbar items visible */
-    flex-wrap: nowrap; /* Prevent wrapping */
+    display: flex; 
+    flex-wrap: nowrap;
   }
 }    
   

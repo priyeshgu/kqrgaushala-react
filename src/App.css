@@ -1,4 +1,4 @@
-/* App.css */
+
 
 .donation-types-container {
     display: flex;
@@ -6,14 +6,14 @@
     ;
   }
   
-  /* Media query for smaller screens (e.g., mobile) */
+
   @media (max-width: 767px) {
     .donation-types-container {
       justify-content: space-between;
     }
   }
   
-  /* Media query for larger screens (e.g., PC) */
+  
   @media (min-width: 768px) {
     .donation-types-container {
       justify-content: space-around;

@@ -5,7 +5,7 @@ import aboutImg from "../../../assets/about-img.jpg";
 
 
 const AboutSection = () => {
-  const placeholderImageUrl = "./about-img.jpg"
+  
 
   return (
     <div className="about-section mt-5">

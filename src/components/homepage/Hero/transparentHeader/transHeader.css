@@ -39,23 +39,23 @@
     
       }
   
-  /* Custom styles for larger buttons in mobile navbar */
+  
 @media (max-width: 768px) {
   .navbar {
-    min-width: 340px; /* Adjust the minimum width as needed */
+    min-width: 340px; 
   }
 
   .navbar-toggler-icon {
-    font-size: 1rem; /* Adjust the font size as needed */
+    font-size: 1rem; 
   }
 
   .navbar-toggler.collapsed {
-    font-size: 24px; /* Adjust the font size as needed */
+    font-size: 24px; 
   }
 
   .navbar-toggler-icon:focus,
   .navbar-toggler-icon:active {
-    outline: none; /* Remove the outline on focus or click if needed */
+    outline: none; 
   }
 
   .navbar-nav .nav-link {

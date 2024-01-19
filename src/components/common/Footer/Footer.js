@@ -1,6 +1,6 @@
-// src/components/Footer/Footer.js
+
 import React from 'react';
-import './Footer.css'; // Add your styles here
+import './Footer.css';
 
 const Footer = () => {
   return (
@@ -27,7 +27,7 @@ const Footer = () => {
           </div>
         </div>
         <div className='footer-map-div'>
-        <iframe  className='footer-map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3632.895646013444!2d85.53156647481264!3d24.41969266275423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f3748f33c21cf9%3A0x471e1db7e10fbe3a!2sShree%20Koderma%20Gaushala%2C%20Jhumri%20Telaiya!5e0!3m2!1sen!2sin!4v1705502872964!5m2!1sen!2sin" width="1080" height="450"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title='mapIframe' className='footer-map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3632.895646013444!2d85.53156647481264!3d24.41969266275423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f3748f33c21cf9%3A0x471e1db7e10fbe3a!2sShree%20Koderma%20Gaushala%2C%20Jhumri%20Telaiya!5e0!3m2!1sen!2sin!4v1705502872964!5m2!1sen!2sin" width="1080" height="450"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
         {/* Vertical Line Separator */}

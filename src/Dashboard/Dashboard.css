@@ -18,7 +18,7 @@
     left: 32rem;
 
 }
-/* ************************************************************** */
+
 @media screen and (max-width:480px) {
     .logout-btn{
        margin-left:5.2rem ;
