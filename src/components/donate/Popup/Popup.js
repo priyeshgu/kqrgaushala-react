@@ -30,10 +30,28 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
 
     // Validate phone number
     if (name === "phone_num") {
-      // Allow only numeric characters
-      if (!/^\d*$/.test(value)) {
-        return;
-      }
+      // Allow only numeric characters and limit to 10 digits
+      const validatedValue = value.replace(/\D/g, '').substr(0, 10);
+  
+      setFormData({
+        ...formData,
+        [name]: validatedValue,
+      });
+  
+      return;
+    }
+    
+    // Validate address
+    if (name === "address") {
+      // Limit to a maximum of 85 characters
+      const validatedValue = value.substr(0, 85);
+  
+      setFormData({
+        ...formData,
+        [name]: validatedValue,
+      });
+  
+      return;
     }
 
     // Validate email
@@ -45,6 +63,20 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
       });
       return;
     }
+
+    
+  // Validate PAN number
+  if (name === "pan_number") {
+    // Allow only alphanumeric characters and limit to 10 characters
+    const validatedValue = value.replace(/[^a-zA-Z0-9]/g, '').substr(0, 10);
+    
+    setFormData({
+      ...formData,
+      [name]: validatedValue,
+    });
+
+    return;
+  }
 
     setFormData({
       ...formData,
@@ -94,12 +126,12 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
   const validateForm = () => {
     // Check if all mandatory fields are filled
     
-  //  let x = (    
-  //    formData.name !== "" &&
-  //    formData.address !== "" &&
-  //    formData.email !== "" &&
-  //    formData.phone_num !== "")
-     return true;
+   let x = (    
+     formData.name !== "" &&
+     formData.address !== "" &&
+     formData.email !== "" &&
+     formData.phone_num !== "")
+     return x;
   };
 
   const handleClose = () => {
@@ -175,7 +207,7 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
         </div>
         <div className="popup-form-group">
           <label htmlFor="panCard">
-            PAN Card<span>*</span> (Mandatory for 80G Exemption)
+            PAN Card (Mandatory for 80G Exemption)
           </label>
           <input
             type="text"
