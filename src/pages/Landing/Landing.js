@@ -22,30 +22,9 @@ import glance4 from '../../assets/glance/glance4.svg'
 import glance5 from '../../assets/glance/glance5.svg'
 import glance6 from '../../assets/glance/glance6.svg'
 
-const donationColors = ["#FFD700", "#32CD32", "#FF6347", "#4169E1"];
+
 
 export default function Landing() {
-  const donationData = [
-
-
-    {
-      id: 3,
-      title: "Food Donation",
-      description:
-        "Join Hands in Providing Gaushala's Nourishment, Nurturing the Lives of our Divine Cows",
-      image: donation3,
-      categoryId: "Food"
-    },
-    {
-      id: 4,
-      title: "Seva",
-      description:
-        "Contribute to Gaushala Seva, Supporting Gopastmi Mela and Medical Expenses for our Beloved Cows",
-      image: donation4,
-      categoryId: "Seva"
-    },
-    // Add more donation types as needed
-  ];
 
   const glanceTiles = [
     { svgPath: glance1, title: "200+ desi cows" },

@@ -50,7 +50,7 @@
 .newsletter-right-sec{
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 @media screen and (max-width: 480px) {

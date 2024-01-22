@@ -11,10 +11,10 @@ const Footer = () => {
           {/* Links Column */}
           <div className="col-md-4">
             <h4>Pages</h4>
-            <a href='' className='footer-links'> <p>Home</p></a>
-            <a href='' className='footer-links'> <p>About Us</p></a>
-            <a href='' className='footer-links'> <p>Contact Us</p></a>
-            <a href='' className='footer-links'> <p>Donate</p></a>
+            <a href='/' className='footer-links'> <p>Home</p></a>
+            <a href='/about' className='footer-links'> <p>About Us</p></a>
+            <a href='/contact' className='footer-links'> <p>Contact Us</p></a>
+            <a href='/donate' className='footer-links'> <p>Donate</p></a>
           </div>
 
            {/* Address Column */}
