@@ -1,4 +1,4 @@
-/* Glance.css */
+
 .glance-tile {
     text-align: center;
     margin-bottom: 20px;
@@ -6,8 +6,8 @@
   
   .icon-square {
     color: #3A405A;
-    width: 7rem; /* Adjust the width as needed */
-    height: 7rem; /* Adjust the height as needed */
+    width: 7rem; 
+    height: 7rem; 
     border-radius: 10px;
     overflow: hidden;
     margin: 0 auto 10px;

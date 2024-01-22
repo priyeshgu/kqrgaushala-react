@@ -1,5 +1,4 @@
-/* src/components/Footer/Footer.css */
-/* Add your styles for the Footer component */
+
 .footer-links{
   
   text-decoration: none;
@@ -13,7 +12,7 @@
 .footer-section {
     background-color: #f8f9fa;
     padding: 20px 0;
-    /* text-align: center; */
+   
     border-radius: 10px;
     margin-bottom: 1rem;
   }
@@ -23,7 +22,7 @@
     
   }
   
-  /* Add styles for social media icons (replace the icon classes with your preferred icon library) */
+
   .fab {
     margin: 0 10px;
   }

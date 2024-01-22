@@ -1,4 +1,6 @@
-
+*{
+  overflow-x: hidden;
+}
 .donation-types-container {
     display: flex;
     flex-wrap: wrap;
