@@ -3,7 +3,7 @@ import "./Statements.css";
 
 export default function Statements() {
   return (
-    <div className="container">
+    <div className="mx-3">
       <h3 className="statement-heading">Mission</h3>
       <p className="statement-contents">
         Mission Statement: "At Shree Koderma Gaushala, we are dedicated to the

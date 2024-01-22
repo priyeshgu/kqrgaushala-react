@@ -3,6 +3,7 @@ import Homepage from './pages/Landing/Landing';
 import Aboutpage from './pages/Aboutpage/About';
 import Contactpage from './pages/Contactpage/Contactpage';
 import Donatepage from './pages/Donate/Donate';
+import Policy from './pages/Policypage/Policy';
 import DashboardRoutes from './Dashboard/DashboardRoutes';
 
 import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
@@ -22,6 +23,7 @@ const AppRoutes = () => {
         <Route path="/about" component={Aboutpage} />
         <Route path="/contact" component={Contactpage} />
         <Route path="/donate" component={Donatepage} />
+        <Route path="/policy" component={Policy}/>
         <DashboardRoutes />
       </Switch>
       <Footer />
