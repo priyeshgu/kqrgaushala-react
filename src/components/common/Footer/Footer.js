@@ -29,7 +29,7 @@ const Footer = () => {
           {/* Email Column */}
           <div className="col-md-4">
             <h4>Reach Us</h4>
-            <a rel="noopener noreferrer" target='_blank' className='footer-links'> <p>info@kqrgaushala.com</p></a>
+            <a href='/' rel="noopener noreferrer" target='_blank' className='footer-links'> <p>info@kqrgaushala.com</p></a>
             <a rel="noopener noreferrer" target='_blank' href='https://maps.app.goo.gl/5TWVAyKh86TjY95i7' className='footer-links'> <p>Shree Koderma Gaushala, Yadutand,</p> <p>PO Jhumri Telaiya, Dist Koderma</p> <p>Jharkhand, PIN 825409 </p> </a>
           </div>
 
