@@ -110,6 +110,10 @@
    text-shadow: 2px 2px 4px #000000;
    margin-top: 1rem;
  }
+ .hero-navbar{
+  z-index: 9999;
+ }
+ 
 
  .btn-donate-hero {
    font-size: 2rem;
@@ -117,12 +121,25 @@
    border-radius: 1rem;
  }
 
+
  @media screen and (max-width: 480px) {
+.nav-test{
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem 1rem ;
+  background-color: #B8E0CC;
+  border-radius: 15px;
+  height: 50vh;
+}
+.nav-test li{
+margin: 2vh 0vh ;
+} 
 
- 
-   .hero-section {
-
-
+  .hero-section {
      display: none !important;
    }
 

@@ -86,7 +86,7 @@ const MonthlyMission = () => {
       </div>
       {/* {showPopup.show && <Popup onClose={() => setShowPopup({ ...showPopup, show: false })} donationInfo={showPopup} />} */}
       {showPopup && <Popup onShowThankYou={handleShowThankYou}  donationInfo={showPopup} onClose={closePopup} />}
-      {  showThankYou && <ThankYou onClose={() => setShowThankYou(false)} formData={thankYouData} />}
+      {  showThankYou && <ThankYou onClose={() => setShowThankYou(false)} formData={thankYouData}  subscriptionType="monthly"/>}
     </div>
   );
 };

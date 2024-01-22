@@ -65,6 +65,8 @@
   border-radius: 50%;
 }
 .gen-name{
+  color: white;
+  font-weight: 400;
   font-size: 20px;
 }
 .gen-icon-1{
@@ -88,10 +90,7 @@
     width: 80px; /* Adjust the size of the icons */
     height:80px;
   }
-  .gen-name{
-    font-size: 1rem;
-    color: #fff;
-  }
+
   .occasions-subheading{
     font-size: 1.2rem;
   }
