@@ -72,9 +72,7 @@ const DonationProduct = ({ product, category }) => {
           </div>
 
           <div className="donate-btn-sec col-4 ">
-            <button className="btn donate-button" onClick={handleDonateNow}>
-              Donate Now
-            </button>
+          <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_NSacTuRkTWiIu8" async> </script> </form>
           </div>
         </div>
       </div>
