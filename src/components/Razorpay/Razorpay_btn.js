@@ -52,26 +52,68 @@
 // }
 
 
+// Razorpay_btn.js
 import React, { useEffect } from "react";
 
-export default function Razorpay_btn() {
+const Razorpay_btn = ({ handleDonateNow }) => {
   useEffect(() => {
-    const rzpPaymentForm = document.getElementsByClassName("rzp_payment_form")[0];
+    const rzpPaymentForms = document.querySelectorAll(".rzp_payment_form");
+    rzpPaymentForms.forEach((rzpPaymentForm) => {
+      if (!rzpPaymentForm.hasChildNodes()) {
+        const script = document.createElement("script");
+        script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+        script.async = true;
+        script.dataset.payment_button_id = "pl_NSacTuRkTWiIu8";
+        rzpPaymentForm.appendChild(script);
+      }
+    });
 
-    if (!rzpPaymentForm.hasChildNodes()) {
-      const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-      script.async = true;
-      script.dataset.payment_button_id = "pl_NSacTuRkTWiIu8";
-      // script.dataset.amount="510000";
-      // script.data-prefill.amount="5100"
-      rzpPaymentForm.appendChild(script);
+    // Define a handler for the payment success event
+    const handlePaymentSuccess = (payment) => {
+      // Extract relevant information from the payment object
+      const donationData = {
+        razorpay_payment_id: payment.razorpay_payment_id,
+        amount: payment.razorpay_order_amount,
+        name: payment.card.name, // User's name
+        email: payment.card.email, // User's email
+        phone_num: payment.card.contact, // User's mobile number
+        pan_number: payment.card.pan_number, // You may need to check if this information is available in the payment object
+        address: payment.card.address, // You may need to check if this information is available in the payment object
+        // Add more fields as needed
+      };
+      console.log(donationData,84)
+
+
+      // Make a post request to your server's /donate endpoint
+      fetch("http://127.0.0.1:3001/donate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(donationData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Handle the response from the server
+          console.log("Donation successful:", data);
+        })
+        .catch((error) => {
+          console.error("Error making donation:", error);
+        });
+    };
+
+    // Attach the handler to the payment.success event
+    if (window.Razorpay) {
+      const rzp = new window.Razorpay({
+        key: "YOUR_RAZORPAY_API_KEY", // Replace with your actual Razorpay API key
+        // Add more options as needed
+      });
+
+      rzp.on("payment.success", handlePaymentSuccess);
     }
-  }, []);
+  }, [handleDonateNow]);
 
-  return (
-    <div className="App">
-      <form className="rzp_payment_form"></form>
-    </div>
-  );
-}
+  return <div className="App"><form className="rzp_payment_form"></form></div>;
+};
+
+export default Razorpay_btn;

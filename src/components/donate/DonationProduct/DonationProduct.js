@@ -23,7 +23,7 @@ const DonationProduct = ({ product, category }) => {
     }
   };
 
-  const handleDonateNow = () => {
+  const handleDonateNow = async () => {
     const donationData = {
       amount: product.costPerUnit * quantity,
       type: `${category.categoryName}`,
@@ -33,7 +33,33 @@ const DonationProduct = ({ product, category }) => {
 
     // Set donation information in state
     setDonationInfo(donationData);
-    setShowPopup(true);
+
+    try {
+      // Make API call to create the order on the server
+      const response = await fetch("http://127.0.0.1:3001/create-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount: donationData.amount,
+          currency: "INR", // Change currency as needed
+          donatorInfo: {} // Add donator information here if needed
+        }),
+      });
+
+      if (response.ok) {
+        const { order } = await response.json();
+
+        // Open Razorpay popup with order details
+        Razorpay_btn.openPopup(order);
+        setShowPopup(true);
+      } else {
+        console.error("Failed to create order:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error creating order:", error.message);
+    }
   };
 
   const closePopup = () => {
@@ -70,7 +96,7 @@ const DonationProduct = ({ product, category }) => {
           </div>
 
           <div className="donate-btn-sec col-4 btn btn-success">
-         <Razorpay_btn/>
+         <Razorpay_btn handleDonateNow={handleDonateNow}/>
           </div>
         </div>
       </div>
