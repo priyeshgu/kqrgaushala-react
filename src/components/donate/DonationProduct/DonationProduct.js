@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./DonationProduct.css";
 import Popup from "../Popup/Popup";
 import ThankYou from "../Popup-thankyou/ThankYou";
+import Razorpay_btn from "../../Razorpay/Razorpay_btn";
 
 const DonationProduct = ({ product, category }) => {
   const [quantity, setQuantity] = useState(1);
@@ -10,7 +11,7 @@ const DonationProduct = ({ product, category }) => {
   const [showThankYou, setShowThankYou] = useState(false);
   const [thankYouData, setThankYouData] = useState(null);
 
-  const handleShowThankYou = (show,formData) => {
+  const handleShowThankYou = (show, formData) => {
     setShowThankYou(show);
     setThankYouData(formData);
   };
@@ -34,13 +35,10 @@ const DonationProduct = ({ product, category }) => {
     setDonationInfo(donationData);
     setShowPopup(true);
   };
-  
 
   const closePopup = () => {
     setShowPopup(false);
-    
   };
-
 
   return (
     <>
@@ -71,8 +69,8 @@ const DonationProduct = ({ product, category }) => {
             <p className="product-amount">₹ {product.costPerUnit * quantity}</p>
           </div>
 
-          <div className="donate-btn-sec col-4 ">
-          <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_NSacTuRkTWiIu8" async> </script> </form>
+          <div className="donate-btn-sec col-4 btn btn-success">
+         <Razorpay_btn/>
           </div>
         </div>
       </div>
@@ -104,14 +102,25 @@ const DonationProduct = ({ product, category }) => {
               </button>
             </div>
           </div>
-          <button className="btn donate-button"  onClick={handleDonateNow}>
+          <button className="btn donate-button" onClick={handleDonateNow}>
             Donate
           </button>
         </div>
       </div>
 
-      {showPopup && <Popup onShowThankYou={handleShowThankYou}  donationInfo={donationInfo} onClose={closePopup} />}
-      {  showThankYou && <ThankYou onClose={() => setShowThankYou(false)} formData={thankYouData}/>}
+      {showPopup && (
+        <Popup
+          onShowThankYou={handleShowThankYou}
+          donationInfo={donationInfo}
+          onClose={closePopup}
+        />
+      )}
+      {showThankYou && (
+        <ThankYou
+          onClose={() => setShowThankYou(false)}
+          formData={thankYouData}
+        />
+      )}
     </>
   );
 };
