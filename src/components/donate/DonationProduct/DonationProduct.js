@@ -95,7 +95,7 @@ const DonationProduct = ({ product, category }) => {
             <p className="product-amount">₹ {product.costPerUnit * quantity}</p>
           </div>
 
-          <div className="donate-btn-sec col-4 btn btn-success">
+          <div className="">
          <Razorpay_btn handleDonateNow={handleDonateNow}/>
           </div>
         </div>
@@ -128,9 +128,9 @@ const DonationProduct = ({ product, category }) => {
               </button>
             </div>
           </div>
-          <button className="btn donate-button" onClick={handleDonateNow}>
-            Donate
-          </button>
+          <div>
+            <Razorpay_btn handleDonateNow={handleDonateNow}/>
+          </div>
         </div>
       </div>
 

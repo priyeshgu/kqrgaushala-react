@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import DonationProduct from '../DonationProduct/DonationProduct';
 import Popup from '../Popup/Popup';
 import ThankYou from "../Popup-thankyou/ThankYou";
+import Razorpay_btn from '../../Razorpay/Razorpay_btn';
 
 
 const DonationCategory = ({ category }) => {
@@ -53,7 +54,9 @@ const DonationCategory = ({ category }) => {
         {category.donations.map((product) => (
           <DonationProduct key={product.nameEnglish} product={product} category={category} />
         ))}
+
         {/* <div>for custom amount</div> */}
+
         <div className="donation-product col-10 d-none d-md-block">
         <div className="d-flex flex-row justify-content-center">
         <div className="product-names col-4">
@@ -69,8 +72,10 @@ const DonationCategory = ({ category }) => {
                 onChange={handleCustomAmountChange}
               />
             </div>
+
+            {/* Custom Donate Section for Phone */}
         <div className="donate-btn-sec col-4 ">
-        <button className="btn donate-button " onClick={handleDonateNowClick}>Donate Now</button>
+        <Razorpay_btn handleDonateNow={handleDonateNowClick} />
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
         </div>
@@ -91,7 +96,7 @@ const DonationCategory = ({ category }) => {
               />
             </div>
         <div className="donate-btn-sec col-12 mt-3 ">
-        <button className="btn donate-button " onClick={handleDonateNowClick}>Donate</button>
+        <Razorpay_btn handleDonateNow={handleDonateNowClick} />
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
         </div>
