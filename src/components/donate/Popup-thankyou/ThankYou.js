@@ -31,8 +31,8 @@ const ThankYou = ({ onClose, formData,showDownloadCertificateButton}) => {
   doc.setFontSize(16);
   doc.text('Donation Receipt', 88, 35);
   doc.setFontSize(12);
-  doc.text(`Reciept No:                        ${formData.receiptId}`, 20, 60);
-  doc.text(`Date:                                  ${formData.date.split('T')[0]}`, 20, 70);
+  doc.text(`Reciept No:                        ${formData.order_id}`, 20, 60);
+  doc.text(`Date:                                  ${formData.datetime.split(',')[0].trim()}`, 20, 70);
 
   doc.text(`Donated By:                        ${formData.name}`, 20, 80);
   doc.text(`Donation Amount:               Rs. ${formData.amount}`, 20, 90);

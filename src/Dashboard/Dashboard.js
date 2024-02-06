@@ -415,6 +415,8 @@ const DonationContent = ({ handleLogout }) => {
                     <th>Amount</th>
                     <th>Units</th>
                     <th>Pan Number</th>
+                    <th>Date Time</th>
+                    <th>Order Id</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -431,6 +433,8 @@ const DonationContent = ({ handleLogout }) => {
                       <td>{donator.amount}</td>
                       <td>{donator.units}</td>
                       <td>{donator.pan_number}</td>
+                      <td>{donator.datetime}</td>
+                      <td>{donator.order_id}</td>
                     </tr>
                   ))}
                 </tbody>

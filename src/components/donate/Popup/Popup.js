@@ -15,8 +15,9 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
     email: "",
     phone_num: "",
     pan_number: "",
-    receiptId:generateReceiptId(),
-    date : new Date().toISOString()
+    datetime : new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),    
+    order_id:generateReceiptId()
+
   });
 
   useEffect(() => {
@@ -92,17 +93,6 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
     if (isValid) {
       // Donation logic here
       console.log("Donation Details:", formData);
-
-      const receiptId = generateReceiptId();
-    const paymentDateTime = new Date().toISOString();
-
-    setFormData({
-      ...formData,
-      [receiptId]: receiptId,
-      [paymentDateTime] : paymentDateTime
-    })
-
-    console.log("Donation Details:", formData);
 
     // Initiate Payment
     initiatePayment(formData);
