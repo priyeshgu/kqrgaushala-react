@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./DonationProduct.css";
 import Popup from "../Popup/Popup";
 import ThankYou from "../Popup-thankyou/ThankYou";
-import Razorpay_btn from "../../Razorpay/Razorpay_btn";
 
 const DonationProduct = ({ product, category }) => {
   const [quantity, setQuantity] = useState(1);
@@ -23,7 +22,7 @@ const DonationProduct = ({ product, category }) => {
     }
   };
 
-  const handleDonateNow = async () => {
+  const handleDonateNow = () => {
     const donationData = {
       amount: product.costPerUnit * quantity,
       type: `${category.categoryName}`,
@@ -33,37 +32,13 @@ const DonationProduct = ({ product, category }) => {
 
     // Set donation information in state
     setDonationInfo(donationData);
-
-    try {
-      // Make API call to create the order on the server
-      const response = await fetch("http://127.0.0.1:3001/create-order", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          amount: donationData.amount,
-          currency: "INR", // Change currency as needed
-          donatorInfo: {} // Add donator information here if needed
-        }),
-      });
-
-      if (response.ok) {
-        const { order } = await response.json();
-
-        // Open Razorpay popup with order details
-        Razorpay_btn.openPopup(order);
-        setShowPopup(true);
-      } else {
-        console.error("Failed to create order:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error creating order:", error.message);
-    }
+    setShowPopup(true);
   };
+  
 
   const closePopup = () => {
     setShowPopup(false);
+    
   };
 
   return (
@@ -95,8 +70,10 @@ const DonationProduct = ({ product, category }) => {
             <p className="product-amount">₹ {product.costPerUnit * quantity}</p>
           </div>
 
-          <div className="">
-         <Razorpay_btn handleDonateNow={handleDonateNow}/>
+          <div className="donate-btn-sec col-4 ">
+            <button className="btn donate-button" onClick={handleDonateNow}>
+              Donate Now
+            </button>
           </div>
         </div>
       </div>
@@ -128,8 +105,10 @@ const DonationProduct = ({ product, category }) => {
               </button>
             </div>
           </div>
-          <div>
-            <Razorpay_btn handleDonateNow={handleDonateNow}/>
+          <div className="donate-btn-sec col-4 ">
+            <button className="btn donate-button" onClick={handleDonateNow}>
+              Donate Now
+            </button>
           </div>
         </div>
       </div>

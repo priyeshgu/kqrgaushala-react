@@ -16,7 +16,7 @@ const NewsletterSection = () => {
   const subscribe = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (email && emailRegex.test(email)) {
-      fetch('https://example.com/emailentry', {
+      fetch('http://13.235.67.241/emailentry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -32,18 +32,20 @@ const NewsletterSection = () => {
         .catch(error => {
           console.error('Error:', error);
           // Handle error or show an error message to the user
-          setSubscriptionStatus('error');
+          setSubscriptionStatus('fail');
         });
     } else {
-      setErrorMessage('Invalid email format. Please enter a valid email address.');
+      setSubscriptionStatus('error');
     }
   };
 
   const renderMessage = () => {
     if (subscriptionStatus === 'success') {
       return <div className="text-success mt-2">Thank you for subscribing!</div>;
-    } else if (subscriptionStatus === 'error') {
+    } else if (subscriptionStatus === 'fail') {
       return <div className="text-danger mt-2">Subscription failed. Please try again later.</div>;
+    } else if (subscriptionStatus === 'error') {
+      return <div className="text-danger mt-2">Invalid email format. Please enter a valid email address.</div>;
     }
     return null;
   };

@@ -4,7 +4,7 @@ import './Thankyou.css';
 import jsPDF from 'jspdf';
 import logo from '../../../assets/logo.png'
 
-const ThankYou = ({ onClose, formData,showDownloadCertificateButton }) => {
+const ThankYou = ({ onClose, formData,showDownloadCertificateButton,orderId }) => {
   const [downloadingReceipt, setDownloadingReceipt] = useState(false);
   const [downloadingCertificate, setDownloadingCertificate] = useState(false);
 
@@ -24,7 +24,7 @@ const ThankYou = ({ onClose, formData,showDownloadCertificateButton }) => {
 
   // Add gaushala name in bold
   doc.text('SHREE KODERMA GAUSHALA SAMITY', 55, 20);
-
+  doc.text(`Order ID: ${orderId}`, 20, 140);
   // Reset font to normal
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);

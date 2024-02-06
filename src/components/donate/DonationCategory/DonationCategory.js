@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import DonationProduct from '../DonationProduct/DonationProduct';
 import Popup from '../Popup/Popup';
 import ThankYou from "../Popup-thankyou/ThankYou";
-import Razorpay_btn from '../../Razorpay/Razorpay_btn';
-
 
 const DonationCategory = ({ category }) => {
   const [customAmount, setCustomAmount] = useState('');
@@ -75,7 +73,7 @@ const DonationCategory = ({ category }) => {
 
             {/* Custom Donate Section for Phone */}
         <div className="donate-btn-sec col-4 ">
-        <Razorpay_btn handleDonateNow={handleDonateNowClick} />
+        <button className="btn donate-button " onClick={handleDonateNowClick}>Donate Now</button>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
         </div>
@@ -96,7 +94,7 @@ const DonationCategory = ({ category }) => {
               />
             </div>
         <div className="donate-btn-sec col-12 mt-3 ">
-        <Razorpay_btn handleDonateNow={handleDonateNowClick} />
+        <button className="btn donate-button " onClick={handleDonateNowClick}>Donate Now</button>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
         </div>
