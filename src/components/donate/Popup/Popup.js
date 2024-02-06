@@ -4,12 +4,19 @@ import { Modal, Button } from "react-bootstrap";
 import "./Popup.css";
 
 const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
+  const generateReceiptId = () => {
+    // Generate a receipt ID in the format SKG-XXXX where XXXX are 4 random numbers
+    const randomNumbers = Math.floor(1000 + Math.random() * 9000);
+    return `SKG-${randomNumbers}`;
+  };
   const [formData, setFormData] = useState({
     name: "",
     address: "",
     email: "",
     phone_num: "",
     pan_number: "",
+    receiptId:generateReceiptId(),
+    date : new Date().toISOString()
   });
 
   useEffect(() => {
@@ -33,25 +40,21 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
     if (name === "phone_num") {
       // Allow only numeric characters and limit to 10 digits
       const validatedValue = value.replace(/\D/g, '').substr(0, 10);
-  
       setFormData({
         ...formData,
         [name]: validatedValue,
       });
-  
       return;
     }
-    
+
     // Validate address
     if (name === "address") {
       // Limit to a maximum of 85 characters
       const validatedValue = value.substr(0, 85);
-  
       setFormData({
         ...formData,
         [name]: validatedValue,
       });
-  
       return;
     }
 
@@ -65,19 +68,16 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
       return;
     }
 
-    
-  // Validate PAN number
-  if (name === "pan_number") {
-    // Allow only alphanumeric characters and limit to 10 characters
-    const validatedValue = value.replace(/[^a-zA-Z0-9]/g, '').substr(0, 10);
-    
-    setFormData({
-      ...formData,
-      [name]: validatedValue,
-    });
-
-    return;
-  }
+    // Validate PAN number
+    if (name === "pan_number") {
+      // Allow only alphanumeric characters and limit to 10 characters
+      const validatedValue = value.replace(/[^a-zA-Z0-9]/g, '').substr(0, 10);
+      setFormData({
+        ...formData,
+        [name]: validatedValue,
+      });
+      return;
+    }
 
     setFormData({
       ...formData,
@@ -88,29 +88,45 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
   const handleDonateNow = async () => {
     // Perform additional validation if needed
     const isValid = validateForm();
-  
+
     if (isValid) {
       // Donation logic here
       console.log("Donation Details:", formData);
+
+      const receiptId = generateReceiptId();
+    const paymentDateTime = new Date().toISOString();
+
+    setFormData({
+      ...formData,
+      [receiptId]: receiptId,
+      [paymentDateTime] : paymentDateTime
+    })
+
+    console.log("Donation Details:", formData);
+
+    // Initiate Payment
+    initiatePayment(formData);
+
+    onClose();
+    // onShowThankYou(true, updatedFormData);
+  } else {
+    // Display error message
+    setFormValid(false);
+  }
+};
+
   
-      // Initiate Payment
-      initiatePayment();
-  
-      onClose();
-      // onShowThankYou(true, formData);
-    } else {
-      // Display error message
-      setFormValid(false);
-    }
-  };
-  
-  const initiatePayment = async () => {
-    const amount = formData.amount; // Get the amount from the form data
-  
+
+  const initiatePayment = async (requestData) => {
     try {
-      const response = await axios.post('http://13.235.67.241/create-order', { amount });
+      const response = await axios.post('http://192.168.1.96:3001/create-order', {
+        amount: formData.amount,
+        receiptId: requestData.receiptId,
+        paymentDateTime: requestData.paymentDateTime,
+      });
+
       const { order } = response.data;
-  
+
       // Use the order ID to initiate payment on the frontend
       const options = {
         key: 'rzp_test_fXybBXnLaZHeXO',
@@ -124,51 +140,49 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
           // Handle successful payment
           console.log('Payment successful:', response);
           try {
-        // Call your API here
-        const response = await fetch("http://13.235.67.241/donate", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
+            // Call your API here
+            const response = await fetch("http://192.168.1.96:3001/donate", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(requestData),
+            });
 
-        // Check if the request was successful
-        if (response.ok) {
-          // Handle successful API response
-          console.log("Donation successful!");
-          const orderId = order.id;
-          console.log(orderId,141)
-          // onClose();
-          onShowThankYou(true,formData,orderId);
-        } else {
-          // Handle API error
-          console.error("API error:", response.statusText);
-        }
-      } catch (error) {
-        // Handle network error
-        console.error("Network error:", error.message);
-      }
+            // Check if the request was successful
+            if (response.ok) {
+              // Handle successful API response
+              console.log("Donation successful!");
+              const orderId = order.id;
+              console.log(orderId, 141);
+              // onClose();
+              onShowThankYou(true, requestData);
+            } else {
+              // Handle API error
+              console.error("API error:", response.statusText);
+            }
+          } catch (error) {
+            // Handle network error
+            console.error("Network error:", error.message);
+          }
         },
       };
-  
+
       const rzp = new window.Razorpay(options);
       rzp.open();
     } catch (error) {
       console.error('Error initiating payment:', error);
     }
   };
-  
 
   const validateForm = () => {
     // Check if all mandatory fields are filled
-    
-   let x = (    
-     formData.name !== "" &&
-     formData.address !== "" &&
-     formData.email !== "" &&
-     formData.phone_num !== "")
-     return x;
+    return (
+      formData.name !== "" &&
+      formData.address !== "" &&
+      formData.email !== "" &&
+      formData.phone_num !== ""
+    );
   };
 
   const handleClose = () => {

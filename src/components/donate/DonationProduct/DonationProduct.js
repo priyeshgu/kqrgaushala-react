@@ -34,11 +34,11 @@ const DonationProduct = ({ product, category }) => {
     setDonationInfo(donationData);
     setShowPopup(true);
   };
-  
+
 
   const closePopup = () => {
     setShowPopup(false);
-    
+
   };
 
   return (
@@ -124,6 +124,7 @@ const DonationProduct = ({ product, category }) => {
         <ThankYou
           onClose={() => setShowThankYou(false)}
           formData={thankYouData}
+          
         />
       )}
     </>

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import './Thankyou.css';
 import jsPDF from 'jspdf';
 import logo from '../../../assets/logo.png'
 
-const ThankYou = ({ onClose, formData,showDownloadCertificateButton,orderId }) => {
+const ThankYou = ({ onClose, formData,showDownloadCertificateButton}) => {
   const [downloadingReceipt, setDownloadingReceipt] = useState(false);
   const [downloadingCertificate, setDownloadingCertificate] = useState(false);
 
@@ -24,37 +24,40 @@ const ThankYou = ({ onClose, formData,showDownloadCertificateButton,orderId }) =
 
   // Add gaushala name in bold
   doc.text('SHREE KODERMA GAUSHALA SAMITY', 55, 20);
-  doc.text(`Order ID: ${orderId}`, 20, 140);
   // Reset font to normal
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
-  doc.text('Yadutand, PO Jhumri Telaiya, Koderma, Jharkhand 825409', 65, 25);
+  doc.text('Yadutand, PO Jhumri Telaiya, Koderma, Jharkhand 825409', 65, 25); 
   doc.setFontSize(16);
   doc.text('Donation Receipt', 88, 35);
   doc.setFontSize(12);
+  doc.text(`Reciept No:                        ${formData.receiptId}`, 20, 60);
+  doc.text(`Date:                                  ${formData.date.split('T')[0]}`, 20, 70);
 
-  doc.text(`Donated By:                        ${formData.name}`, 20, 50);
-  doc.text(`Donation Amount:               Rs. ${formData.amount}`, 20, 60);
-  doc.text(`Donor Phone Number:        ${formData.phone_num}`, 20, 70);
-  doc.text(`Donor email:                        ${formData.email}`, 20, 80);
-  doc.text(`Donor Address:                   ${formData.address}`, 20, 90);
-  doc.text(`Donation Pan Number:       ${formData.pan_number.toUpperCase() }`, 20, 100);
-  doc.text(`Donation For:                      ${formData.product}`, 20, 110);
-  doc.text(`Units Donated:                    ${formData.units}`, 20, 120);
-  doc.text(`Donation Type:                   ${formData.type}`, 20, 130);
+  doc.text(`Donated By:                        ${formData.name}`, 20, 80);
+  doc.text(`Donation Amount:               Rs. ${formData.amount}`, 20, 90);
+  doc.text(`Donor Phone Number:        ${formData.phone_num}`, 20, 100);
+  doc.text(`Donor email:                        ${formData.email}`, 20, 110);
+  doc.text(`Donor Address:                   ${formData.address}`, 20, 120);
+  doc.text(`Donation Pan Number:       ${formData.pan_number.toUpperCase() }`, 20, 130);
+  doc.text(`Donation For:                      ${formData.product}`, 20, 140);
+  doc.text(`Units Donated:                    ${formData.units}`, 20, 150);
+  doc.text(`Donation Type:                   ${formData.type}`, 20, 160);
+  
+  doc.setFontSize(12)
+  doc.text(`Tax exempted under section 80G(5)(iii) of Income tax vide registration No. AANAS2643FF20231`,20,180);
   doc.setFontSize(8)
-  doc.text('Please note this is an electronically generated report, hence does not require a signature or stamp',45,160)
+  doc.text('Please note this is an electronically generated receipt, hence does not require a signature or stamp',45,190);
   
   // ... Add more content as needed
 
   return doc.output('blob'); // Output as a blob for download
   };
 
-  const handleDownloadReceipt = async () => {
+  const downloadReceipt = async () => {
     setDownloadingReceipt(true);
 
     try {
-      // Logic to generate or fetch the PDF receipt (replace with your implementation)
       const receiptData = await generatePDFReceipt();
 
       const blob = new Blob([receiptData], { type: 'application/pdf' });
@@ -75,6 +78,17 @@ const ThankYou = ({ onClose, formData,showDownloadCertificateButton,orderId }) =
       setDownloadingReceipt(false);
     }
   };
+
+  useEffect(() => {
+    console.log("download triggered")
+    // Trigger the download action when the component mounts
+    downloadReceipt();
+  
+    // Cleanup function to ensure it runs only once
+    return () => {
+      // Clear any resources or subscriptions if needed
+    };
+  }, []); // Empty dependency array ensures this effect runs once on mount
 
   const handleDownloadCertificate = async () => {
     setDownloadingCertificate(true);
@@ -120,7 +134,7 @@ const ThankYou = ({ onClose, formData,showDownloadCertificateButton,orderId }) =
           <Button
             variant="primary"
             className="receipt-link-button"
-            onClick={handleDownloadReceipt}
+            
             disabled={downloadingReceipt}
           >
             {downloadingReceipt ? 'Downloading...' : 'Download Receipt'}
