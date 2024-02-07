@@ -32,8 +32,15 @@
     
       }
   
-  
+
 @media (max-width: 768px) {
+  .header-btn-donate{
+    
+    
+    width: 100%;
+    font-size: 1.2rem;
+    
+      }
   .comm-header-logo{
     width: 15vw;
   }
@@ -42,16 +49,16 @@
   }
 
   .navbar-toggler-icon {
-    font-size: 1rem; 
+    font-size: 1rem;
   }
 
   .navbar-toggler.collapsed {
-    font-size: 24px; 
+    font-size: 24px;
   }
 
   .navbar-toggler-icon:focus,
   .navbar-toggler-icon:active {
-    outline: none;
+    outline: none; 
   }
 
   .navbar-nav .nav-link {
