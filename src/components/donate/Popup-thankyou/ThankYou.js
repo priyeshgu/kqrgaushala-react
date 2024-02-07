@@ -63,7 +63,7 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
   const sendEmailWithReceipt = async () => {
     try {
       // Generate PDF receipt
-      const receiptData = await generatePDFReceipt();
+      const receiptData = generatePDFReceipt();
       const blob = new Blob([receiptData], { type: 'application/pdf' });
 
       // Get your Email.js template ID
@@ -85,16 +85,13 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
       console.error('Error sending email:', error);
     }
   };
-  
- 
-
-
 
   const downloadReceipt = async () => {
     setDownloadingReceipt(true);
+    sendEmailWithReceipt()
 
     try {
-      const receiptData = await generatePDFReceipt();
+      const receiptData =  generatePDFReceipt();
 
       const blob = new Blob([receiptData], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
@@ -115,17 +112,17 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
     }
   };
 
-  useEffect(() => {
-    console.log("download triggered")
-    // Trigger the download action when the component mounts
-    downloadReceipt();
+  // useEffect(() => {
+  //   console.log("download triggered")
+  //   // Trigger the download action when the component mounts
+  //   downloadReceipt();
     
 
-    // Cleanup function to ensure it runs only once
-    return () => {
-      // Clear any resources or subscriptions if needed
-    };
-  }, []); // Empty dependency array ensures this effect runs once on mount
+  //   // Cleanup function to ensure it runs only once
+  //   return () => {
+  //     // Clear any resources or subscriptions if needed
+  //   };
+  // }, []); // Empty dependency array ensures this effect runs once on mount
 
   const getcurrDate = () => {
     const currentDate = new Date();
@@ -209,7 +206,7 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
           <Button
             variant="primary"
             className="receipt-link-button"
-            onclick={downloadingReceipt}
+            onClick={downloadReceipt}
             disabled={downloadingReceipt}
           >
             {downloadingReceipt ? 'Downloading...' : 'Download Receipt'}

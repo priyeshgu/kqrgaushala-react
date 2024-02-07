@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import "./Popup.css";
+import emailjs from 'emailjs-com';
+
 
 const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
   const generateReceiptId = () => {
@@ -19,6 +21,37 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
     order_id:generateReceiptId()
 
   });
+  const sendEmail = async () => {
+    const apiKey = 'BADE927C10F9EBCE766F2FDE4D5B7893B6027EAB9D4A8FEEC266800082599EF89AFAC90E325447F4763A43CCEDC7FA52'; // Your Elastic Email API key
+    const fromEmail = 'ayushagarwal2705@gmail.com'; // Sender's email address
+    const subject = '[Bug Report]'; // Email subject
+    const notifyEmail = 'varew88682@seosnaps.com'; // Recipient's email address
+    const bugDetails = '<p>Bug details here</p>'; // HTML content of the email body
+  
+    try {
+      const response = await fetch('https://api.elasticemail.com/v2/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          apikey: apiKey,
+          from: fromEmail,
+          subject: subject,
+          to: notifyEmail,
+          bodyHtml: bugDetails,
+          isTransactional: false,
+        }),
+      });
+  
+      const data = await response.json();
+      console.log(data); // Log the response from Elastic Email API
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
+  };
+  // sendEmail();  
 
   useEffect(() => {
     if (donationInfo) {

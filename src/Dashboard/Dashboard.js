@@ -175,8 +175,8 @@ const DonationContent = ({ handleLogout }) => {
   const handleDownloadPDF = () => {
     const doc = new jsPDF();
 
-    // Define columns for the table
     const columns = [
+      'Sl.No',
       'Name',
       'Phone Number',
       'Email',
@@ -190,8 +190,8 @@ const DonationContent = ({ handleLogout }) => {
       'Order Id',
     ];
 
-    // Convert donators data into an array of arrays
-    const rows = donators.map((donator) => [
+    const rows = donators.map((donator, index) => [
+      index + 1,
       donator.name,
       donator.phone_num,
       donator.email,
@@ -205,14 +205,31 @@ const DonationContent = ({ handleLogout }) => {
       donator.order_id,
     ]);
 
-    // Set column widths and row heights
-    const columnWidths = [40, 30, 40, 50, 40, 20, 25, 20, 35, 35, 35];
-    const rowHeight = 10;
+    doc.autoTable({
+      head: [columns],
+      body: rows,
+      startY: 10,
+      theme: 'grid',
+      styles: {
+        fontSize: 5, // Decrease font size
+        overflow: 'linebreak',
+      },
+      columnStyles: {
+        0: { cellWidth: 10 }, // Adjust column widths as needed
+        1: { cellWidth: 15 },
+        2: { cellWidth: 15 },
+        3: { cellWidth: 15 },
+        4: { cellWidth: 25 },
+        5: { cellWidth: 15 },
+        6: { cellWidth: 15 },
+        7: { cellWidth: 10 },
+        8: { cellWidth: 10 },
+        9: { cellWidth: 15 },
+        10: { cellWidth: 15 },
+        11: { cellWidth: 15 },
+      },
+    });
 
-    // Add the table to the PDF document
-    doc.autoTable({ startY: 20, head: [columns], body: rows, columnStyles: { 0: { cellWidth: 40 } } });
-
-    // Save the PDF file
     doc.save('donators_list.pdf');
   };
 

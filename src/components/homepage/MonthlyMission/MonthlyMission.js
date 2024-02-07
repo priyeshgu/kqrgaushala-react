@@ -81,7 +81,7 @@ const MonthlyMission = () => {
       {/* Subscribe Button */}
       <div className="text-center mt-3">
         <button className="monthly-mission-sub-btn btn btn-success btn-subscribe " onClick={handleSubscribe}
-          disabled={selectedAmount === null}>SUBSCRIBE</button>
+          disabled={selectedAmount === null}>Donate Now</button>
       </div>
       {/* {showPopup.show && <Popup onClose={() => setShowPopup({ ...showPopup, show: false })} donationInfo={showPopup} />} */}
       {showPopup && <Popup onShowThankYou={handleShowThankYou} donationInfo={showPopup} onClose={closePopup} />}
