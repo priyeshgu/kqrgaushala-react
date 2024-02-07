@@ -1,9 +1,18 @@
 
+.footer-links{
+  
+  text-decoration: none;
+  color: #000;
+}
+.footer-links :hover{
+  text-decoration: underline;
+  color: #28a745;
+}
 
 .footer-section {
     background-color: #f8f9fa;
     padding: 20px 0;
-    text-align: center;
+   
     border-radius: 10px;
     margin-bottom: 1rem;
   }
@@ -20,16 +29,26 @@
   .footer-map{
     
     border-radius: 15px;
+    width: 65vw;
   }
 .footer-map-div iframe{
 border: none;
 }
+.member-card{
+  margin-bottom: 5rem;
+}
 
 
   @media screen and (max-width:480px) {
+    .footer-items-row{
+      text-align: center;
+    }
+    .footer-map-div{
+      text-align: center;
+    }
     .footer-map{
       width: 90vw !important;
-      height: 25vh;
+      height: 35vh;
       border: none;
     }
   }

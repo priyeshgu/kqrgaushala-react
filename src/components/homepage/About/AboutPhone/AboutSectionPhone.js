@@ -1,10 +1,10 @@
 // src/components/AboutSection/AboutSection.js
 import React from "react";
-import "./About.css";
-import aboutImg from "../../../assets/about-img.jpg";
+import "./AboutPhone.css";
+import aboutImg from "../../../../assets/about-img.jpg";
 
 
-const AboutSection = () => {
+const AboutSectionPhone = () => {
   
 
   return (
@@ -31,18 +31,9 @@ const AboutSection = () => {
             journey began with a vision to provide compassionate care to
             abandoned and distressed cows. Over the decades, we have evolved
             into a haven where tradition meets modernity, ensuring the
-            well-being of our sacred residents. With a legacy rooted in love and
-            respect for all bovine life, we strive to uphold the principles of
-            Gau Seva, fostering a sustainable and harmonious environment.
-            Join us in preserving this legacy and supporting our mission to
-            safeguard the divine creatures who have graced our sanctuary for
-            generations. Your generous contribution empowers us to continue this
-            noble legacy. Stand with us in our commitment to the welfare of
-            these sacred beings. Donate now and become a cherished part of our
-            journey, ensuring a brighter and compassionate future for our
-            beloved cows.
+            well-being of our sacred residents. <a href="/about">Read More</a>
           </p>
-
+          
 
 
         </div>
@@ -52,4 +43,4 @@ const AboutSection = () => {
   );
 };
 
-export default AboutSection;
+export default AboutSectionPhone;

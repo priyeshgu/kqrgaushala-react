@@ -5,6 +5,7 @@ import jsPDF from 'jspdf';
 import logo from '../../../assets/logo.png'
 import certYearly from '../../../assets/cert.png'
 import certLifetime from '../../../assets/cert2.png'
+import emailjs from 'emailjs-com';
 
 const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscriptionType }) => {
   const [downloadingReceipt, setDownloadingReceipt] = useState(false);
@@ -58,6 +59,37 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
     return doc.output('blob'); // Output as a blob for download
   };
 
+
+  const sendEmailWithReceipt = async () => {
+    try {
+      // Generate PDF receipt
+      const receiptData = await generatePDFReceipt();
+      const blob = new Blob([receiptData], { type: 'application/pdf' });
+
+      // Get your Email.js template ID
+      const templateId = 'your_template_id_here';  // Replace with your actual template ID
+
+      // Prepare template parameters
+      const templateParams = {
+        to_email: formData.email,
+        from_name: 'Gaushala Test',
+        message_html: 'Custom message or leave empty',  
+      };
+
+      // Send email using Email.js
+      await emailjs.send('service_ygb2faq', 'template_y3he6nd', templateParams,'k-BFWBt3NnPn2negr');
+
+      console.log('Email sent successfully!');
+      console.log('sent to :' ,formData.email)
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
+  };
+  
+ 
+
+
+
   const downloadReceipt = async () => {
     setDownloadingReceipt(true);
 
@@ -87,6 +119,7 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
     console.log("download triggered")
     // Trigger the download action when the component mounts
     downloadReceipt();
+    
 
     // Cleanup function to ensure it runs only once
     return () => {

@@ -11,12 +11,13 @@ export default function Contact() {
         
 
         <div className="contact-details d-flex flex-row flex-wrap justify-content-center mb-3">
-          <div className="mx-3 contact-card col-md-3 col-12 d-flex flex-column align-items-center ">
+          <div className="mx-3 contact-card col-md-4 col-12 d-flex flex-column align-items-center ">
             <img
               className="contact-logo"
               src={locationIcon}
               alt="location-icon"
             ></img>
+            <h1>Address</h1>
             <a
               className="contact-link"
               href="https://maps.app.goo.gl/NSULHZfxoQo7hv7n6"
@@ -26,12 +27,13 @@ export default function Contact() {
               <p className="contact-link-desc">Shree Koderma Gaushala, Jhumri Telaiya, Jharkhand 825409</p>
             </a>
           </div>
-          <div className="mx-3 contact-card col-md-3 col-12 d-flex flex-column align-items-center ">
+          <div className="mx-3 contact-card col-md-4 col-12 d-flex flex-column align-items-center ">
             <img
               className="contact-logo"
               src={mailIcon}
               alt="location-icon"
             ></img>
+             <h1>Email Us</h1>
             <a
               className="contact-link"
               href="https://maps.app.goo.gl/NSULHZfxoQo7hv7n6"

@@ -1,9 +1,11 @@
 import React from "react";
+import  { useState, useEffect } from 'react';
 import './Landing.css'
 import Hero from "../../components/homepage/Hero/Hero";
 import Donation from "../../components/homepage/Donation/Donation";
 import Glance from "../../components/homepage/Glance/Glance";
 import AboutSection from "../../components/homepage/About/About";
+import AboutSectionPhone from "../../components/homepage/About/AboutPhone/AboutSectionPhone";
 import MonthlyMission from "../../components/homepage/MonthlyMission/MonthlyMission";
 import GenerositySection from "../../components/homepage/GenerositySection/GenerositySection";
 import NewsletterSection from "../../components/homepage/NewsletterSection/NewsletterSection";
@@ -24,6 +26,19 @@ import glance6 from '../../assets/glance/glance6.svg'
 
 
 export default function Landing() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
 
   const glanceTiles = [
@@ -126,7 +141,7 @@ export default function Landing() {
         </div>
       </div>
 
-      <AboutSection />
+      {isMobile ? <AboutSectionPhone /> : <AboutSection />}
       <MonthlyMission />
       <GenerositySection />
       <Membership />

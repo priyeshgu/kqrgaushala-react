@@ -3,7 +3,7 @@ import "./Statements.css";
 
 export default function Statements() {
   return (
-    <div className="container">
+    <div className="col-md-11">
       <h3 className="statement-heading">Mission</h3>
       <p className="statement-contents">
         Mission Statement: "At Shree Koderma Gaushala, we are dedicated to the
@@ -28,6 +28,18 @@ export default function Statements() {
         vision is to create a world where every cow is revered, every farmer is
         empowered, and every individual is connected to the inherent grace of
         the divine through our commitment to cow welfare and sustainable living.
+      </p>
+      <h3 className="statement-heading">The Genesis of Our Online Presence</h3>
+      <p className="statement-contents">
+        Avinash Seth, the dedicated Treasurer of Shree Koderma Gaushala Samity
+        and Director of Grizzly Vidyalaya, envisioned the integration of
+        technology to propel our gaushala into the digital age. His foresight
+        led to the creation and successful execution of the gaushala's website,
+        providing a seamless platform for accepting donations. This
+        technological leap ensures that contributing to the welfare of our cows
+        is just a click away. We are immensely grateful for his commitment to
+        the cause and innovative approach in making a positive impact on the
+        lives of our beloved cows.
       </p>
     </div>
   );
