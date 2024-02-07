@@ -1,180 +1,197 @@
+.hero-section {
+  text-align: center;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+}
+
+.hero-section-mobile {
+  display: none;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1;
+}
+
+.video-container {
+
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+}
+
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-navbar {
+  position: absolute;
+  top: 0;
+ 
+
+  background-color: rgba(0, 0, 0, 0);
+
+  z-index: 1;
+}
+
+.navbar-logo {
+  width: 125px;
+}
+
+.navbar-nav.nav-links .nav-link {
+  color: white !important;
+  text-shadow: 2px 2px 4px #000000;
+  font-size: 1.9rem;
+}
+
+.navbar-nav.nav-links .nav-link:hover {
+  transition: 2ms;
+  background-color: #4CAF50;
+  border-radius: 15px;
+  text-shadow: no;
+  color: white;
+  transition: background-color 1s ease;
+}
+
+.hero-header-btn {
+  border-radius: 20px;
+  padding: 10px 40px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.hero-text {
+
+  margin-top: 8rem;
+}
+
+.hero-heading {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 3.75rem !important;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 5.1875rem;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.hero-subheading {
+  margin: 0;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem;
+  text-transform: capitalize;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.hero-subheading-lst {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem;
+  text-transform: capitalize;
+  text-shadow: 2px 2px 4px #000000;
+  margin-top: 1rem;
+}
+.hero-navbar{
+ z-index: 9999;
+}
+
+
+.btn-donate-hero {
+  font-size: 2rem;
+  padding: 0.4rem 2rem;
+  border-radius: 1rem;
+}
+
+
+@media screen and (max-width: 480px) {
+.nav-test{
+ 
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ text-align: center;
+ padding: 1rem 1rem ;
+ background-color: #B8E0CC;
+ border-radius: 15px;
+ height: 50vh;
+}
+.nav-test li{
+margin: 2vh 0vh ;
+} 
+
  .hero-section {
-   text-align: center;
-   display: flex !important;
-   flex-direction: column !important;
-   align-items: center !important;
-   justify-content: center !important;
+    display: none !important;
+  }
 
- }
+  .hero-section-mobile {
+    overflow-x: hidden;
+    display: block;
+  }
 
- .hero-section-mobile {
-   display: none;
- }
+  .navbar-logo {
+    width: 85px;
+  }
 
- .hero-text {
-   position: relative;
-   z-index: 1;
- }
+  .hero-text {
+    margin-top: 20vh;
+  }
 
- .video-container {
-
-   width: 100%;
-   height: 100vh;
-   overflow: hidden;
-
- }
-
- video {
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
- }
-
- .hero-navbar {
-   position: absolute;
-   top: 0;
-
-   background-color: rgba(0, 0, 0, 0);
+  .hero-heading {
    
-   z-index: 1;
- }
 
- .navbar-logo {
-   width: 125px;
- }
+    text-align: center;
+    line-height: 15vh;
+    font-size: 3.6rem !important;
+  }
 
- .navbar-nav.nav-links .nav-link {
-   color: white !important;
-   text-shadow: 2px 2px 4px #000000;
-   font-size: 1.9rem;
- }
+  .btn-donate-hero-div-m {
+    text-align: center;
+  }
 
- .navbar-nav.nav-links .nav-link:hover {
-   transition: 2ms;
-   background-color: #4CAF50;
-   
-   border-radius: 15px;
-   text-shadow: no;
-   color: white;
-   transition: background-color 1s ease;
- }
+  .btn-donate-hero {
+   margin-top: 5vh;
 
- .hero-header-btn {
-   border-radius: 20px;
-   padding: 10px 40px;
-   font-size: 1.5rem;
-   text-transform: uppercase;
- }
-
- .hero-text {
-
-   margin-top: 8rem;
- }
-
- .hero-heading {
-   color: #fff;
-   font-family: Roboto;
-   font-size: 3.75rem !important;
-   font-style: normal;
-   font-weight: 700;
-   line-height: 5.1875rem;
-   text-transform: uppercase;
-   text-shadow: 2px 2px 4px #000000;
- }
-
- .hero-subheading {
-   margin: 0;
-   color: #fff;
-   font-family: Roboto;
-   font-size: 1.2rem;
-   font-style: normal;
-   font-weight: 400;
-   line-height: 2rem;
-   text-transform: capitalize;
-   text-shadow: 2px 2px 4px #000000;
- }
-
- .hero-subheading-lst {
-   color: #fff;
-   font-family: Roboto;
-   font-size: 1.2rem;
-   font-style: normal;
-   font-weight: 400;
-   line-height: 2rem;
-   text-transform: capitalize;
-   text-shadow: 2px 2px 4px #000000;
-   margin-top: 1rem;
- }
-
- .btn-donate-hero {
-   font-size: 2rem;
-   padding: 0.4rem 2rem;
-   border-radius: 1rem;
- }
-
- @media screen and (max-width: 480px) {
-
- 
-   .hero-section {
+    font-size: 1.5rem;
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
+  }
+  .btn-donate-hero{
+   box-shadow: 1px 1px 3px #fff;
+  }
 
 
-     display: none !important;
-   }
 
-   .hero-section-mobile {
-     overflow-x: hidden;
-     display: block;
-   }
+  .hero-subheading {
+    text-align: center;
+    font-size: 1rem
+  }
 
-   .navbar-logo {
-     width: 85px;
-   }
-
-   .hero-text {
-     margin-top: 20vh;
-   }
-
-   .hero-heading {
-    
-
-     text-align: center;
-     line-height: 15vh;
-     font-size: 3.6rem !important;
-   }
-
-   .btn-donate-hero-div-m {
-     text-align: center;
-   }
-
-   .btn-donate-hero {
-    margin-top: 5vh;
-
-     font-size: 1.5rem;
-     padding: 0.4rem 1rem;
-     border-radius: 1rem;
-   }
-   .btn-donate-hero{
-    box-shadow: 1px 1px 3px #fff;
-   }
-
- 
-
-   .hero-subheading {
-     text-align: center;
-     font-size: 1rem
-   }
-
-   .hero-subheading-lst {
-     text-align: center;
-     font-size: 1rem;
-   }
+  .hero-subheading-lst {
+    text-align: center;
+    font-size: 1rem;
+  }
 
 
-   .mobile-nav-btn {
-     background-color: white;
-     box-shadow: 1px 1px 2px black;
-   }
- }
+  .mobile-nav-btn {
+    background-color: white;
+    box-shadow: 1px 1px 2px black;
+  }
+}

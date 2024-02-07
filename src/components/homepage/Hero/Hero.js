@@ -14,7 +14,7 @@ const Hero = () => {
         <video autoPlay loop muted playsInline>
           <source src={bannervid} type="video/mp4" />
         </video>
-        <nav className="navbar navbar-expand-lg navbar-light hero-navbar col-11">
+        <nav className="navbar navbar-expand-lg navbar-light hero-navbar col-11 hero-navbar">
 
           <a className="navbar-brand me-auto" href="/">
             <img src={logo} alt='logo' className='navbar-logo' />
@@ -25,8 +25,8 @@ const Hero = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav mx-auto nav-links">
+          <div className="collapse navbar-collapse" id="navbarNav ">
+            <ul className="navbar-nav mx-auto nav-links ">
               <li className="nav-item ml-auto">
                 <a className="nav-link header-item" href="/">Home</a>
               </li>
@@ -71,20 +71,20 @@ const Hero = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav mx-auto nav-links">
-              <li className="nav-item ml-auto">
+          <div className="collapse navbar-collapse nav-test" id="navbarNav">
+            <ul className="navbar-nav mx-auto nav-links ">
+              <li className="nav-item">
                 <a className="nav-link header-item" href="/">Home</a>
               </li>
-              <li className="nav-item ml-auto">
+              <li className="nav-item ">
                 <a className="nav-link header-item" href="/about">About Us</a>
               </li>
-              <li className="nav-item ml-auto">
+              <li className="nav-item">
                 <a className="nav-link header-item" href="/contact">Contact Us</a>
               </li>
             </ul>
             <ul className="navbar-nav ">
-              <li className="nav-item ml-auto">
+              <li className="nav-item ">
                 <a href='/donate'><button className="btn btn-success hero-header-btn">Donate</button></a>
               </li>
             </ul>
