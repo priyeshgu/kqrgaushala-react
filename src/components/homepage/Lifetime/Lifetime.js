@@ -37,7 +37,7 @@ const Lifetime=()=> {
       </button>
       {/* {showPopup.show && <Popup onClose={() => setShowPopup({ ...showPopup, show: false })} donationInfo={showPopup} />} */}
       {showPopup && <Popup onShowThankYou={handleShowThankYou}  donationInfo={showPopup} onClose={closePopup} />}
-      {  showThankYou && <ThankYou showDownloadCertificateButton={true} onClose={() => setShowThankYou(false)} formData={thankYouData}/>}
+      {  showThankYou && <ThankYou showDownloadCertificateButton={true} onClose={() => setShowThankYou(false)} formData={thankYouData} subscriptionType={"lifetime"}/>}
     </div>
   );
 }

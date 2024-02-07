@@ -171,7 +171,7 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
       formData.name !== "" &&
       formData.address !== "" &&
       formData.email !== "" &&
-      formData.phone_num !== ""
+      formData.phone_num !== "" || true
     );
   };
 

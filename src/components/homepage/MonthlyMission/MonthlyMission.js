@@ -14,7 +14,7 @@ const MonthlyMission = () => {
   const handleAmountSelect = (amount) => {
     setSelectedAmount(amount);
   };
-  console.log(selectedAmount,17)
+  console.log(selectedAmount, 17)
   const handleSubscribe = () => {
     // Check if an amount is selected
     if (selectedAmount !== null) {
@@ -29,11 +29,11 @@ const MonthlyMission = () => {
       // Set the popup state with the additional data
       setShowPopup({ ...additionalData, show: true });
     }
-    else{
+    else {
       setSelectedAmount(null);
     }
   };
-  const handleShowThankYou = (show,formData) => {
+  const handleShowThankYou = (show, formData) => {
     setShowThankYou(show);
     setThankYouData(formData);
   };
@@ -62,18 +62,17 @@ const MonthlyMission = () => {
 
   return (
     <div ref={componentRef} className="monthly-mission container mt-5">
-      <h2 className='monthly-mission-heading'>Join Monthly Mission</h2>
-      <p className='monthly-mission-subheading'>Support our cause with a monthly contribution</p>
+      <h2 className='monthly-mission-heading'>Support our cause with a donation</h2>
+      <p className='monthly-mission-subheading'>Your donation will directly support and care for the well-being of the cows in our gaushala, providing them with essential care, nourishment, and a safe environment.</p>
 
       <div className="subscription-buttons">
         {subscriptionAmounts.map((amount, index) => (
           <button
-          key={index}
-          className={`monthly-mission-btn btn btn-primary mx-2 mb-2 ${
-            selectedAmount === amount ? 'selected' : ''
-          }`}
-          onClick={() => handleAmountSelect(amount)}
-        >
+            key={index}
+            className={`monthly-mission-btn btn btn-primary mx-2 mb-2 ${selectedAmount === amount ? 'selected' : ''
+              }`}
+            onClick={() => handleAmountSelect(amount)}
+          >
             ₹{amount}
           </button>
         ))}
@@ -85,8 +84,8 @@ const MonthlyMission = () => {
           disabled={selectedAmount === null}>SUBSCRIBE</button>
       </div>
       {/* {showPopup.show && <Popup onClose={() => setShowPopup({ ...showPopup, show: false })} donationInfo={showPopup} />} */}
-      {showPopup && <Popup onShowThankYou={handleShowThankYou}  donationInfo={showPopup} onClose={closePopup} />}
-      {  showThankYou && <ThankYou onClose={() => setShowThankYou(false)} formData={thankYouData} />}
+      {showPopup && <Popup onShowThankYou={handleShowThankYou} donationInfo={showPopup} onClose={closePopup} />}
+      {showThankYou && <ThankYou onClose={() => setShowThankYou(false)} formData={thankYouData} />}
     </div>
   );
 };
