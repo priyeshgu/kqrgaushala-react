@@ -3,6 +3,8 @@ import { Container, Table, Button, Modal, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import './Dashboard.css';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 const DonationContent = ({ handleLogout }) => {
   const [activeTab, setActiveTab] = useState('donationProducts');
@@ -153,6 +155,7 @@ const DonationContent = ({ handleLogout }) => {
           type: '',
           cost: '',
         });
+        window.location.reload();
       } else {
         console.error('Error adding product:', data.error);
       }
@@ -168,6 +171,49 @@ const DonationContent = ({ handleLogout }) => {
       newProduct.type.trim() !== '' &&
       newProduct.cost.trim() !== ''
     );
+  };
+  const handleDownloadPDF = () => {
+    const doc = new jsPDF();
+
+    // Define columns for the table
+    const columns = [
+      'Name',
+      'Phone Number',
+      'Email',
+      'Address',
+      'Product',
+      'Type',
+      'Amount',
+      'Units',
+      'Pan Number',
+      'Date Time',
+      'Order Id',
+    ];
+
+    // Convert donators data into an array of arrays
+    const rows = donators.map((donator) => [
+      donator.name,
+      donator.phone_num,
+      donator.email,
+      donator.address,
+      donator.product,
+      donator.type,
+      donator.amount,
+      donator.units,
+      donator.pan_number,
+      donator.datetime,
+      donator.order_id,
+    ]);
+
+    // Set column widths and row heights
+    const columnWidths = [40, 30, 40, 50, 40, 20, 25, 20, 35, 35, 35];
+    const rowHeight = 10;
+
+    // Add the table to the PDF document
+    doc.autoTable({ startY: 20, head: [columns], body: rows, columnStyles: { 0: { cellWidth: 40 } } });
+
+    // Save the PDF file
+    doc.save('donators_list.pdf');
   };
 
   return (
@@ -396,12 +442,13 @@ const DonationContent = ({ handleLogout }) => {
             <div className='text-center'>
               <div className='d-flex flex-row justify-content-center don-list-th'>
                 <h3>Donators List</h3>
-                <Button variant="primary" className="mb-2 ml-2 download-btn" onClick={handleShowAddModal}>
-                  <FontAwesomeIcon className="dowload-btn" icon={faDownload} />
-                </Button>
+                {/* PDF Download Button */}
+            <Button variant="primary" className="mb-2 ml-2 download-btn" onClick={handleDownloadPDF}>
+              <FontAwesomeIcon icon={faDownload} /> Download PDF
+            </Button>
               </div>
               {/* Render Donators List */}
-              <Table striped bordered hover className='donator-lst-table'>
+              <Table striped bordered hover className='donator-lst-table' id="donatorsTable">
                 <thead>
                   <tr>
                     <th>Serial Number</th>

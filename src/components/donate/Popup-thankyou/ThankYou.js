@@ -3,8 +3,10 @@ import { Modal, Button } from 'react-bootstrap';
 import './Thankyou.css';
 import jsPDF from 'jspdf';
 import logo from '../../../assets/logo.png'
+import certYearly from '../../../assets/cert.png'
+import certLifetime from '../../../assets/cert2.png'
 
-const ThankYou = ({ onClose, formData,showDownloadCertificateButton}) => {
+const ThankYou = ({ onClose, formData,showDownloadCertificateButton,subscriptionType}) => {
   const [downloadingReceipt, setDownloadingReceipt] = useState(false);
   const [downloadingCertificate, setDownloadingCertificate] = useState(false);
 
@@ -89,13 +91,28 @@ const ThankYou = ({ onClose, formData,showDownloadCertificateButton}) => {
       // Clear any resources or subscriptions if needed
     };
   }, []); // Empty dependency array ensures this effect runs once on mount
+  const generateCert = () => {
+    const doc1 = new jsPDF({
+      unit: 'mm',
+      format: 'a4',
+      orientation: 'landscape',
+      height: 30,
+    });
+    const certificateImage = subscriptionType === 'lifetime' ? certLifetime : certYearly; 
+    doc1.addImage(certificateImage, 'PNG', 0, 0, doc1.internal.pageSize.getWidth(), doc1.internal.pageSize.getHeight());
+    doc1.setFontSize(30);
+    doc1.setFont('helvetica'); // Change the font family and style
+    doc1.text( `${formData.name}`, 150, 127, { align: 'center' });
+    return doc1.output('blob');
+
+  }
 
   const handleDownloadCertificate = async () => {
     setDownloadingCertificate(true);
 
     try {
       // Logic to generate or fetch the PDF receipt (replace with your implementation)
-      const receiptData = await generatePDFReceipt();
+      const receiptData = generateCert();
 
       const blob = new Blob([receiptData], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
@@ -134,7 +151,7 @@ const ThankYou = ({ onClose, formData,showDownloadCertificateButton}) => {
           <Button
             variant="primary"
             className="receipt-link-button"
-            
+            onclick={downloadingReceipt}
             disabled={downloadingReceipt}
           >
             {downloadingReceipt ? 'Downloading...' : 'Download Receipt'}
