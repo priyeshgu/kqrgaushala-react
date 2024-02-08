@@ -1,4 +1,4 @@
-const Policy = () =>{
+const PolicyPage = () =>{
 return(
     <>
     <div className="container">
@@ -84,4 +84,4 @@ return(
     </>
 );
 };
-export default Policy;
+export default PolicyPage;
