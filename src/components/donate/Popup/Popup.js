@@ -2,8 +2,6 @@ import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import "./Popup.css";
-import emailjs from 'emailjs-com';
-
 
 const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
   const generateReceiptId = () => {
@@ -17,41 +15,16 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
     email: "",
     phone_num: "",
     pan_number: "",
-    datetime : new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),    
-    order_id:generateReceiptId()
-
+    datetime: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+    order_id: generateReceiptId(),
   });
-  const sendEmail = async () => {
-    const apiKey = 'BADE927C10F9EBCE766F2FDE4D5B7893B6027EAB9D4A8FEEC266800082599EF89AFAC90E325447F4763A43CCEDC7FA52'; // Your Elastic Email API key
-    const fromEmail = 'ayushagarwal2705@gmail.com'; // Sender's email address
-    const subject = '[Bug Report]'; // Email subject
-    const notifyEmail = 'varew88682@seosnaps.com'; // Recipient's email address
-    const bugDetails = '<p>Bug details here</p>'; // HTML content of the email body
-  
-    try {
-      const response = await fetch('https://api.elasticemail.com/v2/email/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          apikey: apiKey,
-          from: fromEmail,
-          subject: subject,
-          to: notifyEmail,
-          bodyHtml: bugDetails,
-          isTransactional: false,
-        }),
-      });
-  
-      const data = await response.json();
-      console.log(data); // Log the response from Elastic Email API
-    } catch (error) {
-      console.error('Error sending email:', error);
-    }
-  };
-  // sendEmail();  
+
+  const [formValid, setFormValid] = useState(true);
+  const [validations, setValidations] = useState({
+    isValidEmail: true,
+    isValidPhoneNumber: true,
+    isValidPanNumber: true,
+  });
 
   useEffect(() => {
     if (donationInfo) {
@@ -64,8 +37,6 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
       }));
     }
   }, [donationInfo]);
-
-  const [formValid, setFormValid] = useState(true);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -94,10 +65,18 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
 
     // Validate email
     if (name === "email") {
-      // Allow any characters in the email field
+      // Simple email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const isValidEmail = emailRegex.test(value);
+
       setFormData({
         ...formData,
         [name]: value,
+      });
+
+      setValidations({
+        ...validations,
+        isValidEmail,
       });
       return;
     }
@@ -127,18 +106,16 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
       // Donation logic here
       console.log("Donation Details:", formData);
 
-    // Initiate Payment
-    initiatePayment(formData);
+      // Initiate Payment
+      initiatePayment(formData);
 
-    onClose();
-    // onShowThankYou(true, updatedFormData);
-  } else {
-    // Display error message
-    setFormValid(false);
-  }
-};
-
-  
+      onClose();
+      // onShowThankYou(true, updatedFormData);
+    } else {
+      // Display error message
+      setFormValid(false);
+    }
+  };
 
   const initiatePayment = async (requestData) => {
     try {
@@ -200,11 +177,22 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
 
   const validateForm = () => {
     // Check if all mandatory fields are filled
+    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
+    const isValidPhoneNumber = /^\d{10}$/.test(formData.phone_num);
+    const isValidPanNumber = /^[a-zA-Z0-9]{10}$/.test(formData.pan_number);
+
+    setValidations({
+      isValidEmail,
+      isValidPhoneNumber,
+      isValidPanNumber,
+    });
+
     return (
       formData.name !== "" &&
       formData.address !== "" &&
-      formData.email !== "" &&
-      formData.phone_num !== "" || true
+      isValidEmail &&
+      isValidPhoneNumber &&
+      (formData.pan_number === "" || isValidPanNumber)
     );
   };
 
@@ -265,6 +253,9 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
             onChange={handleChange}
             required
           />
+          {!formValid && !validations.isValidEmail && (
+            <div className="error-message">Please enter a valid email address.</div>
+          )}
         </div>
         <div className="popup-form-group">
           <label htmlFor="phoneNumber">
@@ -278,6 +269,9 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
             onChange={handleChange}
             required
           />
+          {!formValid && !validations.isValidPhoneNumber && (
+            <div className="error-message">Please enter a valid phone number.</div>
+          )}
         </div>
         <div className="popup-form-group">
           <label htmlFor="panCard">
@@ -290,6 +284,11 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
             value={formData.pan_number}
             onChange={handleChange}
           />
+          {!formValid && !validations.isValidPanNumber && (
+            <div className="error-message">
+              Please enter a valid PAN number (alphanumeric, exactly 10 characters).
+            </div>
+          )}
         </div>
       </Modal.Body>
       <Modal.Footer>
