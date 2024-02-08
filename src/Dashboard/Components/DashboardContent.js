@@ -12,7 +12,7 @@
 //   useEffect(() => {
 //     // Fetch donators data when the "Donators List" tab is selected
 //     if (activeTab === 'donatorsList') {
-//       fetch('http://192.168.1.96:3001/donators')
+//       fetch('http://13.235.67.241/donators')
 //         .then((response) => response.json())
 //         .then((data) => setDonators(data.data));
 //     }

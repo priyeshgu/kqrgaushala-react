@@ -16,7 +16,7 @@ const NewsletterSection = () => {
   const subscribe = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (email && emailRegex.test(email)) {
-      fetch('http://192.168.1.96:3001/emailentry', {
+      fetch('http://13.235.67.241/emailentry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
