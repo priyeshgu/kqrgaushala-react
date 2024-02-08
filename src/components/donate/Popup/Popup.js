@@ -119,7 +119,7 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
 
   const initiatePayment = async (requestData) => {
     try {
-      const response = await axios.post('http://13.235.67.241/create-order', {
+      const response = await axios.post('https://api.kqrgaushala.org/create-order', {
         amount: formData.amount,
         receiptId: requestData.receiptId,
         paymentDateTime: requestData.paymentDateTime,
@@ -141,7 +141,7 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
           console.log('Payment successful:', response);
           try {
             // Call your API here
-            const response = await fetch("http://13.235.67.241/donate", {
+            const response = await fetch("https://api.kqrgaushala.org/donate", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

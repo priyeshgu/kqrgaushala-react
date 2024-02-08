@@ -10,8 +10,8 @@ const Login = ({ onLogin }) => {
     e.preventDefault(); // Prevent the default form submission behavior
 
     // Hardcoded credentials for demonstration
-    const hardcodedUsername = 'user';
-    const hardcodedPassword = 'password';
+    const hardcodedUsername = 'gaushalaadmin';
+    const hardcodedPassword = 'gaushala@kqr501';
 
     if (username === hardcodedUsername && password === hardcodedPassword) {
       onLogin(); // Call the parent component's login function

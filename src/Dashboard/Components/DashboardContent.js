@@ -12,7 +12,7 @@
 //   useEffect(() => {
 //     // Fetch donators data when the "Donators List" tab is selected
 //     if (activeTab === 'donatorsList') {
-//       fetch('http://13.235.67.241/donators')
+//       fetch('https://api.kqrgaushala.org/donators')
 //         .then((response) => response.json())
 //         .then((data) => setDonators(data.data));
 //     }

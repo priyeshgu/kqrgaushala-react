@@ -37,13 +37,13 @@ const DonationContent = ({ handleLogout }) => {
   useEffect(() => {
     // Fetch products data from the API
     // Replace the API URL with your actual endpoint
-    fetch('http://13.235.67.241/donationCategories?type=products')
+    fetch('https://api.kqrgaushala.org/donationCategories?type=products')
       .then((response) => response.json())
       .then((data) => setProducts(data.return_result));
 
     // Fetch donators data from the API when the component mounts
     // This can be triggered based on the user's action, like clicking a button
-    fetch('http://13.235.67.241/donators')
+    fetch('https://api.kqrgaushala.org/donators')
       .then((response) => response.json())
       .then((data) => setDonators(data.data));
   }, []);
@@ -53,14 +53,14 @@ const DonationContent = ({ handleLogout }) => {
 
     // Fetch products data when the "Donation Products" tab is selected
     if (tab === 'donationProducts') {
-      fetch('http://13.235.67.241/donationCategories?type=products')
+      fetch('https://api.kqrgaushala.org/donationCategories?type=products')
         .then((response) => response.json())
         .then((data) => setProducts(data.return_result));
     }
 
     // Fetch donators data when the "Donators List" tab is selected
     if (tab === 'donatorsList') {
-      fetch('http://13.235.67.241/donators')
+      fetch('https://api.kqrgaushala.org/donators')
         .then((response) => response.json())
         .then((data) => setDonators(data.data));
     }
@@ -72,7 +72,7 @@ const DonationContent = ({ handleLogout }) => {
 
   const handleSaveClick = async (updatedProduct) => {
     try {
-      const response = await fetch('http://13.235.67.241/updateProduct', {
+      const response = await fetch('https://api.kqrgaushala.org/updateProduct', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ const DonationContent = ({ handleLogout }) => {
     if (confirmDelete) {
       // Implement the logic to delete the product from the backend
       try {
-        fetch('http://13.235.67.241/deleteProduct', {
+        fetch('https://api.kqrgaushala.org/deleteProduct', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -135,7 +135,7 @@ const DonationContent = ({ handleLogout }) => {
 
   const handleAddProduct = async () => {
     try {
-      const response = await fetch('http://13.235.67.241/addProduct', {
+      const response = await fetch('https://api.kqrgaushala.org/addProduct', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
