@@ -2,9 +2,12 @@ import React from 'react';
 import Homepage from './pages/Landing/Landing';
 import Aboutpage from './pages/Aboutpage/About';
 import Contactpage from './pages/Contactpage/Contactpage';
-import PolicyPage from './pages/Policypage/Policypage';
 import Donatepage from './pages/Donate/Donate';
 import DashboardRoutes from './Dashboard/DashboardRoutes';
+import TermsPage from './pages/PolicyPages/TermsPage';
+import RefundsPage from './pages/PolicyPages/RefundsPage';
+import PrivacyPage from './pages/PolicyPages/PrivacyPage';
+
 
 import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
 
@@ -23,7 +26,9 @@ const AppRoutes = () => {
         <Route path="/about" component={Aboutpage} />
         <Route path="/contact" component={Contactpage} />
         <Route path="/donate" component={Donatepage} />
-        <Route path="/policy" component={PolicyPage} />
+        <Route path="/terms" component={TermsPage} />
+        <Route path="/refund" component={RefundsPage} />
+        <Route path="/privacy" component={PrivacyPage} />
         <DashboardRoutes />
       </Switch>
       <Footer />
