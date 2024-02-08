@@ -14,7 +14,6 @@ const MonthlyMission = () => {
   const handleAmountSelect = (amount) => {
     setSelectedAmount(amount);
   };
-  console.log(selectedAmount, 17)
   const handleSubscribe = () => {
     // Check if an amount is selected
     if (selectedAmount !== null) {

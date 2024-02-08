@@ -105,7 +105,7 @@ const DonationProduct = ({ product, category }) => {
               </button>
             </div>
           </div>
-          <div className="donate-btn-sec col-4 ">
+          <div className="donate-btn-sec">
             <button className="btn donate-button" onClick={handleDonateNow}>
               Donate Now
             </button>

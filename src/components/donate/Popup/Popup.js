@@ -104,7 +104,6 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
 
     if (isValid) {
       // Donation logic here
-      console.log("Donation Details:", formData);
 
       // Initiate Payment
       initiatePayment(formData);
@@ -138,7 +137,7 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
         image: '/static/media/logo.9e32bea34c96b422baca.png',
         handler: async function (response) {
           // Handle successful payment
-          console.log('Payment successful:', response);
+         
           try {
             // Call your API here
             const response = await fetch("https://api.kqrgaushala.org/donate", {
@@ -152,9 +151,9 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
             // Check if the request was successful
             if (response.ok) {
               // Handle successful API response
-              console.log("Donation successful!");
-              const orderId = order.id;
-              console.log(orderId, 141);
+             
+             
+             
               // onClose();
               onShowThankYou(true, requestData);
             } else {

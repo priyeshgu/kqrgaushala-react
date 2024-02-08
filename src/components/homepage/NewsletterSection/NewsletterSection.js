@@ -25,7 +25,6 @@ const NewsletterSection = () => {
       })
         .then(response => response.json())
         .then(data => {
-          console.log('API response:', data);
           // Assume the API returns some information indicating success
           setSubscriptionStatus('success');
         })

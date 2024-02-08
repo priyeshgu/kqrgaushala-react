@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import './Thankyou.css';
 import jsPDF from 'jspdf';
@@ -63,11 +63,11 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
   const sendEmailWithReceipt = async () => {
     try {
       // Generate PDF receipt
-      const receiptData = generatePDFReceipt();
-      const blob = new Blob([receiptData], { type: 'application/pdf' });
+      // const receiptData = generatePDFReceipt();
+      // const blob = new Blob([receiptData], { type: 'application/pdf' });
 
       // Get your Email.js template ID
-      const templateId = 'your_template_id_here';  // Replace with your actual template ID
+      // const templateId = 'your_template_id_here';  // Replace with your actual template ID
 
       // Prepare template parameters
       const templateParams = {
@@ -79,8 +79,7 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
       // Send email using Email.js
       await emailjs.send('service_ygb2faq', 'template_y3he6nd', templateParams,'k-BFWBt3NnPn2negr');
 
-      console.log('Email sent successfully!');
-      console.log('sent to :' ,formData.email)
+     
     } catch (error) {
       console.error('Error sending email:', error);
     }
@@ -112,17 +111,7 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
     }
   };
 
-  // useEffect(() => {
-  //   console.log("download triggered")
-  //   // Trigger the download action when the component mounts
-  //   downloadReceipt();
-    
-
-  //   // Cleanup function to ensure it runs only once
-  //   return () => {
-  //     // Clear any resources or subscriptions if needed
-  //   };
-  // }, []); // Empty dependency array ensures this effect runs once on mount
+  
 
   const getcurrDate = () => {
     const currentDate = new Date();
