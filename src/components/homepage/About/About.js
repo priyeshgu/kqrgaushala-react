@@ -9,22 +9,22 @@ const AboutSection = () => {
 
   return (
     <div className="about-section mt-5">
-      <div className="row">
+      <div className="">
         <div className="col-12 text-center mb-3 ">
           <h2 className="about-heading">ABOUT SHREE KODERMA GAUSHALA</h2>
         </div>
         {/* Left Part with Image */}
-        <div className="col-md-6">
+        <div className="col-md-12 text-center">
           <img
             src={aboutImg}
             alt="Gaushala"
-            className="img-fluid about-img"
+            className="img-fluid about-img col-8"
           />
         </div>
 
         {/* Right Part with Text */}
-        <div className="col-md-6">
-          <p className="about-text">
+        <div className="col-12 text-center">
+          <p className="about-text col-12">
             Founded in 1950, Koderma Gaushala is a venerable sanctuary committed
             to the welfare of cows, embodying the timeless ethos of reverence
             towards these gentle beings. Nestled in the heart of Koderma District, our

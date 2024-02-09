@@ -23,8 +23,8 @@ const DonationCategory = ({ category }) => {
     setThankYouData(formData);
   };
   const handleDonateNowClick = () => {
-    if (customAmount === '' || parseInt(customAmount) === 0) {
-      setErrorMessage('Please enter an amount greater than 0');
+    if (customAmount === '' || parseInt(customAmount) < 51) {
+      setErrorMessage('Please enter an amount greater than Rs 51');
     } else {
       // Perform your donation logic here
       // For now, you can clear the error message
