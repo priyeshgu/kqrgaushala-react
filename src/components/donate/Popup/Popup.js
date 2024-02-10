@@ -124,11 +124,11 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
         paymentDateTime: requestData.paymentDateTime,
       });
 
-      const { order } = response.data;
+      const { order, razorpayKey } = response.data;
 
       // Use the order ID to initiate payment on the frontend
       const options = {
-        key: 'rzp_test_fXybBXnLaZHeXO',
+        key:  razorpayKey,
         amount: order.amount,
         currency: order.currency,
         order_id: order.id,
