@@ -15,7 +15,7 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
     email: "",
     phone_num: "",
     pan_number: "",
-    datetime: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+    datetime:  new Date().toUTCString(),
     order_id: generateReceiptId(),
   });
 

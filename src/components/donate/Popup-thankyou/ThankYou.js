@@ -68,7 +68,7 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
       await axios.post('https://api.kqrgaushala.org/send-email', {
         to: email,
         subject : sub,
-        text: "message",
+        text: 'Thank you for your support ,\n\nPlease find your donation reciept and certificate(if any) attached with this email.\n\nBest regards\n\ Shree Koderma Gaushala Samity .',
         filename:filename,
         pdf: blob
       }, {
