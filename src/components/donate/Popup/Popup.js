@@ -242,7 +242,7 @@ const Popup = ({ onClose, donationInfo, onShowThankYou }) => {
         </div>
         <div className="popup-form-group">
           <label htmlFor="email">
-            Email<span>*</span>
+            Email (Mandatory for recieving donation reciepts/certificate)<span>*</span>
           </label>
           <input
             type="text"

@@ -65,7 +65,7 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
   const recieptblob = new Blob([receiptData], { type: 'application/pdf' });
   const sendEmail = async (email,sub,filename,blob) => {
     try {
-      await axios.post('http://127.0.0.1:3001/send-email', {
+      await axios.post('https://api.kqrgaushala.org', {
         to: email,
         subject : sub,
         text: "message",
@@ -75,10 +75,8 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
         headers: {
           'Content-Type': 'multipart/form-data'
         }});
-      alert('Email sent successfully');
     } catch (error) {
       console.error('Error sending email:', error);
-      alert('Failed to send email');
     }
   };
   
@@ -147,7 +145,7 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
   }
   const certificateData = generateCert();
 
-      const certblob = new Blob([certificateData], { type: 'application/pdf' });
+  const certblob = new Blob([certificateData], { type: 'application/pdf' });
   const handleDownloadCertificate = async () => {
     setDownloadingCertificate(true);
 
@@ -172,8 +170,6 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
     }
   };
   const certificateCondition=()=>{
-    console.log(showDownloadCertificateButton,174)
-    console.log(downloadingCertificate,175)
     
     if (showDownloadCertificateButton){
       sendEmail(formData.email,'Membership Certificate from Sri Koderma Gaushala Samity','certificate.pdf',certblob)
@@ -205,6 +201,7 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
             {downloadingReceipt ? 'Downloading...' : 'Download Receipt'}
           </Button>
         </p>
+        <p>The reciept and other documents(if any) will be sent to your email shortly</p>
         {showDownloadCertificateButton && (
           <p className="certificate-link">
             Click here to download your certificate:
