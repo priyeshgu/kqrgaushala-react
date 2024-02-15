@@ -5,7 +5,8 @@ import jsPDF from 'jspdf';
 import logo from '../../../assets/logo.png'
 import certYearly from '../../../assets/cert.png'
 import certLifetime from '../../../assets/cert2.png'
-import emailjs from 'emailjs-com';
+import axios from 'axios';
+
 
 const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscriptionType }) => {
   const [downloadingReceipt, setDownloadingReceipt] = useState(false);
@@ -59,41 +60,34 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
     return doc.output('blob'); // Output as a blob for download
   };
 
+  const receiptData =  generatePDFReceipt();
 
-  const sendEmailWithReceipt = async () => {
+  const recieptblob = new Blob([receiptData], { type: 'application/pdf' });
+  const sendEmail = async (email,sub,filename,blob) => {
     try {
-      // Generate PDF receipt
-      // const receiptData = generatePDFReceipt();
-      // const blob = new Blob([receiptData], { type: 'application/pdf' });
-
-      // Get your Email.js template ID
-      // const templateId = 'your_template_id_here';  // Replace with your actual template ID
-
-      // Prepare template parameters
-      const templateParams = {
-        to_email: formData.email,
-        from_name: 'Gaushala Test',
-        message_html: 'Custom message or leave empty',  
-      };
-
-      // Send email using Email.js
-      await emailjs.send('service_ygb2faq', 'template_y3he6nd', templateParams,'k-BFWBt3NnPn2negr');
-
-     
+      await axios.post('http://127.0.0.1:3001/send-email', {
+        to: email,
+        subject : sub,
+        text: "message",
+        filename:filename,
+        pdf: blob
+      }, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }});
+      alert('Email sent successfully');
     } catch (error) {
       console.error('Error sending email:', error);
+      alert('Failed to send email');
     }
   };
-
+  
   const downloadReceipt = async () => {
     setDownloadingReceipt(true);
-    sendEmailWithReceipt()
 
     try {
-      const receiptData =  generatePDFReceipt();
-
-      const blob = new Blob([receiptData], { type: 'application/pdf' });
-      const url = URL.createObjectURL(blob);
+      
+      const url = URL.createObjectURL(recieptblob);
 
       const link = document.createElement('a');
       link.href = url;
@@ -104,6 +98,7 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
 
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
+      
     } catch (error) {
       console.error('Error downloading receipt:', error);
     } finally {
@@ -150,16 +145,16 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
     return doc1.output('blob');
 
   }
+  const certificateData = generateCert();
 
+      const certblob = new Blob([certificateData], { type: 'application/pdf' });
   const handleDownloadCertificate = async () => {
     setDownloadingCertificate(true);
 
     try {
       // Logic to generate or fetch the PDF receipt (replace with your implementation)
-      const receiptData = generateCert();
-
-      const blob = new Blob([receiptData], { type: 'application/pdf' });
-      const url = URL.createObjectURL(blob);
+      
+      const url = URL.createObjectURL(certblob);
 
       const link = document.createElement('a');
       link.href = url;
@@ -176,12 +171,21 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
       setDownloadingCertificate(false);
     }
   };
+  const certificateCondition=()=>{
+    console.log(showDownloadCertificateButton,174)
+    console.log(downloadingCertificate,175)
+    
+    if (showDownloadCertificateButton){
+      sendEmail(formData.email,'Membership Certificate from Sri Koderma Gaushala Samity','certificate.pdf',certblob)
+    }
+  }
+
 
   return (
-    <Modal show={true} onHide={onClose} className="thank-you-popup">
+    <Modal show={true}  className="thank-you-popup">
       <Modal.Header>
         <Modal.Title>Thank You For Your Donation</Modal.Title>
-        <Button variant="secondary" onClick={onClose}>
+        <Button variant="secondary" onClick={() => { onClose(); sendEmail(formData.email,'Donation Reciept from Sri Koderma Gaushala Samity','reciept.pdf',recieptblob);certificateCondition(); }}>
           <span aria-hidden="true">&times;</span>
         </Button>
       </Modal.Header>
@@ -217,9 +221,6 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
         )}
       </Modal.Body>
       <Modal.Footer className="thank-you-footer">
-        <Button variant="secondary" onClick={onClose}>
-          Close
-        </Button>
       </Modal.Footer>
     </Modal>
   );
