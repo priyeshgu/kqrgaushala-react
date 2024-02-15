@@ -61,14 +61,14 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
   };
 
   const receiptData =  generatePDFReceipt();
-
+  const message='Thank you for your support ,\n\nPlease find your donation reciept and certificate(if any) attached with this email.\n\nBest regards\n\ Shree Koderma Gaushala Samity .';
   const recieptblob = new Blob([receiptData], { type: 'application/pdf' });
-  const sendEmail = async (email,sub,filename,blob) => {
+  const sendEmail = async (email,sub,message,filename,blob) => {
     try {
       await axios.post('https://api.kqrgaushala.org/send-email', {
         to: email,
         subject : sub,
-        text: 'Thank you for your support ,\n\nPlease find your donation reciept and certificate(if any) attached with this email.\n\nBest regards\n\ Shree Koderma Gaushala Samity .',
+        message: message,
         filename:filename,
         pdf: blob
       }, {
@@ -172,7 +172,7 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
   const certificateCondition=()=>{
     
     if (showDownloadCertificateButton){
-      sendEmail(formData.email,'Membership Certificate from Sri Koderma Gaushala Samity','certificate.pdf',certblob)
+      sendEmail(formData.email,'Membership Certificate from Sri Koderma Gaushala Samity',message,'certificate.pdf',certblob)
     }
   }
 
@@ -181,7 +181,7 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
     <Modal show={true}  className="thank-you-popup">
       <Modal.Header>
         <Modal.Title>Thank You For Your Donation</Modal.Title>
-        <Button variant="secondary" onClick={() => { onClose(); sendEmail(formData.email,'Donation Reciept from Sri Koderma Gaushala Samity','reciept.pdf',recieptblob);certificateCondition(); }}>
+        <Button variant="secondary" onClick={() => { onClose(); sendEmail(formData.email,'Donation Reciept from Sri Koderma Gaushala Samity',message,'reciept.pdf',recieptblob);certificateCondition(); }}>
           <span aria-hidden="true">&times;</span>
         </Button>
       </Modal.Header>
