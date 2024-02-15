@@ -65,7 +65,7 @@ const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscripti
   const recieptblob = new Blob([receiptData], { type: 'application/pdf' });
   const sendEmail = async (email,sub,filename,blob) => {
     try {
-      await axios.post('https://api.kqrgaushala.org', {
+      await axios.post('https://api.kqrgaushala.org/send-email', {
         to: email,
         subject : sub,
         text: "message",
