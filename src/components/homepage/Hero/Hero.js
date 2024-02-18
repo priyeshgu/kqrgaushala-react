@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Hero.css'
 import bannervid from '../../../assets/banner.mp4'
 import bannervidM from '../../../assets/bannerM.mp4'
 import logo from '../../../assets/logo.png'
+import LanguageSelector from '../../../pages/LanguageSelector';
+import { translatePageContent, getLanguagePreference, saveTranslatedContent, getTranslatedContent } from '../../../pages/TranslateUtils'; // Import translation functions
+
+
 
 
 const Hero = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      const language = getLanguagePreference();
+      if (language === 'hi') {
+        const componentName = 'Hero';
+        const translatedContent = getTranslatedContent(componentName, language);
+        if (!translatedContent) {
+          const translatedText = await translatePageContent();
+          if(translatedText!==undefined){
+          saveTranslatedContent(componentName, language, translatedText);
+          }
+        }
+      }
+    };
+
+    fetchData();
+  }, []);
+  
   return (
     <>
 
@@ -40,6 +62,11 @@ const Hero = () => {
             <ul className="navbar-nav ">
               <li className="nav-item ml-auto">
                 <a href='/donate'><button className="btn btn-success hero-header-btn">Donate</button></a>
+              </li>
+            </ul>
+            <ul className="navbar-nav ">
+              <li className="nav-item ml-auto">
+                <LanguageSelector />
               </li>
             </ul>
           </div>

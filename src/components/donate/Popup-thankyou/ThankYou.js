@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import './Thankyou.css';
 import jsPDF from 'jspdf';
@@ -6,9 +6,28 @@ import logo from '../../../assets/logo.png'
 import certYearly from '../../../assets/cert.png'
 import certLifetime from '../../../assets/cert2.png'
 import axios from 'axios';
+import { translatePageContent, getLanguagePreference, saveTranslatedContent, getTranslatedContent } from './../..../../../../pages/TranslateUtils'; // Import translation functions
+
 
 
 const ThankYou = ({ onClose, formData, showDownloadCertificateButton, subscriptionType }) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      const language = getLanguagePreference();
+      if (language === 'hi') {
+        const componentName = 'Donate';
+        const translatedContent = getTranslatedContent(componentName, language);
+        if (!translatedContent) {
+          const translatedText = await translatePageContent();
+          if(translatedText!==undefined){
+          saveTranslatedContent(componentName, language, translatedText);
+          }
+        }
+      }
+    };
+  
+    fetchData();
+  }, []);
   const [downloadingReceipt, setDownloadingReceipt] = useState(false);
   const [downloadingCertificate, setDownloadingCertificate] = useState(false);
 
