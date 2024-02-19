@@ -3,7 +3,7 @@ import React from 'react';
 const RefundsPage = () => {
   return (
     <div className="text-center">
-      <h1>Refund Policy</h1>
+      <h2>Refund Policy</h2>
 
       <p>
         Thank you for choosing to donate to Shree Koderma Gaushala Samity. Your generosity is invaluable in supporting 

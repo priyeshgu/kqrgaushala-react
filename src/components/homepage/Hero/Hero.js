@@ -3,7 +3,7 @@ import './Hero.css'
 import bannervid from '../../../assets/banner.mp4'
 import bannervidM from '../../../assets/bannerM.mp4'
 import logo from '../../../assets/logo.png'
-import LanguageSelector from '../../../pages/LanguageSelector';
+import LanguageSelector from '../../../pages/LanguageSelector/LanguageSelector';
 import { translatePageContent, getLanguagePreference, saveTranslatedContent, getTranslatedContent } from '../../../pages/TranslateUtils'; // Import translation functions
 
 
@@ -58,6 +58,10 @@ const Hero = () => {
               <li className="nav-item ml-auto">
                 <a className="nav-link header-item" href="/contact">Contact Us</a>
               </li>
+              <li className="nav-item ml-auto ">
+                <div className=" header-item langselector" ><LanguageSelector/></div>
+              </li>
+              
             </ul>
             <ul className="navbar-nav ">
               <li className="nav-item ml-auto">
@@ -65,9 +69,7 @@ const Hero = () => {
               </li>
             </ul>
             <ul className="navbar-nav ">
-              <li className="nav-item ml-auto">
-                <LanguageSelector />
-              </li>
+              
             </ul>
           </div>
         </nav>
@@ -108,6 +110,9 @@ const Hero = () => {
               </li>
               <li className="nav-item">
                 <a className="nav-link header-item" href="/contact">Contact Us</a>
+              </li>
+              <li className="nav-item ml-auto ">
+                <div className=" header-item langselector" ><LanguageSelector/></div>
               </li>
             </ul>
             <ul className="navbar-nav ">

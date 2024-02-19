@@ -17,7 +17,7 @@ export default function Contact() {
               src={locationIcon}
               alt="location-icon"
             ></img>
-            <h1>Address</h1>
+            <h2>Address</h2>
             <a
               className="contact-link"
               href="https://maps.app.goo.gl/NSULHZfxoQo7hv7n6"
@@ -33,7 +33,7 @@ export default function Contact() {
               src={mailIcon}
               alt="location-icon"
             ></img>
-             <h1>Email Us</h1>
+             <h2>Email Us</h2>
             <a
               className="contact-link"
               href="https://maps.app.goo.gl/NSULHZfxoQo7hv7n6"

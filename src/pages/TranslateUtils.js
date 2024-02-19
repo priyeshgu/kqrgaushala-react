@@ -25,7 +25,7 @@ export const translateContentAPI = async (elementsWithText) => {
   
   export const translatePageContent = async () => {
     try {
-      const elementsWithText = document.querySelectorAll('p, span, h1, h2, h3, h4, h5, h6,  button');
+      const elementsWithText = document.querySelectorAll('p, span, h2, h3, h4, h5, h6,  button');
       const translatedContent =await translateContentAPI(elementsWithText);
       return translatedContent
     } catch (error) {

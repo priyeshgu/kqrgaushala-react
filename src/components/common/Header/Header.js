@@ -2,6 +2,7 @@ import React from 'react';
 import './Header.css';
 import 'bootstrap/dist/js/bootstrap.min';
 import logo from '../../../assets/logo.png'
+import LanguageSelector from '../../../pages/LanguageSelector/LanguageSelector';
 
 export default function Header() {
   return (
@@ -29,15 +30,23 @@ export default function Header() {
               <li className="nav-item ml-auto">
                 <a className="nav-link header-item" href="/contact">Contact Us</a>
               </li>
+              <li className="nav-item ml-auto langselectorHead">
+              
+                < LanguageSelector/>
+                
+              </li>
             </ul>
             <ul className="navbar-nav header-donate-button ">
               <li className="nav-item ml-auto header-donate-button">
                 <a href='/donate'><button className="btn btn-success header-btn-donate">Donate</button></a>
               </li>
             </ul>
+            
+
           </div>
         </nav>
       </div>
+     
     </div>
   );
 }

@@ -118,6 +118,16 @@ video {
   padding: 0.4rem 2rem;
   border-radius: 1rem;
 }
+.langselector button{
+  color: white !important;
+  text-shadow: 2px 2px 4px #000000;
+  font-size: 1.9rem;
+
+ 
+
+
+ 
+}
 
 
 @media screen and (max-width: 480px) {
@@ -131,7 +141,7 @@ video {
  padding: 1rem 1rem ;
  background-color: #B8E0CC;
  border-radius: 15px;
- height: 50vh;
+ height: 65vh;
 }
 .nav-test li{
 margin: 2vh 0vh ;

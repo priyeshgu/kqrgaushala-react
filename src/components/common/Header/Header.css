@@ -12,6 +12,18 @@
     margin-left: 1rem;
     margin-right: 1rem;
   }
+.langselectorHead button{
+  color: rgba(0,0,0,.5);
+  color: #3A405A;
+  font-family: Roboto;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border: none;
+}
   
   @media (max-width: 768px) {
     .logo {
@@ -66,5 +78,17 @@
   }
   .header-donate-button{
     margin: 0;
+  }
+  .langselectorHead button{
+    
+    font-size: 18px;
+    padding: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    margin-right: 0;
+   
+ 
+    
+   
   }
 }

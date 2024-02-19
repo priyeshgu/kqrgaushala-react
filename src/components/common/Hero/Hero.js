@@ -7,7 +7,7 @@ const Hero = ({ title }) => (
     <img src={fixedHeroImg} className='hero-img' alt='hero-img'></img>
     <div className="overlay"></div>
     <div className="heroimg-text">
-      <h1>{title}</h1>
+      <h5>{title}</h5>
     </div>
   </div>
 );
