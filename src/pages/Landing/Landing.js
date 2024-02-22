@@ -80,8 +80,9 @@ export default function Landing() {
               backgroundColor="#554992"
               className="donation-type-1"
               image={donation1}
-              title="Maintaince Expenses"
+              title="Maintenance Expenses"
               description="Embrace Serenity, join hands in supporting the maintenance of our Gaushala"
+              categoryId="Maintenance"
 
             />
 
@@ -94,6 +95,7 @@ export default function Landing() {
               image={donation2}
               title="Adopting a Cow/Calf"
               description="Explore Diverse Adoption Choices to Care for our Sacred Cows at Shree Koderma Gaushala"
+              categoryId="Adoption"
             />
 
           </div>
@@ -103,6 +105,7 @@ export default function Landing() {
               image={donation2}
               title="Adopting a Cow/Calf"
               description="Explore Diverse Adoption Choices to Care for our Sacred Cows at our Gaushala"
+              categoryId="Adoption"
             />
 
           </div>
@@ -112,6 +115,7 @@ export default function Landing() {
               image={donation3}
               title="Food Donation"
               description="Join Hands in Providing Gaushala's Nourishment, Nurturing the Lives of our Divine Cows"
+              categoryId="Food"
             />
 
           </div>
@@ -122,6 +126,8 @@ export default function Landing() {
               image={donation4}
               title="Gauvansh Seva"
               description="Donate for Seva, Support Gopastmi Mela and Medical Expenses for our beloved cows"
+              categoryId="Seva"
+              
             />
 
           </div>

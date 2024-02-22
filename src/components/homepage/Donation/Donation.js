@@ -4,8 +4,6 @@ import "../Donation/Donation.css";
 
 const Donation = ({ image, title, description, categoryId, backgroundColor }) => {
   const categoryLink = `/donate#${categoryId}`;
-  
-
 
   return (
     <>
@@ -20,7 +18,7 @@ const Donation = ({ image, title, description, categoryId, backgroundColor }) =>
         <div className="card-body" >
           <h3 className="card-title donation-title">{title}</h3>
           <p className="card-text donation-description">{description}</p>
-          <a href={categoryLink}><button className="btn btn-success btn-donate">DONATE NOW</button></a>
+          <a href={categoryLink}className="btn btn-success btn-donate">DONATE NOW</a>
         </div>
       </div>
     </>

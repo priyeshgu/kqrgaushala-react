@@ -21,8 +21,10 @@ const Donationmain = () => {
   }, []);
 
   return (
-    <div>   
+    <div>  
+      
       {donationCategories.map((category) => (
+        
         <DonationCategory key={category.categoryName} category={category} />
       ))}
     </div>

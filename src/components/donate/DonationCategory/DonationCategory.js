@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DonationProduct from '../DonationProduct/DonationProduct';
 import Popup from '../Popup/Popup';
 import ThankYou from "../Popup-thankyou/ThankYou";
@@ -10,6 +10,21 @@ const DonationCategory = ({ category }) => {
   const [donationInfo, setDonationInfo] = useState(null);
   const [showThankYou, setShowThankYou] = useState(false);
   const [thankYouData, setThankYouData] = useState(null);
+
+  useEffect(() => {
+    // Get the category name from the URL hash
+    const hashCategory = window.location.hash.substring(1);
+  
+    // Check if the hashCategory is not empty and matches the current category
+    if (hashCategory && hashCategory === category.categoryName) {
+      // Scroll to the element with the specified id (category name)
+      const element = document.getElementById(category.categoryName);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [category.categoryName]);
+
 
   const closePopup = () => {
     setShowPopup(false);
@@ -46,8 +61,10 @@ const DonationCategory = ({ category }) => {
   };
 
   return (
+    <>
+   
     <div className="donation-category mb-5  mt-5 container text-center" id={category.categoryName}>
-      <h2 className="category-heading">{category.categoryName}</h2>
+      <h2 className="category-heading" id={category.categoryName}>{category.categoryName}</h2>
       <div className="products-container d-flex flex-row flex-wrap justify-content-center row ">
         {category.donations.map((product) => (
           <DonationProduct key={product.nameEnglish} product={product} category={category} />
@@ -105,6 +122,7 @@ const DonationCategory = ({ category }) => {
       {  showThankYou && <ThankYou onClose={() => setShowThankYou(false)} formData={thankYouData}/>}
     
     </div>
+    </>
     
   );
 };
