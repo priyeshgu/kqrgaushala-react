@@ -71,6 +71,7 @@ const Footer = () => {
           {/* Copyright */}
           <div className="col-md-12 text-center text-md-end">
             <p>&copy; Shree Koderma Gaushala</p>
+            <p class="text-center">Developed With ❤️ By : <a target="_blank" href="https://zarvis.in">zarvis.in</a> </p>
           </div>
         </div>
       </div>
