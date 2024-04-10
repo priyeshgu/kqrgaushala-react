@@ -10,6 +10,7 @@ export const translateContentAPI = async (elementsWithText) => {
       const response = await axios.post('https://api.kqrgaushala.org/translate', { webpageContent: textsToTranslate });
       const translatedTexts = response.data.TranslatedText.split('\n');
       localStorage.setItem('language', 'hi');
+      
   
       // Update the text content of each element with its translated counterpart
       elementsWithText.forEach((element, index) => {
