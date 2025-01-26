@@ -10,7 +10,7 @@ const Lifetime=()=> {
 
   const handleBecomeMember = () => {
     const additionalData = {
-      amount: 21000, // Hardcoded amount
+      amount: 31000, // Hardcoded amount
       type: "Membership", // Hardcoded type
       productName: "Lifetime Membership", // Hardcoded product name
       units: 1, // Hardcoded units
@@ -29,7 +29,7 @@ const Lifetime=()=> {
       <h2 className="lifetime-heading">Join us for Lifetime Membership</h2>
       <p className="lifetime-subheading mb-3">
         
-      Empower change with a <strong>₹ 21000</strong> Lifetime Membership for old and sick cows, and receive a special certificate!
+      Empower change with a <strong>₹ 31000</strong> Lifetime Membership for old and sick cows, and receive a special certificate!
       </p>
 
       <button className="btn btn-success lifetime-btn" onClick={handleBecomeMember}>
